@@ -1,11 +1,11 @@
-public class Queue {
+public class MyQueue {
    static int length;
    static Node front;
    static Node back;
-    Queue(){
-        Queue.length=0;
-        Queue.back=null;
-        Queue.front=null;
+    MyQueue(){
+        MyQueue.length=0;
+        MyQueue.back=null;
+        MyQueue.front=null;
     }
     public static Node push(int y){
     Node newNode =new Node(y);
