@@ -199,25 +199,47 @@ public class Main{
         }
       }
       public static void handleTrees(Scanner sc){
+            MyTree root=null;
             System.out.println("---Welcome to Tree Operations---\n");
             System.out.println("1. Create a Binary Tree");
-            System.out.println("2. Inorder");
-            System.out.println("3. Preorder");
-            System.out.println("4. PostOrder");
-            System.out.println("5. Height");
-            System.out.println("6. Search");
-            System.out.println("7. Display");
-            System.out.println("8. Back to Main Menu");
+            System.out.println("2. Traverse the tree");
+            System.out.println("3. Height");
+            System.out.println("4. Search");
+            System.out.println("5. Back to Main Menu");
             while(true){
                 int op=sc.nextInt();
             switch(op){
                 case 1:
                 System.out.println("Enter the nodes level wise Enter -1 for null");
-                List<Integer> nodes=Tree.inputNodeValues(sc);
-                Tree root=Tree.buildTreeFromLevels(nodes);
-                System.out.println("Tree SuccessFully Builttt :)");
+                List<Integer> nodes=MyTree.inputNodeValues(sc);
+                root=MyTree.buildTreeFromLevels(nodes);
+                System.out.println("Tree SuccessFully Built :)");
                 break;
                 case 2:
+                System.out.println("Choose the traversal you like");
+                System.out.println("1.BFS");
+                System.out.println("2.DFS");
+                int choice =sc.nextInt();
+                switch(choice){
+                    case 1:
+                    MyTree.bfsTraversal(root);
+                    break;
+                    case 2:
+                    System.out.println("Choose any 1 DFS Technique from the Below");
+                    System.out.println("1.in\n2.pre\n3.post");
+                    int dfsChoice=sc.nextInt();
+                    switch(dfsChoice){
+                        case 1:
+                        MyTree.inOrderTraversal(root);
+                        break;
+                        case 2:
+                        MyTree.preOrderTraversal(root);
+                        break;
+                        case 3:
+                        MyTree.postOrderTraversal(root);
+                    }
+                    break;
+                }
                 break;
                 case 4:
                 
@@ -227,14 +249,6 @@ public class Main{
                 break;
                 case 5:
                 
-                break;
-                case 6:
-                
-                break;
-                case 7:
-                
-                break;
-                case 8:
                 return;
                 default:
                 System.out.println("Range of Input Integer's Provided For Operation is [1-8]");
