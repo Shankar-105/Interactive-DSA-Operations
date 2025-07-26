@@ -1,22 +1,22 @@
-public class LinkedList {
+public class MyLinkedList {
     int data;
-    LinkedList next;
-    public LinkedList(int val){
+    MyLinkedList next;
+    public MyLinkedList(int val){
         this.data=val;
         this.next=null;
     }
-    public LinkedList(int val,LinkedList node){
+    public MyLinkedList(int val,MyLinkedList node){
         this.data=val;
         this.next=node;
     }
     //creating the linked list
-    public static LinkedList createLinkedList(LinkedList node,int val){
-        LinkedList newNode=new LinkedList(val);
+    public static MyLinkedList createLinkedList(MyLinkedList node,int val){
+        MyLinkedList newNode=new MyLinkedList(val);
         if(node==null){
         node=newNode;
         return node;
         }
-        LinkedList temp=node;
+        MyLinkedList temp=node;
         while(temp.next!=null){
             temp=temp.next;
         }
@@ -24,8 +24,8 @@ public class LinkedList {
         return node;
     }
     // printing the linked list
-    public static void printLinkedList(LinkedList head){
-        LinkedList temp=head;
+    public static void printLinkedList(MyLinkedList head){
+        MyLinkedList temp=head;
         while(temp!=null){
             System.out.print(temp.data+"->");
             temp=temp.next;
@@ -33,10 +33,10 @@ public class LinkedList {
         System.out.println("null");
     }
     // reversing the linked list
-    public static LinkedList reverLinkedList(LinkedList head){
-        LinkedList previousNode=null;
-        LinkedList afterNode=null;
-        LinkedList temp=head;
+    public static MyLinkedList reverLinkedList(MyLinkedList head){
+        MyLinkedList previousNode=null;
+        MyLinkedList afterNode=null;
+        MyLinkedList temp=head;
         while(temp!=null){
             afterNode=temp.next;
             temp.next=previousNode;
@@ -46,40 +46,40 @@ public class LinkedList {
         return previousNode;
     }
     //Insertions on linked list
-   public static LinkedList insertAtHead(LinkedList head,int newele){
-    LinkedList newHead=new LinkedList(newele,head);
+   public static MyLinkedList insertAtHead(MyLinkedList head,int newele){
+    MyLinkedList newHead=new MyLinkedList(newele,head);
    return newHead;
    }
-   public static LinkedList insertAtTail(LinkedList head,int newele){
-    LinkedList newTail=new LinkedList(newele);
+   public static MyLinkedList insertAtTail(MyLinkedList head,int newele){
+    MyLinkedList newTail=new MyLinkedList(newele);
     if(head==null){
         return newTail;
     }
-    LinkedList temp=head;
+    MyLinkedList temp=head;
     while(temp.next!=null){
             temp=temp.next;
         }
         temp.next=newTail;
    return head;
    }
-   public static LinkedList insertAtK(LinkedList head,int k,int newele){
+   public static MyLinkedList insertAtK(MyLinkedList head,int k,int newele){
     if(head==null){
         if(k==1){
-         LinkedList newNode=new LinkedList(newele);
+         MyLinkedList newNode=new MyLinkedList(newele);
         return newNode;
         }
         return head;
     }
     if(k==1){
-        LinkedList newNode=new LinkedList(newele,head);
+        MyLinkedList newNode=new MyLinkedList(newele,head);
         return newNode;
     }
-    LinkedList temp=head;
+    MyLinkedList temp=head;
      int cnt=0;
     while(temp!=null){
         cnt++;
         if(cnt==(k-1)){
-            LinkedList newNode=new LinkedList(newele,temp.next);
+            MyLinkedList newNode=new MyLinkedList(newele,temp.next);
             temp.next=newNode;
             break;
         }       
@@ -88,27 +88,27 @@ public class LinkedList {
     return head;
    }
    // Delitions on linked list
-   public static LinkedList deleteHead(LinkedList head){
+   public static MyLinkedList deleteHead(MyLinkedList head){
     if(head==null || head.next==null){
         System.out.println("Oh Man there's no element after this operation the list is Empty");
         return null;
     }
-    LinkedList newHead=head.next;
+    MyLinkedList newHead=head.next;
     return newHead;
    }
-   public static LinkedList deleteTail(LinkedList head){
+   public static MyLinkedList deleteTail(MyLinkedList head){
     if(head==null || head.next==null){
         System.out.println("Oh Man there will be no element after this operation the list goes empty(Insert and again perform these Deletions)");
         return null;
     }
-    LinkedList temp=head;
+    MyLinkedList temp=head;
     while(temp.next.next!=null){
      temp=temp.next;
     }
     temp.next=null;
     return head;
    }
-   public static LinkedList deleteAtK(LinkedList head,int k){
+   public static MyLinkedList deleteAtK(MyLinkedList head,int k){
     if(head==null){
      System.out.println("Oh Man there's no element after this operation the list is Empty");
      return head;
@@ -119,7 +119,7 @@ public class LinkedList {
     }
     else{
     int cnt=0;
-    LinkedList temp=head;
+    MyLinkedList temp=head;
     while(temp!=null){
         cnt++;
         if(cnt==(k-1)){
@@ -131,7 +131,7 @@ public class LinkedList {
     }
     return head;
    }
-   public static LinkedList deleteNodeK(LinkedList head,int val){
+   public static MyLinkedList deleteNodeK(MyLinkedList head,int val){
     if (head == null){
        return null; 
     }
@@ -139,7 +139,7 @@ public class LinkedList {
         return null;
     }
     else{
-        LinkedList temp=head;
+        MyLinkedList temp=head;
         while(temp!=null && temp.next!=null){
             if(temp.next.data==val){
                 temp.next=temp.next.next;

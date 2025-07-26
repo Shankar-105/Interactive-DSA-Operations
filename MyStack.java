@@ -1,9 +1,9 @@
-public class Stack{
+public class MyStack{
 static int size;
 static Node top;
-Stack(){
-    Stack.size=0;
-    Stack.top=null;
+MyStack(){
+    MyStack.size=0;
+    MyStack.top=null;
 }
 public static Node addNode(int x){
     Node newNode =new Node(x);
