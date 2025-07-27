@@ -217,29 +217,37 @@ public class Main{
                 break;
                 case 2:
                 System.out.println("Choose the traversal you like");
-                System.out.println("1.BFS");
-                System.out.println("2.DFS");
+                System.out.println("1.BFS(Level Order)");
+                System.out.println("2.DFS(Depth Wise)");
                 int choice =sc.nextInt();
                 switch(choice){
                     case 1:
                     MyTree.bfsTraversal(root);
+                    System.out.println("Level Order Traversal Done:)");
                     break;
                     case 2:
-                    System.out.println("Choose any 1 DFS Technique from the Below");
-                    System.out.println("1.in\n2.pre\n3.post");
+                    System.out.println("Choose any 1 DFS Technique From the Below Listed Travarsels");
+                    System.out.println("1.PreOrder Traversal\n2.InOrder Traversal\n3.PostOrder Traversal");
                     int dfsChoice=sc.nextInt();
                     switch(dfsChoice){
                         case 1:
-                        MyTree.inOrderTraversal(root);
+                        List<Integer> res=new ArrayList<>();
+                        MyTree.preOrderTraversal(root,res);
+                        System.out.println("The PreOrder Traversal ");
+                        MyTree.printDFSTraversals(res);
                         break;
                         case 2:
-                        MyTree.preOrderTraversal(root);
+                        MyTree.inOrderTraversal(root);
                         break;
                         case 3:
                         MyTree.postOrderTraversal(root);
+                        default:
+                System.out.println("Range of Input Integer's Provided For Operation is [1-3]");
                     }
                     break;
-                }
+                    default:
+                System.out.println("Range of Input Integer's Provided For Operation is [1-2]");
+            }
                 break;
                 case 4:
                 
@@ -251,7 +259,7 @@ public class Main{
                 
                 return;
                 default:
-                System.out.println("Range of Input Integer's Provided For Operation is [1-8]");
+                System.out.println("Range of Input Integer's Provided For Operation is [1-5]");
             }
             }
       }
@@ -264,7 +272,7 @@ public class Main{
             System.out.println("1. Linked Lists");
             System.out.println("2. Stacks");
             System.out.println("3. Queues");
-            System.out.println("4. Binary Trees(Coming soon)");
+            System.out.println("4. Binary Trees");
             System.out.println("5. Graphs(Coming soon)");
             System.out.println("6. Exit");
             int choice=sc.nextInt();

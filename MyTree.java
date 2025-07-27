@@ -74,13 +74,23 @@ public class MyTree {
             level++;
         }
     }
-public static void inOrderTraversal(MyTree root){
-
+public static void preOrderTraversal(MyTree root,List<Integer> result){
+ if (root == null) return;
+    result.add(root.data);
+    preOrderTraversal(root.left, result);
+    preOrderTraversal(root.right, result);
 }
-public static void preOrderTraversal(MyTree root){
+public static void inOrderTraversal(MyTree root){
     
 }
 public static void postOrderTraversal(MyTree root){
     
+}
+public static void printDFSTraversals(List<Integer> result){
+for (int i = 0; i < result.size(); i++) {
+        System.out.print(result.get(i));
+        if (i != result.size() - 1) System.out.print(" -> ");
+    }
+    System.out.println();
 }
 }
