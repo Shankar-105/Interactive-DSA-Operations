@@ -1,4 +1,5 @@
 //import java.util.ArrayList;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -16,6 +17,7 @@ public class MyTree {
         left=l;
         right=r;
     }
+    //Storing Values into List
     public static List<Integer> inputNodeValues(Scanner sc){
         List<Integer> nodes=new LinkedList<Integer>();
         while(true){
@@ -25,6 +27,7 @@ public class MyTree {
         }
         return nodes;
     }
+    //Consturcting Tree From User Input
     public static MyTree buildTreeFromLevels(List<Integer> nodes) {
     if (nodes == null || nodes.isEmpty() || nodes.get(0) == -1) return null;
     
@@ -50,47 +53,96 @@ public class MyTree {
     }
     return root;
 }
-    public static void bfsTraversal(MyTree root) {
-        if (root == null) return;
-
+     // Breadth First Search
+    public static List<List<Integer>> bfsTraversal(MyTree root) {
+        List<List<Integer>> result = new ArrayList<>();
+        if (root == null) return null;
         Queue<MyTree> q = new LinkedList<>();
         q.offer(root);
-        int level = 0;
-
         while (!q.isEmpty()) {
             int size = q.size();
-            System.out.print("Level " + level + ":   ");
+            List<Integer> level = new ArrayList<>();
             for (int i = 0; i < size; i++) {
                 MyTree node = q.poll();
-                if (node != null) {
-                    System.out.print(node.data + "  ");
-                    q.offer(node.left);
-                    q.offer(node.right);
-                } else {
-                    System.out.print("-1 "); // spacing for nulls
-                }
+                level.add(node.data);
+                if (node.left != null) q.offer(node.left);
+                if (node.right != null) q.offer(node.right);
             }
-            System.out.println();
-            level++;
+            result.add(level);
         }
+        return result;
     }
+    // DFS PreOrder Traversal (ROOT->LEFT->RIGHT)
 public static void preOrderTraversal(MyTree root,List<Integer> result){
  if (root == null) return;
     result.add(root.data);
     preOrderTraversal(root.left, result);
     preOrderTraversal(root.right, result);
 }
-public static void inOrderTraversal(MyTree root){
-    
+    // DFS InOrder Traversal (LEFT->ROOT->RIGHT)
+public static void inOrderTraversal(MyTree root,List<Integer> result){
+    if (root == null) return;
+    inOrderTraversal(root.left, result);
+    result.add(root.data);
+    inOrderTraversal(root.right, result);
 }
-public static void postOrderTraversal(MyTree root){
-    
+    // DFS PostOrder Traversal (LEFT->RIGHT->ROOT)
+public static void postOrderTraversal(MyTree root,List<Integer> result){
+    if (root == null) return;
+    postOrderTraversal(root.left, result);
+    postOrderTraversal(root.right, result);
+    result.add(root.data);
 }
+// Printing of the Stored DFS traversal
 public static void printDFSTraversals(List<Integer> result){
 for (int i = 0; i < result.size(); i++) {
         System.out.print(result.get(i));
         if (i != result.size() - 1) System.out.print(" -> ");
     }
     System.out.println();
+}
+//Zig Zag Level Order Traversal
+    public static List<List<Integer>> zigzagLevelOrder(MyTree root) {
+        List<List<Integer>> result = new ArrayList<>();
+        if (root == null) return result;
+        Queue<MyTree> queue = new LinkedList<>();
+        queue.offer(root);
+        boolean leftToRight = true;
+
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            List<Integer> level = new ArrayList<>();
+
+            for (int i = 0; i < size; i++) {
+                MyTree node = queue.poll();
+                if (leftToRight) {
+                    level.add(node.data);
+                } else {
+                    // Add at the beginning for reverse order
+                    level.add(0, node.data);
+                }
+
+                if (node.left != null) queue.offer(node.left);
+                if (node.right != null) queue.offer(node.right);
+            }
+
+            result.add(level);
+            leftToRight = !leftToRight; // Toggle direction
+        }
+
+        return result;
+    }
+public static void printLevelOrderTraversals(List<List<Integer>> result){
+    int level=0;
+    while (level<result.size()) {
+        List<Integer> eachLevel = result.get(level);
+            int size = eachLevel.size();
+            System.out.print("Level " + level + ":   ");
+            for (int i = 0; i < size; i++) {
+                System.out.print(eachLevel.get(i)+"  ");
+            }
+            System.out.println();
+            level++;
+        }
 }
 }
