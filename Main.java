@@ -202,10 +202,11 @@ public class Main{
             MyTree root=null;
             System.out.println("---Welcome to Tree Operations---\n");
             System.out.println("1. Create a Binary Tree");
-            System.out.println("2. Traverse the tree");
-            System.out.println("3. Height");
-            System.out.println("4. Search");
-            System.out.println("5. Back to Main Menu");
+            System.out.println("2. Traverse the tree(BFS/DFS)");
+            System.out.println("3. Zig Zag Traversal");
+            System.out.println("4. Height");
+            System.out.println("5. Search");
+            System.out.println("6. Back to Main Menu");
             while(true){
                 int op=sc.nextInt();
             switch(op){
@@ -217,41 +218,56 @@ public class Main{
                 break;
                 case 2:
                 System.out.println("Choose the traversal you like");
-                System.out.println("1.BFS");
-                System.out.println("2.DFS");
+                System.out.println("1.BFS(Level Order)");
+                System.out.println("2.DFS(Depth Wise)");
                 int choice =sc.nextInt();
                 switch(choice){
                     case 1:
-                    MyTree.bfsTraversal(root);
+                    List<List<Integer>> res=MyTree.bfsTraversal(root);
+                    MyTree.printLevelOrderTraversals(res);
+                    System.out.println("Level Order Traversal Done:)");
                     break;
                     case 2:
-                    System.out.println("Choose any 1 DFS Technique from the Below");
-                    System.out.println("1.in\n2.pre\n3.post");
+                    List<Integer> dfs=new ArrayList<>();
+                    System.out.println("Choose any 1 DFS Technique From the Below Listed Travarsels");
+                    System.out.println("1.PreOrder Traversal\n2.InOrder Traversal\n3.PostOrder Traversal");
                     int dfsChoice=sc.nextInt();
                     switch(dfsChoice){
                         case 1:
-                        MyTree.inOrderTraversal(root);
+                        MyTree.preOrderTraversal(root,dfs);
+                        System.out.println("xPreOrder Traversal ");
+                        MyTree.printDFSTraversals(dfs);
                         break;
                         case 2:
-                        MyTree.preOrderTraversal(root);
+                        MyTree.inOrderTraversal(root,dfs);
+                        System.out.println("InOrder Traversal ");
+                        MyTree.printDFSTraversals(dfs);
                         break;
                         case 3:
-                        MyTree.postOrderTraversal(root);
+                        MyTree.postOrderTraversal(root,dfs);
+                        System.out.println("PostOrder Traversal ");
+                        MyTree.printDFSTraversals(dfs);
+                        break;
+                        default:
+                System.out.println("Range of Input Integer's Provided For Operation is [1-3]");
                     }
                     break;
-                }
-                break;
-                case 4:
-                
+                    default:
+                System.out.println("Range of Input Integer's Provided For Operation is [1-2]");
+            }
                 break;
                 case 3:
+                List<List<Integer>> res=MyTree.zigzagLevelOrder(root);
+                MyTree.printLevelOrderTraversals(res);
+                break;
+                case 4:
                 
                 break;
                 case 5:
                 
                 return;
                 default:
-                System.out.println("Range of Input Integer's Provided For Operation is [1-8]");
+                System.out.println("Range of Input Integer's Provided For Operation is [1-5]");
             }
             }
       }
@@ -264,7 +280,7 @@ public class Main{
             System.out.println("1. Linked Lists");
             System.out.println("2. Stacks");
             System.out.println("3. Queues");
-            System.out.println("4. Binary Trees(Coming soon)");
+            System.out.println("4. Binary Trees");
             System.out.println("5. Graphs(Coming soon)");
             System.out.println("6. Exit");
             int choice=sc.nextInt();

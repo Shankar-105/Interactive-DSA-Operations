@@ -2,7 +2,7 @@
 
 🎯 A console-based mini Java project to practice core **Data Structures** in an interactive way.
 
-This project is being built step-by-step to simulate DSA operations in Java for learning and hands-on logic building(For now i have Completed Linked Lists).
+This project is being built step-by-step to simulate DSA operations in Java for learning and hands-on logic building(For now i have Completed Trees).
 ---
 
 ## Current Features
@@ -32,10 +32,16 @@ This project is being built step-by-step to simulate DSA operations in Java for 
 - Peek Element of the Queue
 - Last Element of the Queue
 - Print the Queue
-
+### Trees
+- Binary Tree Creation By User Input
+- Display Tree in Various Ways
+- BFS (Level Wise Display in a User Freindly Way)
+- DFS (PRE/IN/POST) Order Display
+- Zig Zag Traversal
+- Search in the Binary Tree For a Value
+- Height Of the Binary Tree
 
 Coming Soon:
-- Trees
 - Graphs
 
 ---
@@ -44,5 +50,5 @@ Coming Soon:
 Make sure Java is installed.
 
 ```bash
-javac Main.java LinkedList.java
+javac *.java
 java Main
