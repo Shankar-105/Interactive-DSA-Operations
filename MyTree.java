@@ -4,7 +4,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 import java.util.Scanner;
-//import javax.swing.tree.TreeNode;
 public class MyTree {
     int data;
     MyTree left,right;
@@ -86,14 +85,14 @@ public static void inOrderTraversal(MyTree root,List<Integer> result){
     result.add(root.data);
     inOrderTraversal(root.right, result);
 }
-    // DFS PostOrder Traversal (LEFT->RIGHT->ROOT)
+   // DFS PostOrder Traversal (LEFT->RIGHT->ROOT)
 public static void postOrderTraversal(MyTree root,List<Integer> result){
     if (root == null) return;
     postOrderTraversal(root.left, result);
     postOrderTraversal(root.right, result);
     result.add(root.data);
 }
-// Printing of the Stored DFS traversal
+  // Printing of the Stored DFS traversal
 public static void printDFSTraversals(List<Integer> result){
 for (int i = 0; i < result.size(); i++) {
         System.out.print(result.get(i));
@@ -102,7 +101,7 @@ for (int i = 0; i < result.size(); i++) {
     System.out.println();
 }
 //Zig Zag Level Order Traversal
-    public static List<List<Integer>> zigzagLevelOrder(MyTree root) {
+    public static List<List<Integer>> zigZagLevelOrder(MyTree root) {
         List<List<Integer>> result = new ArrayList<>();
         if (root == null) return result;
         Queue<MyTree> queue = new LinkedList<>();
@@ -137,7 +136,7 @@ public static void printLevelOrderTraversals(List<List<Integer>> result){
     while (level<result.size()) {
         List<Integer> eachLevel = result.get(level);
             int size = eachLevel.size();
-            System.out.print("Level " + level + ":   ");
+            System.out.print("Level " + (level+1) + ":   ");
             for (int i = 0; i < size; i++) {
                 System.out.print(eachLevel.get(i)+"  ");
             }
@@ -145,4 +144,57 @@ public static void printLevelOrderTraversals(List<List<Integer>> result){
             level++;
         }
 }
+public static void showTree(MyTree node, String prefix, boolean isTail) {
+        if (node == null){
+            System.out.println("Tree Has Nothing to Show Input some Nodes");
+        }
+
+        System.out.println(prefix + (isTail ? "└── " : "├── ") + node.data);
+
+        List<MyTree> children = new ArrayList<>();
+        if (node.left != null) children.add(node.left);
+        if (node.right != null) children.add(node.right);
+
+        for (int i = 0; i < children.size() - 1; i++) {
+            showTree(children.get(i), prefix + (isTail ? "    " : "│   "), false);
+        }
+
+        if (!children.isEmpty()) {
+            showTree(children.get(children.size() - 1), prefix + (isTail ? "    " : "│   "), true);
+        }
+    }
+    public static int treeHeight(MyTree root) {
+    if (root == null) return 0;
+    int leftHeight=treeHeight(root.left);
+    int rightHeight=treeHeight(root.right);
+    return 1 + Math.max(leftHeight,rightHeight);
+}
+public static void searchInTree(MyTree root,int target) {
+        if (root == null){
+            System.out.println("Tree is Emptyy");
+            return;
+        }
+        Queue<MyTree> q = new LinkedList<>();
+        int lvl=1;
+        q.offer(root);
+        while (!q.isEmpty()) {
+            int size = q.size();
+            for (int i = 0; i < size; i++) {
+                MyTree node = q.poll();
+                if(node.data==target){
+                 System.out.println("Node " + target + " found at Level " + lvl);
+                 return;
+                }
+                if (node.left != null) q.offer(node.left);
+                if (node.right != null) q.offer(node.right);
+            }
+            lvl++;
+        }
+    System.out.println("Node " + target + " not found in the tree.");
+    }
+    public static void treeSummary(MyTree root,List<Integer> nodes){
+        System.out.println("== Tree Summary ==");
+        System.out.println("Root Node:      "+root.data);
+        System.out.println("Total Nodes:    "+nodes.size());
+    }
 }

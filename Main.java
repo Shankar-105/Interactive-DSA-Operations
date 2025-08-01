@@ -200,19 +200,22 @@ public class Main{
       }
       public static void handleTrees(Scanner sc){
             MyTree root=null;
+            List<Integer> nodes=null;
             System.out.println("---Welcome to Tree Operations---\n");
             System.out.println("1. Create a Binary Tree");
             System.out.println("2. Traverse the tree(BFS/DFS)");
             System.out.println("3. Zig Zag Traversal");
             System.out.println("4. Height");
             System.out.println("5. Search");
-            System.out.println("6. Back to Main Menu");
+            System.out.println("6. Show Tree");
+            System.out.println("7. Reset the Tree");
+            System.out.println("8. Back to Main Menu");
             while(true){
                 int op=sc.nextInt();
             switch(op){
                 case 1:
                 System.out.println("Enter the nodes level wise Enter -1 for null");
-                List<Integer> nodes=MyTree.inputNodeValues(sc);
+                nodes=MyTree.inputNodeValues(sc);
                 root=MyTree.buildTreeFromLevels(nodes);
                 System.out.println("Tree SuccessFully Built :)");
                 break;
@@ -235,7 +238,7 @@ public class Main{
                     switch(dfsChoice){
                         case 1:
                         MyTree.preOrderTraversal(root,dfs);
-                        System.out.println("xPreOrder Traversal ");
+                        System.out.println("PreOrder Traversal ");
                         MyTree.printDFSTraversals(dfs);
                         break;
                         case 2:
@@ -257,14 +260,28 @@ public class Main{
             }
                 break;
                 case 3:
-                List<List<Integer>> res=MyTree.zigzagLevelOrder(root);
+                List<List<Integer>> res=MyTree.zigZagLevelOrder(root);
                 MyTree.printLevelOrderTraversals(res);
                 break;
                 case 4:
-                
+                System.out.println("Height of the Binary Tree "+MyTree.treeHeight(root));
                 break;
                 case 5:
-                
+                System.out.print("Enter the value to search: ");
+                int target = sc.nextInt();
+                MyTree.searchInTree(root, target);
+                break;
+                case 6:
+                System.out.println();
+                MyTree.showTree(root,"",true);
+                MyTree.treeSummary(root, nodes);
+                break;
+                case 7:
+                root=null;
+                nodes=null;
+                System.out.println("Tree SuccessFully Reloaded");
+                break;
+                case 8:
                 return;
                 default:
                 System.out.println("Range of Input Integer's Provided For Operation is [1-5]");
