@@ -2,7 +2,8 @@
 
 🎯 A console-based mini Java project to practice core **Data Structures** in an interactive way.
 
-This project is being built step-by-step to simulate DSA operations in Java for learning and hands-on logic building(For now i have Completed Trees).
+This project is being built step-by-step to simulate DSA operations in Java for learning and hands-on logic building(For now i am Working Trees and Completed LL,Stacks,Queues).
+
 ---
 
 ## Current Features
@@ -40,6 +41,8 @@ This project is being built step-by-step to simulate DSA operations in Java for 
 - Zig Zag Traversal
 - Search in the Binary Tree For a Value
 - Height Of the Binary Tree
+- Show Tree User Freindly Way
+- Reset the Tree
 
 Coming Soon:
 - Graphs
