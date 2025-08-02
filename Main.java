@@ -1,6 +1,7 @@
 import java.util.*;
 public class Main{
-    public static void handleLinkedLists(MyLinkedList head,Scanner sc){
+    public static void handleLinkedLists(Scanner sc){
+        MyLinkedList head=null;
         System.out.println("Welcome to Linked List Operations---Firstly Construct a Linked List");
         System.out.println("Enter the values of each Node in the Linked List(Enter -1 to Stop)");
         while(true){
@@ -22,7 +23,8 @@ public class Main{
             System.out.println("7. Delete the Node(Element) with the Value K From the Begininng");
             System.out.println("8. Reverse The Linked List");
             System.out.println("9. Print the Linked List");
-            System.out.println("10. Back to Main Menu");
+            System.out.println("10. Reset The List");
+            System.out.println("11. Back to Main Menu");
             System.out.println("You can Perform as Many Operations as you Wish any Number of Times.\nWhen your Done Just Press 10 to Go Back to the Menu");
             System.out.print("Enter The Index of the Operation (Example 1) ");
         while(true){
@@ -40,10 +42,6 @@ public class Main{
             head=MyLinkedList.insertAtHead(head,valSt);
             System.out.println("Successfully pushed at the Beginning:)");
             break;
-            case 8:
-           head=MyLinkedList.reverLinkedList(head);
-           System.out.println("Oops You Just Performed the Reverse Operation...The List gets Changed Entirely have a look at it...");
-           break;
             case 3:
             System.out.println("Enter the position K");
             int posK=sc.nextInt();
@@ -53,11 +51,6 @@ public class Main{
             System.out.println("Pushed in Between Nodes "+(posK-1)+" and "+(posK));
             System.out.println("Wanna look at the List(Click 9)");
             break;
-            case 9:
-            MyLinkedList.printLinkedList(head);
-            break;
-            case 10:
-            return;
             case 4:
             head=MyLinkedList.deleteHead(head);
             System.out.println("Deleted The Head.\nWanna See the Change(Click 9)");
@@ -78,6 +71,18 @@ public class Main{
             head=MyLinkedList.deleteNodeK(head,nodeVal);
             System.out.println("Node With Value "+nodeVal+" is removed:)");
             break;
+            case 8:
+           head=MyLinkedList.reverLinkedList(head);
+           System.out.println("Oops You Just Performed the Reverse Operation...The List gets Changed Entirely have a look at it...");
+           break;
+           case 9:
+            MyLinkedList.printLinkedList(head);
+            break;
+            case 10:
+            head=null;
+            break;
+            case 11:
+            return;
             default:
            System.out.println("Range of Input Integer's Provided For Operation is [1-10]");
            }
@@ -92,7 +97,8 @@ public class Main{
             System.out.println("4. Size of the Stack");
             System.out.println("5. Peek Element of the Stack)");
             System.out.println("6. Print the Stack");
-            System.out.println("7. Back to Main Menu");
+            System.out.println("7. Reset the Stack");
+            System.out.println("8. Back to Main Menu");
             System.out.print("Enter The Index of the Operation (Example 1) ");
         while(true){
             int op=sc.nextInt();
@@ -128,6 +134,8 @@ public class Main{
                 System.out.println("No Surprise As the Stack Follows ---LIFO---");
                 break;
                 case 7:
+                stackHead=null;
+                case 8:
                 return;
                 default:
                 System.out.println("Range of Input Integer's Provided For Operation is [1-7]");
@@ -144,7 +152,8 @@ public class Main{
             System.out.println("5. Peek Element of the Queue)");
             System.out.println("6. Last Element of the Queue)");
             System.out.println("7. Print the Queue");
-            System.out.println("8. Back to Main Menu");
+            System.out.println("8. Reset the Queue");
+            System.out.println("9. Back to Main Menu");
             System.out.print("Enter The Index of the Operation (Example 1) ");
         while(true){
             int op=sc.nextInt();
@@ -192,6 +201,8 @@ public class Main{
                 System.out.println("Queue Follows ---FIFO---");
                 break;
                 case 8:
+                queueFront=null;
+                case 9:
                 return;
                 default:
                 System.out.println("Range of Input Integer's Provided For Operation is [1-8]");
@@ -205,18 +216,19 @@ public class Main{
             System.out.println("1. Create a Binary Tree");
             System.out.println("2. Traverse the tree(BFS/DFS)");
             System.out.println("3. Zig Zag Traversal");
-            System.out.println("4. Height");
-            System.out.println("5. Search");
-            System.out.println("6. Show Tree");
-            System.out.println("7. Reset the Tree");
-            System.out.println("8. Back to Main Menu");
+            System.out.println("4. Search");
+            System.out.println("5. Diameter Of the Tree");
+            System.out.println("6. Lowest Common Ancestor of Any Two Children");
+            System.out.println("7. Show Tree");
+            System.out.println("8. Reset the Tree");
+            System.out.println("9. Back to Main Menu");
             while(true){
                 int op=sc.nextInt();
             switch(op){
                 case 1:
                 System.out.println("Enter the nodes level wise Enter -1 for null");
                 nodes=MyTree.inputNodeValues(sc);
-                root=MyTree.buildTreeFromLevels(nodes);
+                root=MyTree.buildTree(nodes);
                 System.out.println("Tree SuccessFully Built :)");
                 break;
                 case 2:
@@ -264,33 +276,41 @@ public class Main{
                 MyTree.printLevelOrderTraversals(res);
                 break;
                 case 4:
-                System.out.println("Height of the Binary Tree "+MyTree.treeHeight(root));
-                break;
-                case 5:
                 System.out.print("Enter the value to search: ");
                 int target = sc.nextInt();
                 MyTree.searchInTree(root, target);
                 break;
+                case 5:
+                System.out.println("Diameter of the Binary Tree "+MyTree.computeDiameter(root));
+                break;
                 case 6:
+                System.out.println("Enter the Two Nodes value: ");
+                int val1 = sc.nextInt();
+                MyTree node1=new MyTree(val1);
+                int val2 = sc.nextInt();
+                MyTree node2=new MyTree(val2);
+                System.out.println("The Lowest Common Ancestor Of the Two Nodes "+val1+" and "+ val2 +" is "+MyTree.LowestCommonAncestor(root,node1,node2));
+                break;
+                case 7:
                 System.out.println();
+                System.out.println("== Current Tree SnapShot ==");
                 MyTree.showTree(root,"",true);
                 MyTree.treeSummary(root, nodes);
                 break;
-                case 7:
+                case 8:
                 root=null;
                 nodes=null;
                 System.out.println("Tree SuccessFully Reloaded");
                 break;
-                case 8:
+                case 9:
                 return;
                 default:
-                System.out.println("Range of Input Integer's Provided For Operation is [1-5]");
+                System.out.println("Range of Input Integer's Provided For Operation is [1-9]");
             }
             }
       }
           public static void main(String[] args){
         Scanner sc=new Scanner(System.in);
-        MyLinkedList head=null;
         System.out.println("Welcome to DSA Simulator");
         System.out.println("Choose a Data Structure");
         while(true){    
@@ -303,7 +323,7 @@ public class Main{
             int choice=sc.nextInt();
             switch(choice){
                 case 1:
-                handleLinkedLists(head,sc);
+                handleLinkedLists(sc);
                 break;
                 case 2:
                 handleStacks(sc);
