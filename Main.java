@@ -221,7 +221,9 @@ public class Main{
             System.out.println("6. Lowest Common Ancestor of Any Two Children");
             System.out.println("7. Show Tree");
             System.out.println("8. Reset the Tree");
-            System.out.println("9. Back to Main Menu");
+            System.out.println("9. Vertical Order Traversal");
+            System.out.println("10. Root to Any Node Path");
+            System.out.println("11. Back to Main Menu");
             while(true){
                 int op=sc.nextInt();
             switch(op){
@@ -289,7 +291,7 @@ public class Main{
                 MyTree node1=new MyTree(val1);
                 int val2 = sc.nextInt();
                 MyTree node2=new MyTree(val2);
-                System.out.println("The Lowest Common Ancestor Of the Two Nodes "+val1+" and "+ val2 +" is "+MyTree.LowestCommonAncestor(root,node1,node2));
+                System.out.println("The Lowest Common Ancestor Of the Two Nodes "+val1+" and "+ val2 +" is "+MyTree.LowestCommonAncestor(root,node1,node2).data);
                 break;
                 case 7:
                 System.out.println();
@@ -303,6 +305,17 @@ public class Main{
                 System.out.println("Tree SuccessFully Reloaded");
                 break;
                 case 9:
+                List<List<Integer>> vOrd=MyTree.verticalTraversal(root);
+                MyTree.displayVerticalOrder(vOrd);
+                break;
+                case 10:
+                System.out.println("Enter the Node value: ");
+                int toNode = sc.nextInt();
+                List<Integer> path=new java.util.LinkedList<>();
+                MyTree.rootToNodePath(root,toNode,path);
+                MyTree.printDFSTraversals(path);
+                break;
+                case 11:
                 return;
                 default:
                 System.out.println("Range of Input Integer's Provided For Operation is [1-9]");

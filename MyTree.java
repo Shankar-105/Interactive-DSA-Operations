@@ -1,8 +1,19 @@
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.Scanner;
+import java.util.TreeMap;
+class Pair<U, V> {
+    public final U first;
+    public final V second;
+
+    public Pair(U first, V second) {
+        this.first = first;
+        this.second = second;
+    }
+}
 public class MyTree {
     int data;
     MyTree left,right;
@@ -225,7 +236,7 @@ public static void searchInTree(MyTree root,int target) {
         return maxi[0];
     }
     public static MyTree LowestCommonAncestor(MyTree root, MyTree p, MyTree q) {
-        if(root==null || root==p || root==q){
+        if(root==null || root.data==p.data || root.data==q.data){
             return root;
         }
         MyTree left=LowestCommonAncestor(root.left, p, q);
@@ -240,4 +251,60 @@ public static void searchInTree(MyTree root,int target) {
             return root;
         }
     }
+    public static List<List<Integer>> verticalTraversal(MyTree root) {
+    TreeMap<Integer, TreeMap<Integer, PriorityQueue<Integer>>> colRowMap = new TreeMap<>();
+    Queue<Pair<MyTree, Pair<Integer, Integer>>> q = new LinkedList<>();
+    q.offer(new Pair<>(root, new Pair<>(0, 0)));
+    while (!q.isEmpty()) {
+        Pair<MyTree, Pair<Integer, Integer>> randPair = q.poll();
+        MyTree node = randPair.first;
+        int col = randPair.second.first;
+        int row = randPair.second.second;
+        colRowMap.putIfAbsent(col, new TreeMap<>());
+        colRowMap.get(col).putIfAbsent(row, new PriorityQueue<>());
+        colRowMap.get(col).get(row).offer(node.data);
+        if (node.left != null){
+            q.offer(new Pair<>(node.left, new Pair<>(col - 1, row + 1)));
+        }
+        if (node.right != null){
+            q.offer(new Pair<>(node.right, new Pair<>(col + 1, row + 1)));
+            }
+    }
+    List<List<Integer>> result = new ArrayList<>();
+    for (TreeMap<Integer, PriorityQueue<Integer>> col : colRowMap.values()) {
+        List<Integer> colList = new ArrayList<>();
+        for (PriorityQueue<Integer> pq : col.values()) {
+            while (!pq.isEmpty()) {
+                colList.add(pq.poll());
+            }
+        }
+        result.add(colList);
+    }
+    return result;
+}
+public static void displayVerticalOrder(List<List<Integer>> vOrd){
+ System.out.println("== Vertical Order Traversal ==");
+int colNum = -1 * (vOrd.size() / 2); // Optional: estimated col offset
+for (List<Integer> col : vOrd) {
+    System.out.printf("Col %+2d:  ", colNum++);
+    for (int val : col) {
+        System.out.print(val + " ");
+    }
+    System.out.println();
+}
+}
+public static boolean rootToNodePath(MyTree root,int toNode,List<Integer> path){
+    if(root==null){
+        return false;
+    }
+    path.add(root.data);
+    if(root.data==toNode){
+     return true;
+    }
+    if(rootToNodePath(root.left,toNode,path) || rootToNodePath(root.right,toNode,path) == true){
+        return true;
+    }
+    path.removeLast();
+    return false;
+}
 }
