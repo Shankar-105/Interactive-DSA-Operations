@@ -307,4 +307,44 @@ public static boolean rootToNodePath(MyTree root,int toNode,List<Integer> path){
     path.removeLast();
     return false;
 }
+public static List<Integer> topView(MyTree root){
+List<Integer> tView=new LinkedList<>();
+TreeMap<Integer,Integer> nodes=new TreeMap<>();
+Queue<Pair<MyTree,Integer>> q=new LinkedList<>();
+q.offer(new Pair<>(root,0));
+while(!q.isEmpty()){
+    Pair<MyTree,Integer> randPair=q.poll();
+    MyTree randNode=randPair.first;
+    int col=randPair.second;
+    if(!nodes.containsKey(col)){
+        nodes.put(col, randNode.data);
+    }
+    if(randNode.left!=null){
+        q.offer(new Pair<>(randNode.left, col-1));
+    }
+    if(randNode.right!=null){
+        q.offer(new Pair<>(randNode.right, col+1));
+    }
+}
+for(int it:nodes.values()){
+    tView.add(it);
+}
+return tView;
+}
+private static void assistRightView(MyTree root,List<Integer> rView,int lvl){
+   if(root==null){
+    return;
+   }
+   if(rView.size()==lvl){
+    rView.add(root.data);
+   }
+   assistRightView(root.right,rView,lvl+1);
+   assistRightView(root.left,rView,lvl+1);
+}
+public static List<Integer> rightSideView(MyTree root){
+        List<Integer> rView=new LinkedList<>();
+        int lvl=0;
+        assistRightView(root,rView,lvl);
+        return rView;
+}
 }

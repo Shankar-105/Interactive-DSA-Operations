@@ -142,7 +142,7 @@ public class Main{
            }
             }
         }
-      public static void handleQueue(Scanner sc){
+      public static void handleQueues(Scanner sc){
             Node queueFront=null;
             System.out.println("Welcome to Queue Operations---");
             System.out.println("1. Push an Element into the Queue");
@@ -223,7 +223,8 @@ public class Main{
             System.out.println("8. Reset the Tree");
             System.out.println("9. Vertical Order Traversal");
             System.out.println("10. Root to Any Node Path");
-            System.out.println("11. Back to Main Menu");
+            System.out.println("11. 4 Side View of the Tree");
+            System.out.println("12. Back to Main Menu");
             while(true){
                 int op=sc.nextInt();
             switch(op){
@@ -316,6 +317,42 @@ public class Main{
                 MyTree.printDFSTraversals(path);
                 break;
                 case 11:
+                System.out.println("1. Top View");
+                System.out.println("2. Right View");
+                System.out.println("3. Bottom View");
+                System.out.println("4. Left View");
+                System.out.println("5. All Sides View");
+                System.out.println("Choose anyy View");
+                int view=sc.nextInt();
+                switch(view){
+                    case 1:
+                    List<Integer> tView= MyTree.topView(root);
+                  System.out.println("Top View OF the Binary Tree");
+                    MyTree.printDFSTraversals(tView);
+                    break;
+                    case 2:
+                    List<Integer> rView= MyTree.rightSideView(root);
+                  System.out.println("Right Side View Of the Binary Tree");
+                    MyTree.printDFSTraversals(rView);
+                    break;
+                    case 3:
+                    List<Integer> bView= MyTree.topView(root);
+                  System.out.println("Top View OF the Binary Tree");
+                    MyTree.printDFSTraversals(bView);
+                    break;
+                    case 4:
+                    List<Integer> lView= MyTree.rightSideView(root);
+                  System.out.println("Top View OF the Binary Tree");
+                    MyTree.printDFSTraversals(lView);
+                    break;
+                    case 5:
+                    System.out.println("All Side View :)");
+                    break;
+                    default:
+                  System.out.println("Range of Input Integer's Provided For Operation is [1-5]");
+                }
+                break;
+                case 12:
                 return;
                 default:
                 System.out.println("Range of Input Integer's Provided For Operation is [1-9]");
@@ -342,7 +379,7 @@ public class Main{
                 handleStacks(sc);
                 break;
                 case 3:
-                handleQueue(sc);
+                handleQueues(sc);
                 break;
                 case 4:
                 handleTrees(sc);
