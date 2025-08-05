@@ -347,4 +347,60 @@ public static List<Integer> rightSideView(MyTree root){
         assistRightView(root,rView,lvl);
         return rView;
 }
+public static List<Integer> bottomView(MyTree root){
+List<Integer> bView=new LinkedList<>();
+TreeMap<Integer,Integer> nodes=new TreeMap<>();
+Queue<Pair<MyTree,Integer>> q=new LinkedList<>();
+q.offer(new Pair<>(root,0));
+while(!q.isEmpty()){
+    Pair<MyTree,Integer> randPair=q.poll();
+    MyTree randNode=randPair.first;
+    int col=randPair.second;
+    nodes.put(col, randNode.data);
+    if(randNode.left!=null){
+        q.offer(new Pair<>(randNode.left, col-1));
+    }
+    if(randNode.right!=null){
+        q.offer(new Pair<>(randNode.right, col+1));
+    }
+}
+for(int it:nodes.values()){
+    bView.add(it);
+}
+return bView;
+}
+private static void assistLeftView(MyTree root,List<Integer> lView,int lvl){
+   if(root==null){
+    return;
+   }
+   if(lView.size()==lvl){
+    lView.add(root.data);
+   }
+   assistRightView(root.left,lView,lvl+1);
+   assistRightView(root.right,lView,lvl+1);
+}
+public static List<Integer> leftSideView(MyTree root){
+        List<Integer> lView=new LinkedList<>();
+        int lvl=0;
+        assistLeftView(root,lView,lvl);
+        return lView;
+}
+    public static List<List<Integer>> invertTree(MyTree root) {
+        List<List<Integer>> result = new ArrayList<>();
+        if (root == null) return null;
+        Queue<MyTree> q = new LinkedList<>();
+        q.offer(root);
+        while (!q.isEmpty()) {
+            int size = q.size();
+            List<Integer> level = new ArrayList<>();
+            for (int i = 0; i < size; i++) {
+                MyTree node = q.poll();
+                level.add(node.data);
+                if (node.right != null) q.offer(node.right);
+                if (node.left != null) q.offer(node.left);
+            }
+            result.add(level);
+        }
+        return result;
+    }
 }

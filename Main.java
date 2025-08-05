@@ -213,18 +213,19 @@ public class Main{
             MyTree root=null;
             List<Integer> nodes=null;
             System.out.println("---Welcome to Tree Operations---\n");
-            System.out.println("1. Create a Binary Tree");
-            System.out.println("2. Traverse the tree(BFS/DFS)");
-            System.out.println("3. Zig Zag Traversal");
-            System.out.println("4. Search");
-            System.out.println("5. Diameter Of the Tree");
-            System.out.println("6. Lowest Common Ancestor of Any Two Children");
-            System.out.println("7. Show Tree");
-            System.out.println("8. Reset the Tree");
-            System.out.println("9. Vertical Order Traversal");
+            System.out.println("1.  Create a Binary Tree");
+            System.out.println("2.  Traverse the tree(BFS/DFS)");
+            System.out.println("3.  Zig Zag Traversal");
+            System.out.println("4.  Search");
+            System.out.println("5.  Diameter Of the Tree");
+            System.out.println("6.  Lowest Common Ancestor of Any Two Children");
+            System.out.println("7.  Show Tree");
+            System.out.println("8.  Reset the Tree");
+            System.out.println("9.  Vertical Order Traversal");
             System.out.println("10. Root to Any Node Path");
             System.out.println("11. 4 Side View of the Tree");
-            System.out.println("12. Back to Main Menu");
+            System.out.println("12. Mirror image of the Binary Tree");
+            System.out.println("13. Back to Main Menu");
             while(true){
                 int op=sc.nextInt();
             switch(op){
@@ -336,23 +337,29 @@ public class Main{
                     MyTree.printDFSTraversals(rView);
                     break;
                     case 3:
-                    List<Integer> bView= MyTree.topView(root);
-                  System.out.println("Top View OF the Binary Tree");
+                    List<Integer> bView= MyTree.bottomView(root);
+                  System.out.println("Bottom View OF the Binary Tree");
                     MyTree.printDFSTraversals(bView);
                     break;
                     case 4:
-                    List<Integer> lView= MyTree.rightSideView(root);
-                  System.out.println("Top View OF the Binary Tree");
+                    List<Integer> lView= MyTree.leftSideView(root);
+                  System.out.println("Left View OF the Binary Tree");
                     MyTree.printDFSTraversals(lView);
                     break;
                     case 5:
                     System.out.println("All Side View :)");
+
                     break;
                     default:
                   System.out.println("Range of Input Integer's Provided For Operation is [1-5]");
                 }
                 break;
                 case 12:
+                System.out.println("Mirror Image of the Tree");
+                List<List<Integer>> inverseRes=MyTree.invertTree(root);
+                MyTree.printLevelOrderTraversals(inverseRes);
+                break;
+                case 13:
                 return;
                 default:
                 System.out.println("Range of Input Integer's Provided For Operation is [1-9]");
@@ -388,12 +395,11 @@ public class Main{
                 System.out.println("Coming Soon....");
                 break;
                 case 6:
-                System.out.println("Exiting of....Thank youuuu");
+                System.out.println("Exiting Thank youuuu");
                 return;
                 default:
                 System.out.println("Range of Input Integer's Provided For Operation is [1-6]");
            }
             }
         }
-        
     }
