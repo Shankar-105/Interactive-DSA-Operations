@@ -39,9 +39,15 @@ This project is being built step-by-step to simulate DSA operations in Java for 
 - BFS (Level Wise Display in a User Freindly Way)
 - DFS (PRE/IN/POST) Order Display
 - Zig Zag Traversal
+- Height of the Binary Tree
+- Check if the Tree is Balanced or not
 - Search in the Binary Tree For a Value
-- Height Of the Binary Tree
-- Show Tree User Freindly Way
+- Lowest Common Ancestor of any two children in the Binary Tree
+- All 4 Sided(top,right,bottom,left) View of the Binary Tree
+- Root to any Node Path in the Binary Tree
+- Vertical Order Traversal of the Binary Tree
+- Mirror Image of the Binary Tree
+- Show Tree (With the appropriate Summary) User Freindly Way
 - Reset the Tree
 
 Coming Soon:
