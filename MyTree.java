@@ -282,16 +282,36 @@ public static void searchInTree(MyTree root,int target) {
     }
     return result;
 }
+private static List<Integer> assistVerticalOrder(List<List<Integer>> vOrd){
+    List<Integer> colIndices=new LinkedList<>();
+    int colNum = -1 * (vOrd.size() / 2);
+    for(int i=0;i<vOrd.size();i++){
+        colIndices.add(colNum);
+        colNum++;
+    }
+    return colIndices;
+}
 public static void displayVerticalOrder(List<List<Integer>> vOrd){
  System.out.println("== Vertical Order Traversal ==");
-int colNum = -1 * (vOrd.size() / 2); // Optional: estimated col offset
-for (List<Integer> col : vOrd) {
-    System.out.printf("Col %+2d:  ", colNum++);
-    for (int val : col) {
-        System.out.print(val + " ");
+   List<Integer> columnIndices=assistVerticalOrder(vOrd);
+    for (int col : columnIndices) {
+        System.out.printf("C%-4d", col); 
     }
     System.out.println();
-}
+    int maxHeight = 0;
+    for (List<Integer> col : vOrd) {
+        maxHeight = Math.max(maxHeight, col.size());
+    }
+    for (int row = 0; row < maxHeight; row++) {
+        for (List<Integer> col : vOrd) {
+            if (row < col.size()) {
+                System.out.printf("%-6d", col.get(row));
+            } else {
+                System.out.printf("%-6s", ""); // print blank space
+            }
+        }
+        System.out.println();
+    }
 }
 public static boolean rootToNodePath(MyTree root,int toNode,List<Integer> path){
     if(root==null){

@@ -2,18 +2,9 @@ import java.util.*;
 public class Main{
     public static void handleLinkedLists(Scanner sc){
         MyLinkedList head=null;
-        System.out.println("Welcome to Linked List Operations---Firstly Construct a Linked List");
-        System.out.println("Enter the values of each Node in the Linked List(Enter -1 to Stop)");
-        while(true){
-            int value=sc.nextInt();
-            if(value==-1){
-                break;
-            }
-           head=MyLinkedList.createLinkedList(head,value);
-        }
-        System.out.println("Constructed Linked List...");
-        MyLinkedList.printLinkedList(head);
-        System.out.println("Linked List Operations as follows");
+            System.out.println("Welcome to Linked List Operations");
+            System.out.println("Linked List Operations as follows");
+            System.out.println("0. Create a Linked List");
             System.out.println("1. Insert at the End");
             System.out.println("2. Insert at the Beginning");
             System.out.println("3. Insert At the Kth Position From the Begininng");
@@ -30,6 +21,17 @@ public class Main{
         while(true){
             int op = sc.nextInt();
            switch(op){
+            case 0:
+            System.out.println("Enter the values of each Node in the Linked List(Enter -1 to Stop)");
+            while(true){
+            int value=sc.nextInt();
+            if(value==-1){
+                break;
+            }
+           head=MyLinkedList.createLinkedList(head,value);
+        }
+        System.out.println("Linked List Created");
+        break;
             case 1:
             System.out.println("Enter the Value to be Inserted at the end");
             int valEnd=sc.nextInt();
@@ -225,7 +227,9 @@ public class Main{
             System.out.println("10. Root to Any Node Path");
             System.out.println("11. 4 Side View of the Tree");
             System.out.println("12. Mirror image of the Binary Tree");
-            System.out.println("13. Back to Main Menu");
+            System.out.println("13. Boundary Traversal");
+            System.out.println("14. Leaf Nodes of the Binary Tree");
+            System.out.println("15. Back to Main Menu");
             while(true){
                 int op=sc.nextInt();
             switch(op){
@@ -325,37 +329,59 @@ public class Main{
                 System.out.println("5. All Sides View");
                 System.out.println("Choose anyy View");
                 int view=sc.nextInt();
+                List<Integer> tView = null;
+                List<Integer> rView = null;
+                List<Integer> bView = null;
+                List<Integer> lView = null;
                 switch(view){
                     case 1:
-                    List<Integer> tView= MyTree.topView(root);
-                  System.out.println("Top View OF the Binary Tree");
+                    tView= MyTree.topView(root);
+                    System.out.println("Top View shows the first visible nodes when you look at the tree from above.");
+                    System.out.println("Top View of the Binary Tree");
                     MyTree.printDFSTraversals(tView);
                     break;
                     case 2:
-                    List<Integer> rView= MyTree.rightSideView(root);
-                  System.out.println("Right Side View Of the Binary Tree");
+                    rView= MyTree.rightSideView(root);
+                    System.out.println("Right View shows the rightmost node at each level when looking from the right side.");
+                    System.out.println("Right Side View Of the Binary Tree");
                     MyTree.printDFSTraversals(rView);
                     break;
                     case 3:
-                    List<Integer> bView= MyTree.bottomView(root);
-                  System.out.println("Bottom View OF the Binary Tree");
+                    bView= MyTree.bottomView(root);
+                    System.out.println("Bottom View shows the last visible node at each vertical column from bottom.");
+                    System.out.println("Bottom View OF the Binary Tree");
                     MyTree.printDFSTraversals(bView);
                     break;
                     case 4:
-                    List<Integer> lView= MyTree.leftSideView(root);
-                  System.out.println("Left View OF the Binary Tree");
+                    lView= MyTree.leftSideView(root);
+                    System.out.println("Left View shows the leftmost node at each level when looking from the left side.");
+                    System.out.println("Left View OF the Binary Tree");
                     MyTree.printDFSTraversals(lView);
                     break;
                     case 5:
-                    System.out.println("All Side View :)");
-
+                    System.out.println("All 4 Sides View :)\n");
+                    if (tView == null) tView = MyTree.topView(root);
+                    if (rView == null) rView = MyTree.rightSideView(root);
+                    if (bView == null) bView = MyTree.bottomView(root);
+                    if (lView == null) lView = MyTree.leftSideView(root);
+                    System.out.print(">Top View    ");
+                    MyTree.printDFSTraversals(tView);
+                    System.out.print(">Right View  ");
+                    MyTree.printDFSTraversals(rView);
+                    System.out.print(">Bottom View ");
+                    MyTree.printDFSTraversals(bView);
+                    System.out.print(">Left View   ");
+                    MyTree.printDFSTraversals(lView);
                     break;
                     default:
                   System.out.println("Range of Input Integer's Provided For Operation is [1-5]");
                 }
                 break;
                 case 12:
-                System.out.println("Mirror Image of the Tree");
+                System.out.println("Tree Actual Image");
+                List<List<Integer>> resMir=MyTree.bfsTraversal(root);
+                MyTree.printLevelOrderTraversals(resMir);
+                System.out.println("Tree Mirror Image");
                 List<List<Integer>> inverseRes=MyTree.invertTree(root);
                 MyTree.printLevelOrderTraversals(inverseRes);
                 break;
