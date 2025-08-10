@@ -16,7 +16,7 @@ public class Main{
             System.out.println("9. Print the Linked List");
             System.out.println("10. Reset The List");
             System.out.println("11. Back to Main Menu");
-            System.out.println("You can Perform as Many Operations as you Wish any Number of Times.\nWhen your Done Just Press 10 to Go Back to the Menu");
+            System.out.println("You can Perform as Many Operations as you Wish any Number of Times.\nWhen your Done Just Press 11 to Go Back to the Menu");
             System.out.print("Enter The Index of the Operation (Example 1) ");
         while(true){
             int op = sc.nextInt();
@@ -216,21 +216,20 @@ public class Main{
             List<Integer> nodes=null;
             System.out.println("---Welcome to Tree Operations---\n");
             System.out.println("1.  Create a Binary Tree");
-            System.out.println("2.  Traverse the tree(BFS/DFS)");
-            System.out.println("3.  Zig Zag Traversal");
+            System.out.println("2.  Traverse the Tree(BFS/DFS)");
+            System.out.println("3.  Three Special Tree Traversals (Zig Zag / Vertical / Boundary )");
             System.out.println("4.  Search");
             System.out.println("5.  Diameter Of the Tree");
             System.out.println("6.  Lowest Common Ancestor of Any Two Children");
-            System.out.println("7.  Show Tree");
-            System.out.println("8.  Reset the Tree");
-            System.out.println("9.  Vertical Order Traversal");
-            System.out.println("10. Root to Any Node Path");
-            System.out.println("11. 4 Side View of the Tree");
-            System.out.println("12. Mirror image of the Binary Tree");
-            System.out.println("13. Boundary Traversal");
-            System.out.println("14. Leaf Nodes of the Binary Tree");
-            System.out.println("15. Back to Main Menu");
+            System.out.println("7.  Root to Any Node Path");
+            System.out.println("8.  4 Side View of the Tree (Top / Right / Bottom / Left )");
+            System.out.println("9.  Mirror image of the Binary Tree");
+            System.out.println("10. Display Tree Structure");
+            System.out.println("11. Reset Tree");
+            System.out.println("12. Leaf Nodes of the Binary Tree");
+            System.out.println("13. Back to Main Menu");
             while(true){
+                System.out.println("Choose an Option From the menu");
                 int op=sc.nextInt();
             switch(op){
                 case 1:
@@ -247,6 +246,8 @@ public class Main{
                 switch(choice){
                     case 1:
                     List<List<Integer>> res=MyTree.bfsTraversal(root);
+                    System.out.println("BFS a Level Wise Traversal Technique");
+                    MyTree.assistPLOTraversal(res);
                     MyTree.printLevelOrderTraversals(res);
                     System.out.println("Level Order Traversal Done:)");
                     break;
@@ -280,8 +281,49 @@ public class Main{
             }
                 break;
                 case 3:
+                System.out.println("Choose any of these Special Traversal Techniques");
+                System.out.println("1. Zig Zag Traversal");
+                System.out.println("2. Vertical Order Traversal");
+                System.out.println("3. Boundary Traversal");
+                int specChoice=sc.nextInt();
+                switch(specChoice){
+                case 1:
                 List<List<Integer>> res=MyTree.zigZagLevelOrder(root);
+                System.out.println("A Level Order Traversal with a Zig Zag Traversing Nature");
+                MyTree.assistPLOTraversal(res);
+                res=MyTree.bfsTraversal(root);
                 MyTree.printLevelOrderTraversals(res);
+                break;
+                case 2:
+                List<List<Integer>> vOrd=MyTree.verticalTraversal(root);
+                MyTree.displayVerticalOrder(vOrd);
+                break;
+                case 3:
+                System.out.println("Boundary Traversal includes:");
+                System.out.println("- Left boundary nodes (excluding leaves)");
+                System.out.println("- All leaf nodes (left to right)");
+                System.out.println("- Right boundary nodes (excluding leaves, in reverse)");
+                List<List<Integer>> allBoundaries=new java.util.LinkedList<>();
+                allBoundaries=MyTree.boundaryTraversal(root);
+                System.out.println("Boundary Traversal:");
+                List<Integer> boundaryTraversalList=allBoundaries.getLast();
+                MyTree.printDFSTraversals(boundaryTraversalList);
+                System.out.println();
+                System.out.print("["+root.data);
+                System.out.println("]"+"       ->"+"Root");
+                System.out.print("[");
+                MyTree.printDFSTraversals(allBoundaries.get(0));
+                System.out.println("]"+"       ->"+"Left Boundary");
+                System.out.print("[");
+                MyTree.printDFSTraversals(allBoundaries.get(1));
+                System.out.println("]"+"       ->"+"Leaf Nodes");
+                System.out.print("[");
+                MyTree.printDFSTraversals(allBoundaries.get(2));
+                System.out.println("]"+"       ->"+"Right Boundary");
+                break;
+                default:
+                System.out.println("Range of Input Integer's Provided For Operation is [1-3]");
+                }
                 break;
                 case 4:
                 System.out.print("Enter the value to search: ");
@@ -300,28 +342,13 @@ public class Main{
                 System.out.println("The Lowest Common Ancestor Of the Two Nodes "+val1+" and "+ val2 +" is "+MyTree.LowestCommonAncestor(root,node1,node2).data);
                 break;
                 case 7:
-                System.out.println();
-                System.out.println("== Current Tree SnapShot ==");
-                MyTree.showTree(root,"",true);
-                MyTree.treeSummary(root, nodes);
-                break;
-                case 8:
-                root=null;
-                nodes=null;
-                System.out.println("Tree SuccessFully Reloaded");
-                break;
-                case 9:
-                List<List<Integer>> vOrd=MyTree.verticalTraversal(root);
-                MyTree.displayVerticalOrder(vOrd);
-                break;
-                case 10:
                 System.out.println("Enter the Node value: ");
                 int toNode = sc.nextInt();
                 List<Integer> path=new java.util.LinkedList<>();
                 MyTree.rootToNodePath(root,toNode,path);
                 MyTree.printDFSTraversals(path);
                 break;
-                case 11:
+                case 8:
                 System.out.println("1. Top View");
                 System.out.println("2. Right View");
                 System.out.println("3. Bottom View");
@@ -377,7 +404,7 @@ public class Main{
                   System.out.println("Range of Input Integer's Provided For Operation is [1-5]");
                 }
                 break;
-                case 12:
+                case 9:
                 System.out.println("Tree Actual Image");
                 List<List<Integer>> resMir=MyTree.bfsTraversal(root);
                 MyTree.printLevelOrderTraversals(resMir);
@@ -385,10 +412,29 @@ public class Main{
                 List<List<Integer>> inverseRes=MyTree.invertTree(root);
                 MyTree.printLevelOrderTraversals(inverseRes);
                 break;
+                case 10:
+                System.out.println();
+                System.out.println("== Current Tree SnapShot ==");
+                MyTree.showTree(root,"",true);
+                MyTree.treeSummary(root, nodes);
+                break;
+                case 11:
+                root=null;
+                nodes=null;
+                System.out.println("Tree SuccessFully Reloaded");
+                break;
+                case 12:
+                System.out.println("Leaf Nodes (Left to Right) ");
+                List<Integer> leaves=new java.util.LinkedList<>();
+                leaves=MyTree.leafNodes(root, leaves);
+                System.out.println("Leaves in a Tree are Nodes Without Further Nodes");
+                MyTree.printDFSTraversals(leaves);
+                System.out.println();
+                break;
                 case 13:
                 return;
                 default:
-                System.out.println("Range of Input Integer's Provided For Operation is [1-9]");
+                System.out.println("Range of Input Integer's Provided For Operation is [1-15]");
             }
             }
       }

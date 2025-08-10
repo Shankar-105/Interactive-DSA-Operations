@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.Scanner;
+import java.util.Stack;
 import java.util.TreeMap;
 class Pair<U, V> {
     public final U first;
@@ -113,9 +114,11 @@ public static void postOrderTraversal(MyTree root,List<Integer> result){
 public static void printDFSTraversals(List<Integer> result){
 for (int i = 0; i < result.size(); i++) {
             System.out.print(result.get(i));
-        if (i != result.size() - 1) System.out.print(" -> ");
+        if (i != result.size() - 1){
+            System.out.print(" -> ");
+        }
     }
-    System.out.println();
+    //System.out.println();
 }
 //Zig Zag Level Order Traversal
     public static List<List<Integer>> zigZagLevelOrder(MyTree root) {
@@ -142,6 +145,20 @@ for (int i = 0; i < result.size(); i++) {
             leftToRight = !leftToRight; // Toggle direction
         }
         return result;
+    }
+    public static void assistPLOTraversal(List<List<Integer>> result){
+        for(int i = 0; i < result.size(); i++) {
+        List<Integer> eachLevel = result.get(i);
+        int size = eachLevel.size();
+        for (int j = 0; j < size; j++) {
+                if(i!=result.size()-1 || j!=size-1){
+                    System.out.print(eachLevel.get(j)+"->");
+                }
+                else{
+                    System.out.println(eachLevel.get(j));
+                }
+            }
+    }
     }
 public static void printLevelOrderTraversals(List<List<Integer>> result){
     int level=0;
@@ -422,5 +439,74 @@ public static List<Integer> leftSideView(MyTree root){
             result.add(level);
         }
         return result;
+    }
+    private static boolean isLeaf(MyTree node) {
+        return node.left == null && node.right == null;
+    }
+    private static List<Integer> addLeftBoundary(MyTree node, List<Integer> res) {
+        MyTree curNode = node.left;
+        List<Integer> leftBoundary=new LinkedList<>();
+        while (curNode != null) {
+            if (!isLeaf(curNode)){
+                res.add(curNode.data);
+                leftBoundary.add(curNode.data);
+            }
+            if (curNode.left != null) curNode = curNode.left;
+            else curNode = curNode.right;
+        }
+        return leftBoundary;
+    }
+    private static List<Integer> addRightBoundary(MyTree node, List<Integer> res) {
+        MyTree curNode = node.right;
+        List<Integer> rightBoundary=new LinkedList<>();
+        Stack<Integer> temp = new Stack<>();
+        while (curNode != null) {
+            if (!isLeaf(curNode)) temp.push(curNode.data);
+            if (curNode.right != null) curNode = curNode.right;
+            else curNode = curNode.left;
+        }
+        while (!temp.isEmpty()) {
+            int randVar=temp.pop();
+            rightBoundary.add(randVar);
+            res.add(randVar);
+        }
+        return rightBoundary;
+    }
+    private static void addLeaves(MyTree root,List<Integer> res,List<Integer> leaves) {
+        if (root == null) return;
+        if (isLeaf(root)) {
+            res.add(root.data);
+            leaves.add(root.data);
+            return;
+        }
+        addLeaves(root.left,res,leaves);
+        addLeaves(root.right,res,leaves);
+    }
+    public static List<List<Integer>> boundaryTraversal(MyTree root) {
+        List<Integer> boundaryTraversalList = new LinkedList<>();
+        List<List<Integer>> allBoundaries=new LinkedList<>();
+        if (root == null) return allBoundaries;
+        if (!isLeaf(root)) boundaryTraversalList.add(root.data);
+        List<Integer> leftBoundary=addLeftBoundary(root,boundaryTraversalList);
+        List<Integer> leafNodes=new LinkedList<>();
+        addLeaves(root,boundaryTraversalList,leafNodes);
+        List<Integer> rightBoundary=addRightBoundary(root, boundaryTraversalList);
+        allBoundaries.add(leftBoundary);
+        allBoundaries.add(leafNodes);
+        allBoundaries.add(rightBoundary);
+        allBoundaries.add(boundaryTraversalList);
+        return allBoundaries;
+    }
+    public static List<Integer> leafNodes(MyTree root,List<Integer> leaves){
+        if(root==null){
+            return null;
+        }
+        if(isLeaf(root)){
+            leaves.add(root.data);
+            return null;
+        }
+        leafNodes(root.left,leaves);
+        leafNodes(root.right, leaves);
+        return leaves;
     }
 }

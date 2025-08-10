@@ -18,6 +18,7 @@ This project is being built step-by-step to simulate DSA operations in Java for 
 - Delete the Last Node(Element)
 - Delete the Node(Element) at Kth Position From the Begininng
 - Delete the Node(Element) with the Value K From the Begininng
+- Reset the Linked List
 ### Stacks 
 - Push an Element into the Stack
 - Remove an element from the Stack
@@ -25,6 +26,7 @@ This project is being built step-by-step to simulate DSA operations in Java for 
 - Size of the Stack
 - Top Element of the Stack
 - Print the Stack
+- Reset the Stack
 ### Queues
 - Push an Element into the Queue
 - Remove an element from the Queue
@@ -33,6 +35,7 @@ This project is being built step-by-step to simulate DSA operations in Java for 
 - Peek Element of the Queue
 - Last Element of the Queue
 - Print the Queue
+- Reset the Queue
 ### Trees
 - Binary Tree Creation By User Input
 - Display Tree in Various Ways
@@ -48,6 +51,7 @@ This project is being built step-by-step to simulate DSA operations in Java for 
 - Vertical Order Traversal of the Binary Tree
 - Mirror Image of the Binary Tree
 - Show Tree (With the appropriate Summary) User Freindly Way
+- Boundary Traversal of a Binary Tree 
 - Reset the Tree
 
 Coming Soon:
