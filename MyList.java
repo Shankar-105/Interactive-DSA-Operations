@@ -1,4 +1,7 @@
-public class MyLinkedList {
+public interface MyList {
+    
+}
+class MyLinkedList implements MyList{
     int data;
     MyLinkedList next;
     public MyLinkedList(int val){
