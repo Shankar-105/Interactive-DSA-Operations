@@ -19,13 +19,13 @@ public class MyTree {
     int data;
     MyTree left,right;
     MyTree(int val){
-        data=val;
-        left=right=null;
+        this.data=val;
+        this.left=this.right=null;
     }
     MyTree(int val,MyTree l,MyTree r){
-        data=val;
-        left=l;
-        right=r;
+        this.data=val;
+        this.left=l;
+        this.right=r;
     }
     //Storing Values into List
     public static List<Integer> inputNodeValues(Scanner sc){

@@ -1,6 +1,22 @@
 import java.util.*;
 public class Main{
     public static void handleLinkedLists(Scanner sc){
+        System.out.println("Select >");
+        System.out.println("1. Singly Linked List");
+        System.out.println("2. Doubly Linked List");
+        int choice =sc.nextInt();
+        switch(choice){
+            case 1:
+            handleSLL(sc);
+            break;
+            case 2:
+            handleDLL(sc);
+            break;
+            default:
+            System.out.println("Range of Input Integer's Provided For Operation is [1-2]");
+        }
+    }
+    private static void handleSLL(Scanner sc){
         MyLinkedList head=null;
             System.out.println("Welcome to Linked List Operations");
             System.out.println("Linked List Operations as follows");
@@ -89,6 +105,9 @@ public class Main{
            System.out.println("Range of Input Integer's Provided For Operation is [1-10]");
            }
         }
+        }
+        private static void handleDLL(Scanner sc){
+
         }
       public static void handleStacks(Scanner sc){
             Node stackHead=null;
