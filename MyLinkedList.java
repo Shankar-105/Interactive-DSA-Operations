@@ -33,7 +33,7 @@ public class MyLinkedList {
         System.out.println("null");
     }
     // reversing the linked list
-    public static MyLinkedList reverLinkedList(MyLinkedList head){
+    public static MyLinkedList reverseLinkedList(MyLinkedList head){
         MyLinkedList previousNode=null;
         MyLinkedList afterNode=null;
         MyLinkedList temp=head;

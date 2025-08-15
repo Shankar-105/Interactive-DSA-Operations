@@ -74,7 +74,7 @@ public class Main{
             System.out.println("Node With Value "+nodeVal+" is removed:)");
             break;
             case 8:
-           head=MyLinkedList.reverLinkedList(head);
+           head=MyLinkedList.reverseLinkedList(head);
            System.out.println("Oops You Just Performed the Reverse Operation...The List gets Changed Entirely have a look at it...");
            break;
            case 9:
