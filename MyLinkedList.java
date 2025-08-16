@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class MyLinkedList {
     int data;
     MyLinkedList next;
@@ -9,8 +11,18 @@ public class MyLinkedList {
         this.data=val;
         this.next=node;
     }
+    public static MyLinkedList inputNodeValues(Scanner sc,MyLinkedList head){
+        while(true){
+            int value=sc.nextInt();
+            if(value==-1){
+                break;
+            }
+           head=MyLinkedList.createLinkedList(head,value);
+        }
+        return head;
+    }
     //creating the linked list
-    public static MyLinkedList createLinkedList(MyLinkedList node,int val){
+    private static MyLinkedList createLinkedList(MyLinkedList node,int val){
         MyLinkedList newNode=new MyLinkedList(val);
         if(node==null){
         node=newNode;
@@ -27,13 +39,13 @@ public class MyLinkedList {
     public static void printLinkedList(MyLinkedList head){
         MyLinkedList temp=head;
         while(temp!=null){
-            System.out.print(temp.data+"->");
+            System.out.print(temp.data+" -> ");
             temp=temp.next;
         }
         System.out.println("null");
     }
     // reversing the linked list
-    public static MyLinkedList reverLinkedList(MyLinkedList head){
+    public static MyLinkedList reverseLinkedList(MyLinkedList head){
         MyLinkedList previousNode=null;
         MyLinkedList afterNode=null;
         MyLinkedList temp=head;
