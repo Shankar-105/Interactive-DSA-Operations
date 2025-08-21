@@ -20,15 +20,10 @@ public class Main{
             MyLinkedList head=null;
             System.out.println("Welcome to Linked List Operations");
             System.out.println("Linked List Operations as follows");
-            System.out.println("1. Create a Linked List");
-            System.out.println("2. Insert at the End");
-            System.out.println("3. Insert at the Beginning");
-            System.out.println("4. Insert At the Kth Position From the Begininng");
-            System.out.println("5. Delete the First Node(Element)");
-            System.out.println("6. Delete the Last Node(Element)");
-            System.out.println("7. Delete the Node(Element) at Kth Position From the Begininng");
-            System.out.println("8. Delete the Node(Element) with the Value K From the Begininng");
-            System.out.println("9. Reverse The Linked List");
+            System.out.println("1.  Create a Linked List");
+            System.out.println("2.  Insertion Operations");
+            System.out.println("3.  Deletion Operations");
+            System.out.println("9.  Reverse The Linked List");
             System.out.println("10. Print the Linked List");
             System.out.println("11. Reset The List");
             System.out.println("12. Back to Main Menu");
@@ -42,18 +37,24 @@ public class Main{
             System.out.println("Linked List Created");
             break;
             case 2:
+            System.out.println("1. Insert at the Beginning");
+            System.out.println("2. Insert at the End");
+            System.out.println("3. Insert At the Kth Position From the Begininng");
+            int insOp=sc.nextInt();
+            switch(insOp){
+            case 2:
             System.out.println("Enter the Value to be Inserted at the end");
             int valEnd=sc.nextInt();
             head=MyLinkedList.insertAtTail(head,valEnd);
             System.out.println("Successfully appended:)");
             break;
-            case 3:
+            case 1:
             System.out.println("Enter the Value to be Inserted at the beginning");
             int valSt=sc.nextInt();
             head=MyLinkedList.insertAtHead(head,valSt);
             System.out.println("Successfully pushed at the Beginning:)");
             break;
-            case 4:
+            case 3:
             System.out.println("Enter the position K");
             int posK=sc.nextInt();
             System.err.println("Enter the Value");
@@ -62,25 +63,36 @@ public class Main{
             System.out.println("Pushed in Between Nodes "+(posK-1)+" and "+(posK));
             System.out.println("Wanna look at the List(Click 9)");
             break;
-            case 5:
+            }
+            break;
+            case 3:
+            System.out.println("1.  Delete the First Node(Element)");
+            System.out.println("2.  Delete the Last Node(Element)");
+            System.out.println("3.  Delete the Node(Element) at Kth Position From the Begininng");
+            System.out.println("4.  Delete the Node(Element) with the Value K From the Begininng");
+            int delOp=sc.nextInt();
+            switch(delOp){
+            case 1:
             head=MyLinkedList.deleteHead(head);
             System.out.println("Deleted The Head.\nWanna See the Change(Click 9)");
             break;
-            case 6:
+            case 2:
             head=MyLinkedList.deleteTail(head);
             System.out.println("Removed:)");
             break;
-            case 7:
+            case 3:
             System.out.println("Enter the position K");
             int delposK=sc.nextInt();
             head=MyLinkedList.deleteAtK(head,delposK);
             System.out.println("The Node at position "+delposK+" is removed<<\nHave A Look at the List for Better Experiance.");
             break;
-            case 8:
+            case 4:
             System.out.println("Enter the Value of the Node to be deleted");
             int nodeVal=sc.nextInt();
             head=MyLinkedList.deleteNodeK(head,nodeVal);
             System.out.println("Node With Value "+nodeVal+" is removed:)");
+            break;
+            }
             break;
             case 9:
            head=MyLinkedList.reverseLinkedList(head);
@@ -95,7 +107,7 @@ public class Main{
             case 12:
             return;
             default:
-           System.out.println("Range of Input Integer's Provided For Operation is [1-10]");
+           System.out.println("Range of Input Integer's Provided For Operation is [1-12]");
            }
         }
         }
@@ -103,15 +115,10 @@ public class Main{
             MyDLL head=null;
             System.out.println("Welcome to Linked List Operations");
             System.out.println("Linked List Operations as follows");
-            System.out.println("1. Create a Linked List");
-            System.out.println("2. Insert at the End");
-            System.out.println("3. Insert at the Beginning");
-            System.out.println("4. Insert At the Kth Position From the Begininng");
-            System.out.println("5. Delete the First Node(Element)");
-            System.out.println("6. Delete the Last Node(Element)");
-            System.out.println("7. Delete the Node(Element) at Kth Position From the Begininng");
-            System.out.println("8. Delete the Node(Element) with the Value K From the Begininng");
-            System.out.println("9. Reverse The Linked List");
+            System.out.println("1.  Create a Linked List");
+            System.out.println("2.  Insertion Operations");
+            System.out.println("3.  Deletion Operations");
+            System.out.println("9.  Reverse The Linked List");
             System.out.println("10. Print the Linked List");
             System.out.println("11. Reset The List");
             System.out.println("12. Back to Main Menu");
@@ -119,10 +126,68 @@ public class Main{
             while (true) {
                 int opt=sc.nextInt();
                 switch(opt){
-                    case 1:
+            case 1:
             System.out.println("Enter the values of each Node in the Linked List(Enter -1 to Stop)");
             head=MyDLL.inputNodes(sc,head);
             System.out.println("Doubly Linked List Created");
+            break;
+            case 2:
+            System.out.println("1. Insert at the Beginning");
+            System.out.println("2. Insert at the End");
+            System.out.println("3. Insert At the Kth Position From the Begininng");
+            int insOp=sc.nextInt();
+            switch(insOp){
+            case 2:
+            System.out.println("Enter the Value to be Inserted at the end");
+            //int valEnd=sc.nextInt();
+            //head=MyLinkedList.insertAtTail(head,valEnd);
+            System.out.println("Successfully appended:)");
+            break;
+            case 1:
+            System.out.println("Enter the Value to be Inserted at the beginning");
+            //int valSt=sc.nextInt();
+            //head=MyLinkedList.insertAtHead(head,valSt);
+            System.out.println("Successfully pushed at the Beginning:)");
+            break;
+            case 3:
+            System.out.println("Enter the position K");
+            int posK=sc.nextInt();
+            System.err.println("Enter the Value");
+            //int valK=sc.nextInt();
+            //head=MyLinkedList.insertAtK(head,posK,valK);
+            System.out.println("Pushed in Between Nodes "+(posK-1)+" and "+(posK));
+            System.out.println("Wanna look at the List(Click 9)");
+            break;
+            }
+            break;
+            case 3:
+            System.out.println("1.  Delete the First Node(Element)");
+            System.out.println("2.  Delete the Last Node(Element)");
+            System.out.println("3.  Delete the Node(Element) at Kth Position From the Begininng");
+            System.out.println("4.  Delete the Node(Element) with the Value K From the Begininng");
+            int delOp=sc.nextInt();
+            switch(delOp){
+            case 1:
+            //head=MyLinkedList.deleteHead(head);
+            System.out.println("Deleted The Head.\nWanna See the Change(Click 9)");
+            break;
+            case 2:
+            //head=MyLinkedList.deleteTail(head);
+            System.out.println("Removed:)");
+            break;
+            case 3:
+            System.out.println("Enter the position K");
+            int delposK=sc.nextInt();
+            //head=MyLinkedList.deleteAtK(head,delposK);
+            System.out.println("The Node at position "+delposK+" is removed<<\nHave A Look at the List for Better Experiance.");
+            break;
+            case 4:
+            System.out.println("Enter the Value of the Node to be deleted");
+            int nodeVal=sc.nextInt();
+            //head=MyLinkedList.deleteNodeK(head,nodeVal);
+            System.out.println("Node With Value "+nodeVal+" is removed:)");
+            break;
+            }
             break;
             case 10:
             MyDLL.printDLL(head);

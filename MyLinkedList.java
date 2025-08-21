@@ -39,10 +39,10 @@ public class MyLinkedList {
     public static void printLinkedList(MyLinkedList head){
         MyLinkedList temp=head;
         while(temp!=null){
-            System.out.print(temp.data+" -> ");
+            System.out.print("["+temp.data+"]"+" -> ");
             temp=temp.next;
         }
-        System.out.println("null");
+        System.out.println("[NULL]");
     }
     // reversing the linked list
     public static MyLinkedList reverseLinkedList(MyLinkedList head){
@@ -161,7 +161,4 @@ public class MyLinkedList {
     }
     return head;
    }
-    public static void main(String[] args){
-
-    }
 }

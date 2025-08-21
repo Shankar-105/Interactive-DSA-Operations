@@ -23,7 +23,7 @@ public static MyDLL inputNodes(Scanner sc,MyDLL head){
         }
         return head;
     }
-    //creating the linked list
+    //creating the Doubly linked list
     private static MyDLL createDLL(MyDLL node,int val){
         MyDLL newNode=new MyDLL(val);
         if(node==null){
@@ -40,16 +40,16 @@ public static MyDLL inputNodes(Scanner sc,MyDLL head){
     }
     public static void printDLL(MyDLL head){
         MyDLL temp=head;
-        System.out.print("null<- ");
+        System.out.print("[NULL] <- ");
         while(temp!=null){
             if(temp.next==null){
-                System.out.print(temp.data+" ->");
+                System.out.print("["+temp.data+"]"+" ->");
             }
             else{
-                System.out.print(temp.data+" <-> ");
+                System.out.print("["+temp.data+"]"+" <-> ");
             }
             temp=temp.next;
         }
-        System.out.println("null");
+        System.out.println("[NULL]");
     }
 }
