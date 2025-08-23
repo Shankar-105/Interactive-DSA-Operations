@@ -43,7 +43,7 @@ public static MyDLL inputNodes(Scanner sc,MyDLL head){
         System.out.print("[NULL] <- ");
         while(temp!=null){
             if(temp.next==null){
-                System.out.print("["+temp.data+"]"+" ->");
+                System.out.print("["+temp.data+"]"+" -> ");
             }
             else{
                 System.out.print("["+temp.data+"]"+" <-> ");
@@ -52,4 +52,60 @@ public static MyDLL inputNodes(Scanner sc,MyDLL head){
         }
         System.out.println("[NULL]");
     }
+    // Insertions Over DLL
+    public static MyDLL insertAtHead(MyDLL head,int newele){
+        if(head==null){
+            return new MyDLL(newele, null, null);
+        }
+    MyDLL newHead=new MyDLL(newele,head,null);
+    head.prev=newHead;
+    return newHead;
+   }
+   public static MyDLL insertAtTail(MyDLL head,int newele){
+    MyDLL newTail=new MyDLL(newele,null,null);
+    if(head==null){
+        return newTail;
+    }
+    MyDLL temp=head;
+    while(temp.next!=null){
+            temp=temp.next;
+        }
+        newTail.prev=temp;
+        temp.next=newTail;
+   return head;
+   }
+   public static MyDLL insertAtK(MyDLL head,int k,int newele){
+    if(head==null){
+        if(k==1){
+         MyDLL newNode=new MyDLL(newele);
+        return newNode;
+        }
+        return head;
+    }
+    if(k==1){
+        MyDLL newHead=new MyDLL(newele,head,null);
+        head.prev=newHead;
+        return newHead;
+    }
+    MyDLL temp=head;
+    int cnt=0;
+    while(temp.next!=null){
+        cnt++;
+        if(cnt==k){
+            break;
+        }       
+            temp=temp.next;
+        }
+        if(cnt==(k-2)){
+        MyDLL newNode=new MyDLL(newele,null,temp);
+        temp.next=newNode;
+        return head;
+        }
+        else{
+           MyDLL newNode=new MyDLL(newele,temp,temp.prev);
+           temp.prev.next=newNode;
+           temp.prev=newNode;
+        }
+    return head;
+   }
 }

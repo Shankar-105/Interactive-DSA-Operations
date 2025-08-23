@@ -139,23 +139,23 @@ public class Main{
             switch(insOp){
             case 2:
             System.out.println("Enter the Value to be Inserted at the end");
-            //int valEnd=sc.nextInt();
-            //head=MyLinkedList.insertAtTail(head,valEnd);
+            int endVal=sc.nextInt();
+            head=MyDLL.insertAtTail(head,endVal);
             System.out.println("Successfully appended:)");
             break;
             case 1:
             System.out.println("Enter the Value to be Inserted at the beginning");
-            //int valSt=sc.nextInt();
-            //head=MyLinkedList.insertAtHead(head,valSt);
+            int stVal=sc.nextInt();
+            head=MyDLL.insertAtHead(head,stVal);
             System.out.println("Successfully pushed at the Beginning:)");
             break;
             case 3:
             System.out.println("Enter the position K");
             int posK=sc.nextInt();
             System.err.println("Enter the Value");
-            //int valK=sc.nextInt();
-            //head=MyLinkedList.insertAtK(head,posK,valK);
-            System.out.println("Pushed in Between Nodes "+(posK-1)+" and "+(posK));
+            int valK=sc.nextInt();
+            head=MyDLL.insertAtK(head,posK,valK);
+            System.out.println("Pushed in Between Position's "+(posK-1)+" and "+(posK));
             System.out.println("Wanna look at the List(Click 9)");
             break;
             }

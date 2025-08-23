@@ -57,7 +57,7 @@ public class MyLinkedList {
         }
         return previousNode;
     }
-    //Insertions on linked list
+    //Insertions on Linked list
    public static MyLinkedList insertAtHead(MyLinkedList head,int newele){
     MyLinkedList newHead=new MyLinkedList(newele,head);
    return newHead;
