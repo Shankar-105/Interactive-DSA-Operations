@@ -128,6 +128,7 @@ public class Main{
                 switch(opt){
             case 1:
             System.out.println("Enter the values of each Node in the Linked List(Enter -1 to Stop)");
+            head=null;
             head=MyDLL.inputNodes(sc,head);
             System.out.println("Doubly Linked List Created");
             break;
@@ -168,23 +169,23 @@ public class Main{
             int delOp=sc.nextInt();
             switch(delOp){
             case 1:
-            //head=MyLinkedList.deleteHead(head);
+            head=MyDLL.deleteHead(head);
             System.out.println("Deleted The Head.\nWanna See the Change(Click 9)");
             break;
             case 2:
-            //head=MyLinkedList.deleteTail(head);
+            head=MyDLL.deleteTail(head);
             System.out.println("Removed:)");
             break;
             case 3:
             System.out.println("Enter the position K");
             int delposK=sc.nextInt();
-            //head=MyLinkedList.deleteAtK(head,delposK);
+            head=MyDLL.deleteAtK(head,delposK);
             System.out.println("The Node at position "+delposK+" is removed<<\nHave A Look at the List for Better Experiance.");
             break;
             case 4:
             System.out.println("Enter the Value of the Node to be deleted");
             int nodeVal=sc.nextInt();
-            //head=MyLinkedList.deleteNodeK(head,nodeVal);
+            head=MyDLL.deleteNodeK(head,nodeVal);
             System.out.println("Node With Value "+nodeVal+" is removed:)");
             break;
             }
@@ -194,6 +195,7 @@ public class Main{
             break;
             case 11:
             head=null;
+            System.out.println("Reset Done!");
             break;
             case 12:
             return;

@@ -108,4 +108,82 @@ public static MyDLL inputNodes(Scanner sc,MyDLL head){
         }
     return head;
    }
+   public static MyDLL deleteHead(MyDLL head){
+    if(head==null || head.next==null){
+        return null;
+    }
+    head=head.next;
+    head.prev=null;
+    return head;
+   }
+   public static MyDLL deleteTail(MyDLL head){
+    if(head==null || head.next==null){
+        return null;
+    }
+    MyDLL temp=head;
+    while(temp.next!=null){
+     temp=temp.next;
+    }
+    temp.prev.next=null;
+    temp.prev=null;
+    return head;
+   }
+   public static MyDLL deleteAtK(MyDLL head,int k){
+    if(head==null){
+        return null;
+    }
+    int cnt=0;
+    MyDLL temp=head;
+    while(temp.next!=null){
+        cnt++;
+        if(cnt==k) {
+            break;
+        }
+        temp=temp.next;
+    }
+    MyDLL prevNode=temp.prev;
+    MyDLL nextNode=temp.next;
+    if(prevNode==null && nextNode==null){
+        return null;
+    }
+    else if(prevNode==null){
+        return deleteHead(head);
+    }
+    else if(nextNode==null){
+        return deleteTail(head);
+    }
+    else{
+        prevNode.next=nextNode;
+        nextNode.prev=prevNode;
+        temp.prev=null;
+        temp.next=null;
+        }
+    return head;
+   }
+   public static MyDLL deleteNodeK(MyDLL head,int val){
+    if (head == null){
+       return null; 
+    }
+    else if(head.next==null && head.data==val){
+        return null;
+    }
+    else{
+        MyDLL temp=head;
+        while(temp!=null){
+        if(temp.data==val) {
+            break;
+        }
+        temp=temp.next;
+    }
+    MyDLL prevNode=temp.prev;
+    MyDLL nextNode=temp.next;
+    prevNode.next=nextNode;
+    if(nextNode!=null){
+        nextNode.prev=prevNode;
+    }
+    temp.prev=null;
+    temp.next=null;
+    }
+    return head;
+   }
 }
