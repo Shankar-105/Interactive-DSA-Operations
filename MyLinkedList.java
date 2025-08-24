@@ -38,11 +38,53 @@ public class MyLinkedList {
     // printing the linked list
     public static void printLinkedList(MyLinkedList head){
         MyLinkedList temp=head;
+        System.out.println("== Curernt List Structure ==");
         while(temp!=null){
             System.out.print("["+temp.data+"]"+" -> ");
             temp=temp.next;
         }
         System.out.println("[NULL]");
+        System.out.println("== List Summary ==");
+        listSummary(head);
+    }
+    private static void listSummary(MyLinkedList head){
+        int length =listSize(head);
+        //String isEmpty=length!=0?"No":"Yes";
+        MyLinkedList middleNode=middleNode(head);
+        System.out.print("Length: "+length);
+        if(middleNode!=null){
+            System.out.print(" | Middle Node: "+middleNode.data);
+        }
+        else{
+            System.out.print(" | Middle Node: Not Found");
+        }
+        if(length==0){
+        System.out.println(" | Empty: Yup");
+        }
+        else{
+            System.out.println(" | Empty: Nope");
+        }
+    }
+    private static MyLinkedList middleNode(MyLinkedList head){
+        if(head == null || head.next==null){
+            return head;
+        }
+        MyLinkedList slow=head;
+        MyLinkedList fast=head;
+        while(fast!=null && fast.next!=null){
+            slow=slow.next;
+            fast=fast.next.next;
+        }
+        return slow;
+    }
+    private static int listSize(MyLinkedList head){
+        MyLinkedList temp=head;
+        int cnt=0;
+        while(temp!=null){
+            cnt++;
+            temp=temp.next;
+        }
+        return cnt;
     }
     // reversing the linked list
     public static MyLinkedList reverseLinkedList(MyLinkedList head){

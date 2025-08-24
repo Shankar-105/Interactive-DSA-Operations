@@ -48,7 +48,7 @@ public static void printStack(Node head){
         System.out.println("Here's The Stack");
         System.out.println("------------");
         while(temp!=null){
-            System.out.println(temp.value);
+            System.out.println("     "+temp.value);
             temp=temp.next;
         }
         System.out.println("------------");

@@ -40,6 +40,7 @@ public static MyDLL inputNodes(Scanner sc,MyDLL head){
     }
     public static void printDLL(MyDLL head){
         MyDLL temp=head;
+        System.out.println("== Curernt List Structure ==");
         System.out.print("[NULL] <- ");
         while(temp!=null){
             if(temp.next==null){
@@ -51,6 +52,47 @@ public static MyDLL inputNodes(Scanner sc,MyDLL head){
             temp=temp.next;
         }
         System.out.println("[NULL]");
+        System.out.println("== List Summary ==");
+        listSummary(head);
+    }
+    private static void listSummary(MyDLL head){
+        int length =listSize(head);
+        //String isEmpty=length!=0?"No":"Yes";
+        MyDLL middleNode=middleNode(head);
+        System.out.print("Length: "+length);
+        if(middleNode!=null){
+            System.out.print(" | Middle Node: "+middleNode.data);
+        }
+        else{
+            System.out.print(" | Middle Node: Not Found");
+        }
+        if(length==0){
+        System.out.println(" | Empty: Yup");
+        }
+        else{
+            System.out.println(" | Empty: Nope");
+        }
+    }
+    private static MyDLL middleNode(MyDLL head){
+        if(head == null || head.next==null){
+            return head;
+        }
+        MyDLL slow=head;
+        MyDLL fast=head;
+        while(fast!=null && fast.next!=null){
+            slow=slow.next;
+            fast=fast.next.next;
+        }
+        return slow;
+    }
+    private static int listSize(MyDLL head){
+        MyDLL temp=head;
+        int cnt=0;
+        while(temp!=null){
+            cnt++;
+            temp=temp.next;
+        }
+        return cnt;
     }
     // Insertions Over DLL
     public static MyDLL insertAtHead(MyDLL head,int newele){

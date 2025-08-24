@@ -24,7 +24,7 @@ public class Main{
             System.out.println("2.  Insertion Operations");
             System.out.println("3.  Deletion Operations");
             System.out.println("9.  Reverse The Linked List");
-            System.out.println("10. Print the Linked List");
+            System.out.println("10. Display the Linked List");
             System.out.println("11. Reset The List");
             System.out.println("12. Back to Main Menu");
             System.out.print("Enter The Index of the Operation (Example 1) ");
@@ -119,7 +119,7 @@ public class Main{
             System.out.println("2.  Insertion Operations");
             System.out.println("3.  Deletion Operations");
             System.out.println("9.  Reverse The Linked List");
-            System.out.println("10. Print the Linked List");
+            System.out.println("10. Display the Linked List");
             System.out.println("11. Reset The List");
             System.out.println("12. Back to Main Menu");
             System.out.print("Enter The Index of the Operation (Example 1) ");
