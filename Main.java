@@ -23,9 +23,9 @@ public class Main{
             System.out.println("1.  Create a Linked List");
             System.out.println("2.  Insertion Operations");
             System.out.println("3.  Deletion Operations");
-            System.out.println("4.  Delete Middle Node");
-            System.out.println("5.  Search for a Value");
-            System.out.println("9.  Reverse The Linked List");
+            System.out.println("4.  Freindly Operations");
+            System.out.println("5.  Positional Operations");
+            System.out.println("6.  Advanced Operations");
             System.out.println("10. Display the Linked List");
             System.out.println("11. Reset The List");
             System.out.println("12. Back to Main Menu");
@@ -96,18 +96,52 @@ public class Main{
             break;
             }
             break;
-            case  4:
-            MyLinkedList.deleteMiddleNode(head);
-            System.out.println("Middle Node Deleted");
+            case 4:
+            System.out.println("1. Search for a Value in the List");
+            System.out.println("2. Max and Min Values in the List");
+            System.out.println("3. Sum of All the Elements in the List");
+            System.out.println("Choose an Option From the menu");
+            int freindlyOp=sc.nextInt();
+            switch(freindlyOp){
+                case 1:
+                System.out.println("Enter the Value to Search for");
+                int seaVal=sc.nextInt();
+                MyLinkedList.searchList(head, seaVal);
+                break;
+                case 2:
+                break;
+                case 3:
+                break;
+            }
             break;
             case 5:
-            System.out.println("Enter the Value to Search for");
-            int seaVal=sc.nextInt();
-            MyLinkedList.searchList(head, seaVal);
+            System.out.println("1. Delete Middle Node in the List");
+            System.out.println("2. Get the Nth Element in the List");
+            System.out.println("3. All the Positions where an Element is Present in the List");
+            int posOps=sc.nextInt();
+            switch(posOps){
+                case 1:
+                MyLinkedList.deleteMiddleNode(head);
+                System.out.println("Middle Node Deleted");
+                break;
+                case 2:
+                break;
+                case 3:
+                break;
+            }
             break;
-            case 9:
-           head=MyLinkedList.reverseLinkedList(head);
-           System.out.println("Oops You Just Performed the Reverse Operation...The List gets Changed Entirely have a look at it...");
+            case 6:
+            System.out.println("1. Reverse the List");
+            System.out.println("2. Sort the List");
+            int advOp=sc.nextInt();
+            switch(advOp){
+                case 1:
+                head=MyLinkedList.reverseLinkedList(head);
+                System.out.println("Oops You Just Performed the Reverse Operation...The List gets Changed Entirely have a look at it...");
+                break;
+                case 2:
+                break;
+            }
            break;
            case 10:
             MyLinkedList.printLinkedList(head);
@@ -124,14 +158,13 @@ public class Main{
         }
         private static void handleDLL(Scanner sc){
             MyDLL head=null;
-            System.out.println("Welcome to Linked List Operations");
-            System.out.println("Linked List Operations as follows");
+            System.out.println("Welcome to Doubly Linked List Operations");
             System.out.println("1.  Create a Linked List");
             System.out.println("2.  Insertion Operations");
             System.out.println("3.  Deletion Operations");
-            System.out.println("4.  Delete Middle Node");
-            System.out.println("5.  Search for a Value");
-            System.out.println("9.  Reverse The Linked List");
+            System.out.println("4.  Freindly Operations");
+            System.out.println("5.  Positional Operations");
+            System.out.println("6.  Advanced Operations");
             System.out.println("10. Display the Linked List");
             System.out.println("11. Reset The List");
             System.out.println("12. Back to Main Menu");
@@ -203,14 +236,53 @@ public class Main{
             break;
             }
             break;
-            case  4:
-            MyDLL.deleteMiddleNode(head);
-            System.out.println("Middle Node Deleted");
-            case 5:
-            System.out.println("Enter the Value to Search for");
-            int seaVal=sc.nextInt();
-            MyDLL.searchList(head, seaVal);
+            case 4:
+            System.out.println("1. Search for a Value in the List");
+            System.out.println("2. Max and Min Values in the List");
+            System.out.println("3. Sum of All the Elements in the List");
+            System.out.println("Choose an Option From the menu");
+            int freindlyOps=sc.nextInt();
+            switch(freindlyOps){
+                case 1:
+                System.out.println("Enter the Value to Search for");
+                int seaVal=sc.nextInt();
+                MyDLL.searchList(head, seaVal);
+                break;
+                case 2:
+                break;
+                case 3:
+                break;
+            }
             break;
+            case 5:
+            System.out.println("1. Delete Middle Node in the List");
+            System.out.println("2. Get the Nth Element in the List");
+            System.out.println("3. All the Positions where an Element is Present in the List");
+            int posOps=sc.nextInt();
+            switch(posOps){
+                case 1:
+                MyDLL.deleteMiddleNode(head);
+                System.out.println("Middle Node Deleted");
+                break;
+                case 2:
+                break;
+                case 3:
+                break;
+            }
+            break;
+            case 6:
+            System.out.println("1. Reverse the List");
+            System.out.println("2. Sort the List");
+            int advOp=sc.nextInt();
+            switch(advOp){
+                case 1:
+                head=MyDLL.reverseLinkedList(head);
+                System.out.println("Oops You Just Performed the Reverse Operation...The List gets Changed Entirely have a look at it...");
+                break;
+                case 2:
+                break;
+            }
+           break;
             case 10:
             MyDLL.printDLL(head);
             break;
@@ -220,6 +292,8 @@ public class Main{
             break;
             case 12:
             return;
+            default:
+            System.out.println("Range of Input Integer's Provided For Operation is [1-12]");
             }
         }
     }

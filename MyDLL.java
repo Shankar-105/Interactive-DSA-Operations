@@ -24,19 +24,19 @@ public static MyDLL inputNodes(Scanner sc,MyDLL head){
         return head;
     }
     //creating the Doubly linked list
-    private static MyDLL createDLL(MyDLL node,int val){
+    private static MyDLL createDLL(MyDLL MyDLL,int val){
         MyDLL newNode=new MyDLL(val);
-        if(node==null){
-        node=newNode;
-        return node;
+        if(MyDLL==null){
+        MyDLL=newNode;
+        return MyDLL;
         }
-        MyDLL temp=node;
+        MyDLL temp=MyDLL;
         while(temp.next!=null){
             temp=temp.next;
         }
         temp.next=newNode;
         newNode.prev=temp;
-        return node;
+        return MyDLL;
     }
     public static void printDLL(MyDLL head){
         MyDLL temp=head;
@@ -93,6 +93,22 @@ public static MyDLL inputNodes(Scanner sc,MyDLL head){
             temp=temp.next;
         }
         return cnt;
+    }
+    public static MyDLL reverseLinkedList(MyDLL head){
+        MyDLL temp=head;
+        if(head==null||head.next==null){
+            return head;
+        }
+        MyDLL prevNode=null;
+        MyDLL afterNode=null;
+        while(temp!=null){
+            prevNode=temp.prev;
+            afterNode=temp.next;
+            temp.prev=afterNode;
+            temp.next=prevNode;
+            temp=afterNode;
+        }
+        return prevNode.prev;
     }
     // Insertions Over DLL
     public static MyDLL insertAtHead(MyDLL head,int newele){
@@ -252,11 +268,11 @@ public static MyDLL inputNodes(Scanner sc,MyDLL head){
         while(temp!=null){
             pos++;
             if(temp.data==val){
-            System.out.println("Node "+val+" Found at Position "+pos);
+            System.out.println("MyDLL "+val+" Found at Position "+pos);
             return;
             }
             temp=temp.next;
         }
-        System.out.println("Node With Value "+val+" Not Found");
+        System.out.println("MyDLL With Value "+val+" Not Found");
     }
 }
