@@ -228,4 +228,35 @@ public static MyDLL inputNodes(Scanner sc,MyDLL head){
     }
     return head;
    }
+   public static MyDLL deleteMiddleNode(MyDLL head){
+        if(head == null || head.next==null){
+            return null;
+        }
+        MyDLL slow=head;
+        MyDLL fast=head;
+        while(fast!=null && fast.next!=null){
+            slow=slow.next;
+            fast=fast.next.next;
+        }
+        MyDLL nodeBeforeMiddle=slow.prev;
+        MyDLL nodeafterMiddle=slow.next;
+        nodeBeforeMiddle.next=nodeafterMiddle;
+        nodeafterMiddle.prev=nodeBeforeMiddle;
+        slow.prev=null;
+        slow.next=null;
+        return head;
+    }
+    public static void searchList(MyDLL head,int val){
+        int pos=0;
+        MyDLL temp=head;
+        while(temp!=null){
+            pos++;
+            if(temp.data==val){
+            System.out.println("Node "+val+" Found at Position "+pos);
+            return;
+            }
+            temp=temp.next;
+        }
+        System.out.println("Node With Value "+val+" Not Found");
+    }
 }

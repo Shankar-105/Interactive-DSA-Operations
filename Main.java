@@ -23,6 +23,8 @@ public class Main{
             System.out.println("1.  Create a Linked List");
             System.out.println("2.  Insertion Operations");
             System.out.println("3.  Deletion Operations");
+            System.out.println("4.  Delete Middle Node");
+            System.out.println("5.  Search for a Value");
             System.out.println("9.  Reverse The Linked List");
             System.out.println("10. Display the Linked List");
             System.out.println("11. Reset The List");
@@ -94,6 +96,15 @@ public class Main{
             break;
             }
             break;
+            case  4:
+            MyLinkedList.deleteMiddleNode(head);
+            System.out.println("Middle Node Deleted");
+            break;
+            case 5:
+            System.out.println("Enter the Value to Search for");
+            int seaVal=sc.nextInt();
+            MyLinkedList.searchList(head, seaVal);
+            break;
             case 9:
            head=MyLinkedList.reverseLinkedList(head);
            System.out.println("Oops You Just Performed the Reverse Operation...The List gets Changed Entirely have a look at it...");
@@ -118,6 +129,8 @@ public class Main{
             System.out.println("1.  Create a Linked List");
             System.out.println("2.  Insertion Operations");
             System.out.println("3.  Deletion Operations");
+            System.out.println("4.  Delete Middle Node");
+            System.out.println("5.  Search for a Value");
             System.out.println("9.  Reverse The Linked List");
             System.out.println("10. Display the Linked List");
             System.out.println("11. Reset The List");
@@ -189,6 +202,14 @@ public class Main{
             System.out.println("Node With Value "+nodeVal+" is removed:)");
             break;
             }
+            break;
+            case  4:
+            MyDLL.deleteMiddleNode(head);
+            System.out.println("Middle Node Deleted");
+            case 5:
+            System.out.println("Enter the Value to Search for");
+            int seaVal=sc.nextInt();
+            MyDLL.searchList(head, seaVal);
             break;
             case 10:
             MyDLL.printDLL(head);
@@ -316,6 +337,7 @@ public class Main{
                 break;
                 case 8:
                 queueFront=null;
+                break;
                 case 9:
                 return;
                 default:

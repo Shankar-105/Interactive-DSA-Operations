@@ -203,4 +203,33 @@ public class MyLinkedList {
     }
     return head;
    }
+   public static MyLinkedList deleteMiddleNode(MyLinkedList head){
+        if(head == null || head.next==null){
+            return null;
+        }
+        MyLinkedList nodeBeforeMiddle=null;
+        MyLinkedList slow=head;
+        MyLinkedList fast=head;
+        while(fast!=null && fast.next!=null){
+            nodeBeforeMiddle=slow;
+            slow=slow.next;
+            fast=fast.next.next;
+        }
+        nodeBeforeMiddle.next=slow.next;
+        slow.next=null;
+        return head;
+    }
+    public static void searchList(MyLinkedList head,int val){
+        int pos=0;
+        MyLinkedList temp=head;
+        while(temp!=null){
+            pos++;
+            if(temp.data==val){
+            System.out.println("Node "+val+" Found at Position "+pos);
+            return;
+            }
+            temp=temp.next;
+        }
+        System.out.println("Node With Value "+val+" Not Found");
+    }
 }
