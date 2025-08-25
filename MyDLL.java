@@ -23,33 +23,256 @@ public static MyDLL inputNodes(Scanner sc,MyDLL head){
         }
         return head;
     }
-    //creating the linked list
-    private static MyDLL createDLL(MyDLL node,int val){
+    //creating the Doubly linked list
+    private static MyDLL createDLL(MyDLL MyDLL,int val){
         MyDLL newNode=new MyDLL(val);
-        if(node==null){
-        node=newNode;
-        return node;
+        if(MyDLL==null){
+        MyDLL=newNode;
+        return MyDLL;
         }
-        MyDLL temp=node;
+        MyDLL temp=MyDLL;
         while(temp.next!=null){
             temp=temp.next;
         }
         temp.next=newNode;
         newNode.prev=temp;
-        return node;
+        return MyDLL;
     }
     public static void printDLL(MyDLL head){
         MyDLL temp=head;
-        System.out.print("null<- ");
+        System.out.println("== Curernt List Structure ==");
+        System.out.print("[NULL] <- ");
         while(temp!=null){
             if(temp.next==null){
-                System.out.print(temp.data+" ->");
+                System.out.print("["+temp.data+"]"+" -> ");
             }
             else{
-                System.out.print(temp.data+" <-> ");
+                System.out.print("["+temp.data+"]"+" <-> ");
             }
             temp=temp.next;
         }
-        System.out.println("null");
+        System.out.println("[NULL]");
+        System.out.println("== List Summary ==");
+        listSummary(head);
+    }
+    private static void listSummary(MyDLL head){
+        int length =listSize(head);
+        //String isEmpty=length!=0?"No":"Yes";
+        MyDLL middleNode=middleNode(head);
+        System.out.print("Length: "+length);
+        if(middleNode!=null){
+            System.out.print(" | Middle Node: "+middleNode.data);
+        }
+        else{
+            System.out.print(" | Middle Node: Not Found");
+        }
+        if(length==0){
+        System.out.println(" | Empty: Yup");
+        }
+        else{
+            System.out.println(" | Empty: Nope");
+        }
+    }
+    private static MyDLL middleNode(MyDLL head){
+        if(head == null || head.next==null){
+            return head;
+        }
+        MyDLL slow=head;
+        MyDLL fast=head;
+        while(fast!=null && fast.next!=null){
+            slow=slow.next;
+            fast=fast.next.next;
+        }
+        return slow;
+    }
+    private static int listSize(MyDLL head){
+        MyDLL temp=head;
+        int cnt=0;
+        while(temp!=null){
+            cnt++;
+            temp=temp.next;
+        }
+        return cnt;
+    }
+    public static MyDLL reverseLinkedList(MyDLL head){
+        MyDLL temp=head;
+        if(head==null||head.next==null){
+            return head;
+        }
+        MyDLL prevNode=null;
+        MyDLL afterNode=null;
+        while(temp!=null){
+            prevNode=temp.prev;
+            afterNode=temp.next;
+            temp.prev=afterNode;
+            temp.next=prevNode;
+            temp=afterNode;
+        }
+        return prevNode.prev;
+    }
+    // Insertions Over DLL
+    public static MyDLL insertAtHead(MyDLL head,int newele){
+        if(head==null){
+            return new MyDLL(newele, null, null);
+        }
+    MyDLL newHead=new MyDLL(newele,head,null);
+    head.prev=newHead;
+    return newHead;
+   }
+   public static MyDLL insertAtTail(MyDLL head,int newele){
+    MyDLL newTail=new MyDLL(newele,null,null);
+    if(head==null){
+        return newTail;
+    }
+    MyDLL temp=head;
+    while(temp.next!=null){
+            temp=temp.next;
+        }
+        newTail.prev=temp;
+        temp.next=newTail;
+   return head;
+   }
+   public static MyDLL insertAtK(MyDLL head,int k,int newele){
+    if(head==null){
+        if(k==1){
+         MyDLL newNode=new MyDLL(newele);
+        return newNode;
+        }
+        return head;
+    }
+    if(k==1){
+        MyDLL newHead=new MyDLL(newele,head,null);
+        head.prev=newHead;
+        return newHead;
+    }
+    MyDLL temp=head;
+    int cnt=0;
+    while(temp.next!=null){
+        cnt++;
+        if(cnt==k){
+            break;
+        }       
+            temp=temp.next;
+        }
+        if(cnt==(k-2)){
+        MyDLL newNode=new MyDLL(newele,null,temp);
+        temp.next=newNode;
+        return head;
+        }
+        else{
+           MyDLL newNode=new MyDLL(newele,temp,temp.prev);
+           temp.prev.next=newNode;
+           temp.prev=newNode;
+        }
+    return head;
+   }
+   public static MyDLL deleteHead(MyDLL head){
+    if(head==null || head.next==null){
+        return null;
+    }
+    head=head.next;
+    head.prev=null;
+    return head;
+   }
+   public static MyDLL deleteTail(MyDLL head){
+    if(head==null || head.next==null){
+        return null;
+    }
+    MyDLL temp=head;
+    while(temp.next!=null){
+     temp=temp.next;
+    }
+    temp.prev.next=null;
+    temp.prev=null;
+    return head;
+   }
+   public static MyDLL deleteAtK(MyDLL head,int k){
+    if(head==null){
+        return null;
+    }
+    int cnt=0;
+    MyDLL temp=head;
+    while(temp.next!=null){
+        cnt++;
+        if(cnt==k) {
+            break;
+        }
+        temp=temp.next;
+    }
+    MyDLL prevNode=temp.prev;
+    MyDLL nextNode=temp.next;
+    if(prevNode==null && nextNode==null){
+        return null;
+    }
+    else if(prevNode==null){
+        return deleteHead(head);
+    }
+    else if(nextNode==null){
+        return deleteTail(head);
+    }
+    else{
+        prevNode.next=nextNode;
+        nextNode.prev=prevNode;
+        temp.prev=null;
+        temp.next=null;
+        }
+    return head;
+   }
+   public static MyDLL deleteNodeK(MyDLL head,int val){
+    if (head == null){
+       return null; 
+    }
+    else if(head.next==null && head.data==val){
+        return null;
+    }
+    else{
+        MyDLL temp=head;
+        while(temp!=null){
+        if(temp.data==val) {
+            break;
+        }
+        temp=temp.next;
+    }
+    MyDLL prevNode=temp.prev;
+    MyDLL nextNode=temp.next;
+    prevNode.next=nextNode;
+    if(nextNode!=null){
+        nextNode.prev=prevNode;
+    }
+    temp.prev=null;
+    temp.next=null;
+    }
+    return head;
+   }
+   public static MyDLL deleteMiddleNode(MyDLL head){
+        if(head == null || head.next==null){
+            return null;
+        }
+        MyDLL slow=head;
+        MyDLL fast=head;
+        while(fast!=null && fast.next!=null){
+            slow=slow.next;
+            fast=fast.next.next;
+        }
+        MyDLL nodeBeforeMiddle=slow.prev;
+        MyDLL nodeafterMiddle=slow.next;
+        nodeBeforeMiddle.next=nodeafterMiddle;
+        nodeafterMiddle.prev=nodeBeforeMiddle;
+        slow.prev=null;
+        slow.next=null;
+        return head;
+    }
+    public static void searchList(MyDLL head,int val){
+        int pos=0;
+        MyDLL temp=head;
+        while(temp!=null){
+            pos++;
+            if(temp.data==val){
+            System.out.println("MyDLL "+val+" Found at Position "+pos);
+            return;
+            }
+            temp=temp.next;
+        }
+        System.out.println("MyDLL With Value "+val+" Not Found");
     }
 }
