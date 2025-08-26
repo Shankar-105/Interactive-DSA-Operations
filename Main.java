@@ -4,6 +4,7 @@ public class Main{
         System.out.println("Select >");
         System.out.println("1. Singly Linked List");
         System.out.println("2. Doubly Linked List");
+        System.out.println("3. Back to Main Menu");
         int choice =sc.nextInt();
         switch(choice){
             case 1:
@@ -12,14 +13,15 @@ public class Main{
             case 2:
             handleDLL(sc);
             break;
+            case 3:
+            return;
             default:
-            System.out.println("Range of Input Integer's Provided For Operation is [1-2]");
+            System.out.println("Range of Input Integer's Provided For Operation is [1-3]");
         }
     }
     private static void handleSLL(Scanner sc){
             MyLinkedList head=null;
             System.out.println("Welcome to Linked List Operations");
-            System.out.println("Linked List Operations as follows");
             System.out.println("1.  Create a Linked List");
             System.out.println("2.  Insertion Operations");
             System.out.println("3.  Deletion Operations");
@@ -29,12 +31,13 @@ public class Main{
             System.out.println("10. Display the Linked List");
             System.out.println("11. Reset The List");
             System.out.println("12. Back to Main Menu");
-            System.out.print("Enter The Index of the Operation (Example 1) ");
-        while(true){
+            while(true){
+            System.out.println("Choose an Option From the List Menu");
             int op = sc.nextInt();
-           switch(op){
+            switch(op){
             case 1:
             System.out.println("Enter the values of each Node in the Linked List(Enter -1 to Stop)");
+            head=null;
             head=MyLinkedList.inputNodeValues(sc,head);
             System.out.println("Linked List Created");
             break;
@@ -42,19 +45,21 @@ public class Main{
             System.out.println("1. Insert at the Beginning");
             System.out.println("2. Insert at the End");
             System.out.println("3. Insert At the Kth Position From the Begininng");
+            System.out.println("4. Back to List Menu");
+            System.out.println("Choose an Option From the List's Insertion Menu");
             int insOp=sc.nextInt();
             switch(insOp){
-            case 2:
-            System.out.println("Enter the Value to be Inserted at the end");
-            int valEnd=sc.nextInt();
-            head=MyLinkedList.insertAtTail(head,valEnd);
-            System.out.println("Successfully appended:)");
-            break;
             case 1:
             System.out.println("Enter the Value to be Inserted at the beginning");
             int valSt=sc.nextInt();
             head=MyLinkedList.insertAtHead(head,valSt);
             System.out.println("Successfully pushed at the Beginning:)");
+            break;
+            case 2:
+            System.out.println("Enter the Value to be Inserted at the end");
+            int valEnd=sc.nextInt();
+            head=MyLinkedList.insertAtTail(head,valEnd);
+            System.out.println("Successfully appended:)");
             break;
             case 3:
             System.out.println("Enter the position K");
@@ -65,6 +70,10 @@ public class Main{
             System.out.println("Pushed in Between Nodes "+(posK-1)+" and "+(posK));
             System.out.println("Wanna look at the List(Click 9)");
             break;
+            case 4:
+            break;
+            default:
+            System.out.println("Range of Input Integer's Provided For Operation is [1-4]");
             }
             break;
             case 3:
@@ -72,11 +81,13 @@ public class Main{
             System.out.println("2.  Delete the Last Node(Element)");
             System.out.println("3.  Delete the Node(Element) at Kth Position From the Begininng");
             System.out.println("4.  Delete the Node(Element) with the Value K From the Begininng");
+            System.out.println("5.  Back to List Menu");
+            System.out.println("Choose an Option From the List's Deletion Menu");
             int delOp=sc.nextInt();
             switch(delOp){
             case 1:
             head=MyLinkedList.deleteHead(head);
-            System.out.println("Deleted The Head.\nWanna See the Change(Click 9)");
+            System.out.println("Deleted The Head.\nWanna See the Change(Click 10)");
             break;
             case 2:
             head=MyLinkedList.deleteTail(head);
@@ -94,13 +105,18 @@ public class Main{
             head=MyLinkedList.deleteNodeK(head,nodeVal);
             System.out.println("Node With Value "+nodeVal+" is removed:)");
             break;
+            case 5:
+            break;
+            default:
+            System.out.println("Range of Input Integer's Provided For Operation is [1-5]");
             }
             break;
             case 4:
             System.out.println("1. Search for a Value in the List");
             System.out.println("2. Max and Min Values in the List");
             System.out.println("3. Sum of All the Elements in the List");
-            System.out.println("Choose an Option From the menu");
+            System.out.println("4. Back to List Menu");
+            System.out.println("Choose an Option From the List's Freindly Menu");
             int freindlyOp=sc.nextInt();
             switch(freindlyOp){
                 case 1:
@@ -109,15 +125,22 @@ public class Main{
                 MyLinkedList.searchList(head, seaVal);
                 break;
                 case 2:
+                MyLinkedList.lgInList(head);
                 break;
                 case 3:
                 break;
+                case 4:
+                break;
+                default:
+                System.out.println("Range of Input Integer's Provided For Operation is [1-4]");
             }
             break;
             case 5:
             System.out.println("1. Delete Middle Node in the List");
             System.out.println("2. Get the Nth Element in the List");
             System.out.println("3. All the Positions where an Element is Present in the List");
+            System.out.println("4. Back to List Menu");
+            System.out.println("Choose an Option From the List's Positional Menu");
             int posOps=sc.nextInt();
             switch(posOps){
                 case 1:
@@ -125,14 +148,23 @@ public class Main{
                 System.out.println("Middle Node Deleted");
                 break;
                 case 2:
+                System.out.println("Enter the Nth Position");
+                int nThPos=sc.nextInt();
+                MyLinkedList.nThElement(head,nThPos);
                 break;
                 case 3:
                 break;
+                case 4:
+                break;
+                default:
+                System.out.println("Range of Input Integer's Provided For Operation is [1-4]");
             }
             break;
             case 6:
             System.out.println("1. Reverse the List");
             System.out.println("2. Sort the List");
+            System.out.println("3. Back to List Menu");
+            System.out.println("Choose an Option From the List's Advanced Menu");
             int advOp=sc.nextInt();
             switch(advOp){
                 case 1:
@@ -141,6 +173,10 @@ public class Main{
                 break;
                 case 2:
                 break;
+                case 3:
+                break;
+                default:
+                System.out.println("Range of Input Integer's Provided For Operation is [1-3]");
             }
            break;
            case 10:
@@ -168,10 +204,10 @@ public class Main{
             System.out.println("10. Display the Linked List");
             System.out.println("11. Reset The List");
             System.out.println("12. Back to Main Menu");
-            System.out.print("Enter The Index of the Operation (Example 1) ");
             while (true) {
-                int opt=sc.nextInt();
-                switch(opt){
+            System.out.println("Choose an Option From the menu");
+            int opt=sc.nextInt();
+            switch(opt){
             case 1:
             System.out.println("Enter the values of each Node in the Linked List(Enter -1 to Stop)");
             head=null;
@@ -182,19 +218,21 @@ public class Main{
             System.out.println("1. Insert at the Beginning");
             System.out.println("2. Insert at the End");
             System.out.println("3. Insert At the Kth Position From the Begininng");
+            System.out.println("4. Back to DLL Menu");
+            System.out.println("Choose an Option From the DLL's Insertion Menu");
             int insOp=sc.nextInt();
             switch(insOp){
-            case 2:
-            System.out.println("Enter the Value to be Inserted at the end");
-            int endVal=sc.nextInt();
-            head=MyDLL.insertAtTail(head,endVal);
-            System.out.println("Successfully appended:)");
-            break;
             case 1:
             System.out.println("Enter the Value to be Inserted at the beginning");
             int stVal=sc.nextInt();
             head=MyDLL.insertAtHead(head,stVal);
             System.out.println("Successfully pushed at the Beginning:)");
+            break;
+            case 2:
+            System.out.println("Enter the Value to be Inserted at the end");
+            int endVal=sc.nextInt();
+            head=MyDLL.insertAtTail(head,endVal);
+            System.out.println("Successfully appended:)");
             break;
             case 3:
             System.out.println("Enter the position K");
@@ -205,6 +243,10 @@ public class Main{
             System.out.println("Pushed in Between Position's "+(posK-1)+" and "+(posK));
             System.out.println("Wanna look at the List(Click 9)");
             break;
+            case 4:
+            break;
+            default:
+            System.out.println("Range of Input Integer's Provided For Operation is [1-4]");
             }
             break;
             case 3:
@@ -212,6 +254,8 @@ public class Main{
             System.out.println("2.  Delete the Last Node(Element)");
             System.out.println("3.  Delete the Node(Element) at Kth Position From the Begininng");
             System.out.println("4.  Delete the Node(Element) with the Value K From the Begininng");
+            System.out.println("5.  Back to DLL menu");
+            System.out.println("Choose an Option From the DLL's Deletion Menu");
             int delOp=sc.nextInt();
             switch(delOp){
             case 1:
@@ -234,13 +278,18 @@ public class Main{
             head=MyDLL.deleteNodeK(head,nodeVal);
             System.out.println("Node With Value "+nodeVal+" is removed:)");
             break;
+            case 5:
+            break;
+            default:
+            System.out.println("Range of Input Integer's Provided For Operation is [1-5]");
             }
             break;
             case 4:
             System.out.println("1. Search for a Value in the List");
             System.out.println("2. Max and Min Values in the List");
             System.out.println("3. Sum of All the Elements in the List");
-            System.out.println("Choose an Option From the menu");
+            System.out.println("4. Back to DLL Menu");
+            System.out.println("Choose an Option From the DLL's Freindly Menu");
             int freindlyOps=sc.nextInt();
             switch(freindlyOps){
                 case 1:
@@ -249,15 +298,22 @@ public class Main{
                 MyDLL.searchList(head, seaVal);
                 break;
                 case 2:
+                MyDLL.lgInList(head);
                 break;
                 case 3:
                 break;
+                case 4:
+                break;
+                default:
+                System.out.println("Range of Input Integer's Provided For Operation is [1-4]");
             }
             break;
             case 5:
             System.out.println("1. Delete Middle Node in the List");
             System.out.println("2. Get the Nth Element in the List");
             System.out.println("3. All the Positions where an Element is Present in the List");
+            System.out.println("4. Back to DLL Menu");
+            System.out.println("Choose an Option From the DLL's Positional Menu");
             int posOps=sc.nextInt();
             switch(posOps){
                 case 1:
@@ -265,14 +321,23 @@ public class Main{
                 System.out.println("Middle Node Deleted");
                 break;
                 case 2:
+                System.out.println("Enter the Nth Position");
+                int nThPos=sc.nextInt();
+                MyDLL.nThElement(head, nThPos);
                 break;
                 case 3:
                 break;
+                case 4:
+                break;
+                default:
+                System.out.println("Range of Input Integer's Provided For Operation is [1-4]");
             }
             break;
             case 6:
             System.out.println("1. Reverse the List");
             System.out.println("2. Sort the List");
+            System.out.println("3. Back to DLL Menu");
+            System.out.println("Choose an Option From the DLL's Advanced Menu");
             int advOp=sc.nextInt();
             switch(advOp){
                 case 1:
@@ -281,8 +346,12 @@ public class Main{
                 break;
                 case 2:
                 break;
+                case 3:
+                break;
+                default:
+                System.out.println("Range of Input Integer's Provided For Operation is [1-3]");
             }
-           break;
+            break;
             case 10:
             MyDLL.printDLL(head);
             break;

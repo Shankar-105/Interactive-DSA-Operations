@@ -232,4 +232,36 @@ public class MyLinkedList {
         }
         System.out.println("Node With Value "+val+" Not Found");
     }
+    public static void lgInList(MyLinkedList head){
+        if(head==null){
+            System.out.println("Max and Min Not Found Empty List!");
+            return;
+        }
+        int maxi=Integer.MIN_VALUE;
+        int mini=Integer.MAX_VALUE;
+        MyLinkedList temp=head;
+        while(temp!=null){
+            maxi=Math.max(maxi,temp.data);
+            mini=Math.min(temp.data, mini);
+            temp=temp.next;
+        }
+        System.out.println("Max Value "+maxi+" | "+"Min Value "+mini);
+    }
+    public static void nThElement(MyLinkedList head,int pos){
+        if(head==null){
+            System.out.println("List is Empty");
+            return;
+        }
+        int cnt=0;
+        MyLinkedList temp=head;
+        while(temp!=null){
+          cnt++;
+          if(cnt==pos){
+            System.out.println("Element At Position "+pos+" is "+temp.data);
+            return;
+          }
+          temp=temp.next;
+        }
+        System.out.println("Position Out Of List Bounds");
+    }
 }
