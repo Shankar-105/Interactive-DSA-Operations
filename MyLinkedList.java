@@ -78,7 +78,7 @@ public class MyLinkedList {
         }
         return slow;
     }
-    private static int listSize(MyLinkedList head){
+    protected static int listSize(MyLinkedList head){
         MyLinkedList temp=head;
         int cnt=0;
         while(temp!=null){
@@ -251,22 +251,26 @@ public class MyLinkedList {
         }
         System.out.println("Max Value "+maxi+" | "+"Min Value "+mini);
     }
-    public static void nThElement(MyLinkedList head,int pos){
+    public static void nThElement(MyLinkedList head,Scanner sc){
         if(head==null){
             System.out.println("List is Empty");
             return;
         }
+        System.out.println("Enter the Nth Position");
+        int nThPos=sc.nextInt();
+       if(nThPos>MyLinkedList.listSize(head)){
+       System.out.println("Unable To Fetch the Position,Out of List Bounds");
+      }
         int cnt=0;
         MyLinkedList temp=head;
         while(temp!=null){
           cnt++;
-          if(cnt==pos){
-            System.out.println("Element At Position "+pos+" is "+temp.data);
+          if(cnt==nThPos){
+            System.out.println("Element At Position "+nThPos+" is "+temp.data);
             return;
           }
           temp=temp.next;
         }
-        System.out.println("Position Out Of List Bounds");
     }
     public static void allOccs(MyLinkedList head,int val){
         if(head==null){
@@ -311,5 +315,80 @@ public class MyLinkedList {
         temp=temp.next;
         }
         System.out.println("Sum "+sum+" | Product "+prod);
+    }
+    public static MyLinkedList nodeBeforeMiddle(MyLinkedList head){
+        if(head == null || head.next==null){
+            return null;
+        }
+        MyLinkedList nodeBeforeMiddle=null;
+        MyLinkedList slow=head;
+        MyLinkedList fast=head;
+        while(fast!=null && fast.next!=null){
+            nodeBeforeMiddle=slow;
+            slow=slow.next;
+            fast=fast.next.next;
+        }
+        return nodeBeforeMiddle;
+    }
+    private static MyLinkedList mergeTwoLists(MyLinkedList list1, MyLinkedList list2) {
+        MyLinkedList left=list1;
+        MyLinkedList right=list2;
+        MyLinkedList dummy=new MyLinkedList(-1);
+        MyLinkedList current=dummy;
+        while(left!=null && right!=null){
+            if(left.data<=right.data){
+                current.next=left;
+                current=left;
+                left=left.next;
+            }
+            else{
+             current.next=right;
+             current=right;
+             right=right.next;
+            }
+        }
+        if(left!=null){
+            current.next=left;
+        }
+        else{current.next=right;}
+        return dummy.next;
+    }
+    public static MyLinkedList sortList(MyLinkedList head){
+      if(head==null || head.next==null){
+        return head;
+      }
+      MyLinkedList nodeBeforeMiddle=nodeBeforeMiddle(head);
+      MyLinkedList leftHead=head;
+      MyLinkedList rightHead=nodeBeforeMiddle.next;
+      nodeBeforeMiddle.next=null;
+      leftHead=sortList(leftHead);
+      rightHead=sortList(rightHead);
+      return mergeTwoLists(leftHead,rightHead);
+    }
+    public static void updateValue(MyLinkedList head,Scanner sc){
+        if(head==null){
+            System.out.println("List is Empty!");
+            return;
+        }
+        System.out.println("Enter the Position");
+        int updPos=sc.nextInt();
+        if(updPos>MyLinkedList.listSize(head)){
+        System.out.println("Unable To Fetch the Position,MayBe Out of List Bounds!");
+         }
+        else{
+        System.out.println("Enter the New Value to be Updated");
+        int updVal=sc.nextInt();
+        MyLinkedList temp=head;
+        int pos=0;
+        while(temp!=null){
+        pos++;
+        if(pos==updPos){
+        temp.data=updVal;
+        System.out.println("Value of Node at Position "+updPos+" Changed to "+updVal);
+        return;
+        }
+        temp=temp.next;
+        }
+    }
     }
 }

@@ -115,7 +115,8 @@ public class Main{
             System.out.println("1. Search for a Value in the List");
             System.out.println("2. Max and Min Values in the List");
             System.out.println("3. Sum and Product of the List");
-            System.out.println("4. Back to List Menu");
+            System.out.println("4. Update Value at an Index N");
+            System.out.println("5. Back to List Menu");
             System.out.println("Choose an Option From the List's Freindly Menu");
             int freindlyOp=sc.nextInt();
             switch(freindlyOp){
@@ -131,6 +132,9 @@ public class Main{
                 MyLinkedList.sumPro(head);
                 break;
                 case 4:
+                MyLinkedList.updateValue(head,sc);
+                break;
+                case 5:
                 break;
                 default:
                 System.out.println("Range of Input Integer's Provided For Operation is [1-4]");
@@ -149,9 +153,7 @@ public class Main{
                 System.out.println("Middle Node Deleted");
                 break;
                 case 2:
-                System.out.println("Enter the Nth Position");
-                int nThPos=sc.nextInt();
-                MyLinkedList.nThElement(head,nThPos);
+                MyLinkedList.nThElement(head, sc);
                 break;
                 case 3:
                 System.out.println("Enter a Value");
@@ -176,6 +178,8 @@ public class Main{
                 System.out.println("Oops You Just Performed the Reverse Operation...The List gets Changed Entirely have a look at it...");
                 break;
                 case 2:
+                head=MyLinkedList.sortList(head);
+                System.out.println("List Sorted!");
                 break;
                 case 3:
                 break;
@@ -292,7 +296,8 @@ public class Main{
             System.out.println("1. Search for a Value in the List");
             System.out.println("2. Max and Min Values in the List");
             System.out.println("3. Sum of All the Elements in the List");
-            System.out.println("4. Back to DLL Menu");
+            System.out.println("4. Update Node Value at Nth Position");
+            System.out.println("5. Back to DLL Menu");
             System.out.println("Choose an Option From the DLL's Freindly Menu");
             int freindlyOps=sc.nextInt();
             switch(freindlyOps){
@@ -308,6 +313,9 @@ public class Main{
                 MyDLL.sumPro(head);
                 break;
                 case 4:
+                MyDLL.updateValue(head, sc);
+                break;
+                case 5:
                 break;
                 default:
                 System.out.println("Range of Input Integer's Provided For Operation is [1-4]");
@@ -326,10 +334,7 @@ public class Main{
                 System.out.println("Middle Node Deleted");
                 break;
                 case 2:
-                System.out.println("Enter the Nth Position");
-                int nThPos=sc.nextInt();
-                MyDLL.nThElement(head, nThPos);
-                break;
+                MyDLL.nThElement(head, sc);
                 case 3:
                 System.out.println("Enter a Value");
                 int val=sc.nextInt();
@@ -353,6 +358,8 @@ public class Main{
                 System.out.println("Oops You Just Performed the Reverse Operation...The List gets Changed Entirely have a look at it...");
                 break;
                 case 2:
+                head=MyDLL.sortList(head);
+                System.out.println("List Sorted!");
                 break;
                 case 3:
                 break;

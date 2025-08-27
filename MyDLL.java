@@ -290,22 +290,26 @@ public static MyDLL inputNodes(Scanner sc,MyDLL head){
         }
         System.out.println("Max Value "+maxi+" | "+"Min Value "+mini);
     }
-    public static void nThElement(MyDLL head,int pos){
+    public static void nThElement(MyDLL head,Scanner sc){
         if(head==null){
             System.out.println("List is Empty");
             return;
         }
+        System.out.println("Enter the Nth Position");
+        int nThPos=sc.nextInt();
+       if(nThPos>MyDLL.listSize(head)){
+       System.out.println("Unable To Fetch the Position,Out of List Bounds");
+      }
         int cnt=0;
         MyDLL temp=head;
         while(temp!=null){
           cnt++;
-          if(cnt==pos){
-            System.out.println("Element At Position "+pos+" is "+temp.data);
+          if(cnt==nThPos){
+            System.out.println("Element At Position "+nThPos+" is "+temp.data);
             return;
           }
           temp=temp.next;
         }
-        System.out.println("Unable To Fetch the Position");
     }
     public static void allOccs(MyDLL head,int val){
         if(head==null){
@@ -350,5 +354,80 @@ public static MyDLL inputNodes(Scanner sc,MyDLL head){
         temp=temp.next;
         }
         System.out.println("Sum "+sum+" | Product "+prod);
+    }
+    public static MyDLL nodeBeforeMiddle(MyDLL head){
+        if(head == null || head.next==null){
+            return null;
+        }
+        MyDLL nodeBeforeMiddle=null;
+        MyDLL slow=head;
+        MyDLL fast=head;
+        while(fast!=null && fast.next!=null){
+            nodeBeforeMiddle=slow;
+            slow=slow.next;
+            fast=fast.next.next;
+        }
+        return nodeBeforeMiddle;
+    }
+    private static MyDLL mergeTwoLists(MyDLL list1, MyDLL list2) {
+        MyDLL left=list1;
+        MyDLL right=list2;
+        MyDLL dummy=new MyDLL(-1);
+        MyDLL current=dummy;
+        while(left!=null && right!=null){
+            if(left.data<=right.data){
+                current.next=left;
+                current=left;
+                left=left.next;
+            }
+            else{
+             current.next=right;
+             current=right;
+             right=right.next;
+            }
+        }
+        if(left!=null){
+            current.next=left;
+        }
+        else{current.next=right;}
+        return dummy.next;
+    }
+    public static MyDLL sortList(MyDLL head){
+      if(head==null || head.next==null){
+        return head;
+      }
+      MyDLL nodeBeforeMiddle=nodeBeforeMiddle(head);
+      MyDLL leftHead=head;
+      MyDLL rightHead=nodeBeforeMiddle.next;
+      nodeBeforeMiddle.next=null;
+      leftHead=sortList(leftHead);
+      rightHead=sortList(rightHead);
+      return mergeTwoLists(leftHead,rightHead);
+    }
+    public static void updateValue(MyDLL head,Scanner sc){
+        if(head==null){
+            System.out.println("List is Empty!");
+            return;
+        }
+        System.out.println("Enter the Position");
+        int updPos=sc.nextInt();
+        if(updPos>MyDLL.listSize(head)){
+        System.out.println("Unable To Fetch the Position,MayBe Out of List Bounds!");
+         }
+        else{
+        System.out.println("Enter the New Value to be Updated");
+        int updVal=sc.nextInt();
+        MyDLL temp=head;
+        int pos=0;
+        while(temp!=null){
+        pos++;
+        if(pos==updPos){
+        temp.data=updVal;
+        System.out.println("Value of Node at Position "+updPos+" Changed to "+updVal);
+        return;
+        }
+        temp=temp.next;
+        }
+    }
     }
 }
