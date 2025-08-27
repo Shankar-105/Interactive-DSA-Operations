@@ -307,4 +307,48 @@ public static MyDLL inputNodes(Scanner sc,MyDLL head){
         }
         System.out.println("Unable To Fetch the Position");
     }
+    public static void allOccs(MyDLL head,int val){
+        if(head==null){
+            System.out.println("Empty List!");
+        }
+        List<Integer> allOcc=new java.util.LinkedList<>();
+        int pos=0;
+        MyDLL temp=head;
+        while(temp!=null){
+            pos++;
+            if(temp.data==val){
+            allOcc.add(pos);
+            }
+            temp=temp.next;
+        }
+        if(!allOcc.isEmpty()){
+            System.out.println("Found Value "+val+" at");
+            for(int i=0;i<allOcc.size();i++){
+                if(i!=allOcc.size()-1){
+                    System.out.print("Position "+allOcc.get(i)+" | ");
+                }
+                else{
+                    System.out.println("Position "+allOcc.get(i));
+                }
+            }
+        }
+        else{
+            System.out.println("Element Not Found!");
+        }
+    }
+    public static void sumPro(MyDLL head){
+        if(head==null){
+            System.out.println("Empty List!");
+            return;
+        }
+        MyDLL temp=head;
+        long sum=0;
+        long prod=1;
+        while(temp!=null){
+        sum+=temp.data;
+        prod*=temp.data;
+        temp=temp.next;
+        }
+        System.out.println("Sum "+sum+" | Product "+prod);
+    }
 }

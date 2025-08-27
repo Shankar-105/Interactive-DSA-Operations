@@ -114,7 +114,7 @@ public class Main{
             case 4:
             System.out.println("1. Search for a Value in the List");
             System.out.println("2. Max and Min Values in the List");
-            System.out.println("3. Sum of All the Elements in the List");
+            System.out.println("3. Sum and Product of the List");
             System.out.println("4. Back to List Menu");
             System.out.println("Choose an Option From the List's Freindly Menu");
             int freindlyOp=sc.nextInt();
@@ -128,6 +128,7 @@ public class Main{
                 MyLinkedList.lgInList(head);
                 break;
                 case 3:
+                MyLinkedList.sumPro(head);
                 break;
                 case 4:
                 break;
@@ -138,7 +139,7 @@ public class Main{
             case 5:
             System.out.println("1. Delete Middle Node in the List");
             System.out.println("2. Get the Nth Element in the List");
-            System.out.println("3. All the Positions where an Element is Present in the List");
+            System.out.println("3. All the Occurences where an Element is Present in the List");
             System.out.println("4. Back to List Menu");
             System.out.println("Choose an Option From the List's Positional Menu");
             int posOps=sc.nextInt();
@@ -153,6 +154,9 @@ public class Main{
                 MyLinkedList.nThElement(head,nThPos);
                 break;
                 case 3:
+                System.out.println("Enter a Value");
+                int val=sc.nextInt();
+                MyLinkedList.allOccs(head,val);
                 break;
                 case 4:
                 break;
@@ -205,7 +209,7 @@ public class Main{
             System.out.println("11. Reset The List");
             System.out.println("12. Back to Main Menu");
             while (true) {
-            System.out.println("Choose an Option From the menu");
+            System.out.println("Choose an Option From the DLL's Menu");
             int opt=sc.nextInt();
             switch(opt){
             case 1:
@@ -301,6 +305,7 @@ public class Main{
                 MyDLL.lgInList(head);
                 break;
                 case 3:
+                MyDLL.sumPro(head);
                 break;
                 case 4:
                 break;
@@ -326,6 +331,9 @@ public class Main{
                 MyDLL.nThElement(head, nThPos);
                 break;
                 case 3:
+                System.out.println("Enter a Value");
+                int val=sc.nextInt();
+                MyDLL.allOccs(head,val);
                 break;
                 case 4:
                 break;
@@ -366,7 +374,7 @@ public class Main{
             }
         }
     }
-      public static void handleStacks(Scanner sc){
+      private static void handleStacks(Scanner sc){
             Node stackHead=null;
             System.out.println("Welcome to Stack Operations---");
             System.out.println("1. Push an Element into the Stack");
@@ -377,15 +385,15 @@ public class Main{
             System.out.println("6. Print the Stack");
             System.out.println("7. Reset the Stack");
             System.out.println("8. Back to Main Menu");
-            System.out.print("Enter The Index of the Operation (Example 1) ");
         while(true){
+            System.out.println("Choose an Option From the Stack's Menu");
             int op=sc.nextInt();
             switch(op){
                 case 1:
                 System.out.println("Enter the Value to be Pushed into the Stack");
                 int val=sc.nextInt();
                 stackHead=MyStack.addNode(val);
-                System.out.println("Pushed it---");
+                System.out.println("Pushed it");
                 break;
                 case 2:
                 stackHead=MyStack.removeNode();
@@ -409,31 +417,31 @@ public class Main{
                 break;
                 case 6:
                 MyStack.printStack(stackHead);
-                System.out.println("No Surprise As the Stack Follows ---LIFO---");
+                System.out.println("No Surprise As the Stack Follows LIFO");
                 break;
                 case 7:
                 stackHead=null;
                 case 8:
                 return;
                 default:
-                System.out.println("Range of Input Integer's Provided For Operation is [1-7]");
+                System.out.println("Range of Input Integer's Provided For Operation is [1-8]");
            }
             }
         }
-      public static void handleQueues(Scanner sc){
+      private static void handleQueues(Scanner sc){
             Node queueFront=null;
             System.out.println("Welcome to Queue Operations---");
             System.out.println("1. Push an Element into the Queue");
             System.out.println("2. Remove an element from the Queue");
             System.out.println("3. Check if the Queue is Empty or Not");
             System.out.println("4. Size of the Queue");
-            System.out.println("5. Peek Element of the Queue)");
-            System.out.println("6. Last Element of the Queue)");
+            System.out.println("5. Peek Element of the Queue");
+            System.out.println("6. Last Element of the Queue");
             System.out.println("7. Print the Queue");
             System.out.println("8. Reset the Queue");
             System.out.println("9. Back to Main Menu");
-            System.out.print("Enter The Index of the Operation (Example 1) ");
         while(true){
+            System.out.println("Choose an Option From the Queue's Menu");
             int op=sc.nextInt();
             switch(op){
                 case 1:
@@ -476,7 +484,7 @@ public class Main{
                 break;
                 case 7:
                 MyQueue.printQueue(queueFront);
-                System.out.println("Queue Follows ---FIFO---");
+                System.out.println("Queue Follows FIFO");
                 break;
                 case 8:
                 queueFront=null;
@@ -484,14 +492,14 @@ public class Main{
                 case 9:
                 return;
                 default:
-                System.out.println("Range of Input Integer's Provided For Operation is [1-8]");
+                System.out.println("Range of Input Integer's Provided For Operation is [1-9]");
             }
         }
       }
-      public static void handleTrees(Scanner sc){
+      private static void handleTrees(Scanner sc){
             MyTree root=null;
             List<Integer> nodes=null;
-            System.out.println("---Welcome to Tree Operations---\n");
+            System.out.println("Welcome to Tree Operations");
             System.out.println("1.  Create a Binary Tree");
             System.out.println("2.  Traverse the Tree(BFS/DFS)");
             System.out.println("3.  Three Special Tree Traversals (Zig Zag / Vertical / Boundary )");
@@ -506,7 +514,7 @@ public class Main{
             System.out.println("12. Leaf Nodes of the Binary Tree");
             System.out.println("13. Back to Main Menu");
             while(true){
-                System.out.println("Choose an Option From the menu");
+                System.out.println("Choose an Option From the Tree's Menu");
                 int op=sc.nextInt();
             switch(op){
                 case 1:
@@ -517,8 +525,9 @@ public class Main{
                 break;
                 case 2:
                 System.out.println("Choose the traversal you like");
-                System.out.println("1.BFS(Level Order)");
-                System.out.println("2.DFS(Depth Wise)");
+                System.out.println("1. BFS(Level Wise)");
+                System.out.println("2. DFS(Depth Wise)");
+                System.out.println("3. Back to Tree's Menu");
                 int choice =sc.nextInt();
                 switch(choice){
                     case 1:
@@ -530,8 +539,11 @@ public class Main{
                     break;
                     case 2:
                     List<Integer> dfs=new ArrayList<>();
-                    System.out.println("Choose any 1 DFS Technique From the Below Listed Travarsels");
-                    System.out.println("1.PreOrder Traversal\n2.InOrder Traversal\n3.PostOrder Traversal");
+                    System.out.println("Choose a DFS Technique From the Below");
+                    System.out.println("1. PreOrder Traversal");
+                    System.out.println("2. InOrder Traversal");
+                    System.out.println("3. PostOrder Traversal");
+                    System.out.println("4. Back to Tree's Menu");
                     int dfsChoice=sc.nextInt();
                     switch(dfsChoice){
                         case 1:
@@ -549,19 +561,24 @@ public class Main{
                         System.out.println("PostOrder Traversal ");
                         MyTree.printDFSTraversals(dfs);
                         break;
+                        case 4:
+                        break;
                         default:
                 System.out.println("Range of Input Integer's Provided For Operation is [1-3]");
                     }
                     break;
+                    case 3:
+                    break;
                     default:
-                System.out.println("Range of Input Integer's Provided For Operation is [1-2]");
+                System.out.println("Range of Input Integer's Provided For Operation is [1-3]");
             }
                 break;
                 case 3:
-                System.out.println("Choose any of these Special Traversal Techniques");
+                System.out.println("Choose a Special Traversal Technique From the Below");
                 System.out.println("1. Zig Zag Traversal");
                 System.out.println("2. Vertical Order Traversal");
                 System.out.println("3. Boundary Traversal");
+                System.out.println("4. Back to Tree's Menu");
                 int specChoice=sc.nextInt();
                 switch(specChoice){
                 case 1:
@@ -598,8 +615,9 @@ public class Main{
                 MyTree.printDFSTraversals(allBoundaries.get(2));
                 System.out.println("]"+"       ->"+"Right Boundary");
                 break;
+                case 4:
                 default:
-                System.out.println("Range of Input Integer's Provided For Operation is [1-3]");
+                System.out.println("Range of Input Integer's Provided For Operation is [1-4]");
                 }
                 break;
                 case 4:
@@ -626,12 +644,13 @@ public class Main{
                 MyTree.printDFSTraversals(path);
                 break;
                 case 8:
+                System.out.println("Choose any Tree View From the Below");
                 System.out.println("1. Top View");
                 System.out.println("2. Right View");
                 System.out.println("3. Bottom View");
                 System.out.println("4. Left View");
                 System.out.println("5. All Sides View");
-                System.out.println("Choose anyy View");
+                System.out.println("6. Back to Tree's Menu");
                 int view=sc.nextInt();
                 List<Integer> tView = null;
                 List<Integer> rView = null;
@@ -677,8 +696,10 @@ public class Main{
                     System.out.print(">Left View   ");
                     MyTree.printDFSTraversals(lView);
                     break;
+                    case 6:
+                    break;
                     default:
-                  System.out.println("Range of Input Integer's Provided For Operation is [1-5]");
+                  System.out.println("Range of Input Integer's Provided For Operation is [1-6]");
                 }
                 break;
                 case 9:

@@ -1,5 +1,6 @@
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Scanner;
-
 public class MyLinkedList {
     int data;
     MyLinkedList next;
@@ -220,6 +221,9 @@ public class MyLinkedList {
         return head;
     }
     public static void searchList(MyLinkedList head,int val){
+        if(head==null){
+            System.out.println("Empty List!");
+        }
         int pos=0;
         MyLinkedList temp=head;
         while(temp!=null){
@@ -263,5 +267,49 @@ public class MyLinkedList {
           temp=temp.next;
         }
         System.out.println("Position Out Of List Bounds");
+    }
+    public static void allOccs(MyLinkedList head,int val){
+        if(head==null){
+            System.out.println("Empty List!");
+        }
+        List<Integer> allOcc=new LinkedList<>();
+        int pos=0;
+        MyLinkedList temp=head;
+        while(temp!=null){
+            pos++;
+            if(temp.data==val){
+            allOcc.add(pos);
+            }
+            temp=temp.next;
+        }
+        if(!allOcc.isEmpty()){
+            System.out.println("Found Value "+val+" at");
+            for(int i=0;i<allOcc.size();i++){
+                if(i!=allOcc.size()-1){
+                    System.out.print("Position "+allOcc.get(i)+" | ");
+                }
+                else{
+                    System.out.println("Position "+allOcc.get(i));
+                }
+            }
+        }
+        else{
+            System.out.println("Element Not Found!");
+        }
+    }
+    public static void sumPro(MyLinkedList head){
+        if(head==null){
+            System.out.println("Empty List!");
+            return;
+        }
+        MyLinkedList temp=head;
+        long sum=0;
+        long prod=1;
+        while(temp!=null){
+        sum+=temp.data;
+        prod*=temp.data;
+        temp=temp.next;
+        }
+        System.out.println("Sum "+sum+" | Product "+prod);
     }
 }
