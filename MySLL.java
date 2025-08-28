@@ -1,35 +1,35 @@
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
-public class MyLinkedList {
+public class MySLL {
     int data;
-    MyLinkedList next;
-    public MyLinkedList(int val){
+    MySLL next;
+    public MySLL(int val){
         this.data=val;
         this.next=null;
     }
-    public MyLinkedList(int val,MyLinkedList node){
+    public MySLL(int val,MySLL node){
         this.data=val;
         this.next=node;
     }
-    public static MyLinkedList inputNodeValues(Scanner sc,MyLinkedList head){
+    public static MySLL inputNodeValues(Scanner sc,MySLL head){
         while(true){
             int value=sc.nextInt();
             if(value==-1){
                 break;
             }
-           head=MyLinkedList.createLinkedList(head,value);
+           head=MySLL.createLinkedList(head,value);
         }
         return head;
     }
     //creating the linked list
-    private static MyLinkedList createLinkedList(MyLinkedList node,int val){
-        MyLinkedList newNode=new MyLinkedList(val);
+    private static MySLL createLinkedList(MySLL node,int val){
+        MySLL newNode=new MySLL(val);
         if(node==null){
         node=newNode;
         return node;
         }
-        MyLinkedList temp=node;
+        MySLL temp=node;
         while(temp.next!=null){
             temp=temp.next;
         }
@@ -37,8 +37,8 @@ public class MyLinkedList {
         return node;
     }
     // printing the linked list
-    public static void printLinkedList(MyLinkedList head){
-        MyLinkedList temp=head;
+    public static void printLinkedList(MySLL head){
+        MySLL temp=head;
         System.out.println("== Curernt List Structure ==");
         while(temp!=null){
             System.out.print("["+temp.data+"]"+" -> ");
@@ -48,10 +48,10 @@ public class MyLinkedList {
         System.out.println("== List Summary ==");
         listSummary(head);
     }
-    private static void listSummary(MyLinkedList head){
+    private static void listSummary(MySLL head){
         int length =listSize(head);
         //String isEmpty=length!=0?"No":"Yes";
-        MyLinkedList middleNode=middleNode(head);
+        MySLL middleNode=middleNode(head);
         System.out.print("Length: "+length);
         if(middleNode!=null){
             System.out.print(" | Middle Node: "+middleNode.data);
@@ -66,20 +66,20 @@ public class MyLinkedList {
             System.out.println(" | Empty: Nope");
         }
     }
-    private static MyLinkedList middleNode(MyLinkedList head){
+    private static MySLL middleNode(MySLL head){
         if(head == null || head.next==null){
             return head;
         }
-        MyLinkedList slow=head;
-        MyLinkedList fast=head;
+        MySLL slow=head;
+        MySLL fast=head;
         while(fast!=null && fast.next!=null){
             slow=slow.next;
             fast=fast.next.next;
         }
         return slow;
     }
-    protected static int listSize(MyLinkedList head){
-        MyLinkedList temp=head;
+    protected static int listSize(MySLL head){
+        MySLL temp=head;
         int cnt=0;
         while(temp!=null){
             cnt++;
@@ -88,10 +88,10 @@ public class MyLinkedList {
         return cnt;
     }
     // reversing the linked list
-    public static MyLinkedList reverseLinkedList(MyLinkedList head){
-        MyLinkedList previousNode=null;
-        MyLinkedList afterNode=null;
-        MyLinkedList temp=head;
+    public static MySLL reverseLinkedList(MySLL head){
+        MySLL previousNode=null;
+        MySLL afterNode=null;
+        MySLL temp=head;
         while(temp!=null){
             afterNode=temp.next;
             temp.next=previousNode;
@@ -101,40 +101,40 @@ public class MyLinkedList {
         return previousNode;
     }
     //Insertions on Linked list
-   public static MyLinkedList insertAtHead(MyLinkedList head,int newele){
-    MyLinkedList newHead=new MyLinkedList(newele,head);
+   public static MySLL insertAtHead(MySLL head,int newele){
+    MySLL newHead=new MySLL(newele,head);
    return newHead;
    }
-   public static MyLinkedList insertAtTail(MyLinkedList head,int newele){
-    MyLinkedList newTail=new MyLinkedList(newele);
+   public static MySLL insertAtTail(MySLL head,int newele){
+    MySLL newTail=new MySLL(newele);
     if(head==null){
         return newTail;
     }
-    MyLinkedList temp=head;
+    MySLL temp=head;
     while(temp.next!=null){
             temp=temp.next;
         }
         temp.next=newTail;
    return head;
    }
-   public static MyLinkedList insertAtK(MyLinkedList head,int k,int newele){
+   public static MySLL insertAtK(MySLL head,int k,int newele){
     if(head==null){
         if(k==1){
-         MyLinkedList newNode=new MyLinkedList(newele);
+         MySLL newNode=new MySLL(newele);
         return newNode;
         }
         return head;
     }
     if(k==1){
-        MyLinkedList newNode=new MyLinkedList(newele,head);
+        MySLL newNode=new MySLL(newele,head);
         return newNode;
     }
-    MyLinkedList temp=head;
+    MySLL temp=head;
      int cnt=0;
     while(temp!=null){
         cnt++;
         if(cnt==(k-1)){
-            MyLinkedList newNode=new MyLinkedList(newele,temp.next);
+            MySLL newNode=new MySLL(newele,temp.next);
             temp.next=newNode;
             break;
         }       
@@ -143,27 +143,27 @@ public class MyLinkedList {
     return head;
    }
    // Delitions on linked list
-   public static MyLinkedList deleteHead(MyLinkedList head){
+   public static MySLL deleteHead(MySLL head){
     if(head==null || head.next==null){
         System.out.println("Oh Man there's no element after this operation the list is Empty");
         return null;
     }
-    MyLinkedList newHead=head.next;
+    MySLL newHead=head.next;
     return newHead;
    }
-   public static MyLinkedList deleteTail(MyLinkedList head){
+   public static MySLL deleteTail(MySLL head){
     if(head==null || head.next==null){
         System.out.println("Oh Man there will be no element after this operation the list goes empty(Insert and again perform these Deletions)");
         return null;
     }
-    MyLinkedList temp=head;
+    MySLL temp=head;
     while(temp.next.next!=null){
      temp=temp.next;
     }
     temp.next=null;
     return head;
    }
-   public static MyLinkedList deleteAtK(MyLinkedList head,int k){
+   public static MySLL deleteAtK(MySLL head,int k){
     if(head==null){
      System.out.println("Oh Man there's no element after this operation the list is Empty");
      return head;
@@ -174,7 +174,7 @@ public class MyLinkedList {
     }
     else{
     int cnt=0;
-    MyLinkedList temp=head;
+    MySLL temp=head;
     while(temp!=null){
         cnt++;
         if(cnt==(k-1)){
@@ -186,7 +186,7 @@ public class MyLinkedList {
     }
     return head;
    }
-   public static MyLinkedList deleteNodeK(MyLinkedList head,int val){
+   public static MySLL deleteNodeK(MySLL head,int val){
     if (head == null){
        return null; 
     }
@@ -194,7 +194,7 @@ public class MyLinkedList {
         return null;
     }
     else{
-        MyLinkedList temp=head;
+        MySLL temp=head;
         while(temp!=null && temp.next!=null){
             if(temp.next.data==val){
                 temp.next=temp.next.next;
@@ -204,13 +204,13 @@ public class MyLinkedList {
     }
     return head;
    }
-   public static MyLinkedList deleteMiddleNode(MyLinkedList head){
+   public static MySLL deleteMiddleNode(MySLL head){
         if(head == null || head.next==null){
             return null;
         }
-        MyLinkedList nodeBeforeMiddle=null;
-        MyLinkedList slow=head;
-        MyLinkedList fast=head;
+        MySLL nodeBeforeMiddle=null;
+        MySLL slow=head;
+        MySLL fast=head;
         while(fast!=null && fast.next!=null){
             nodeBeforeMiddle=slow;
             slow=slow.next;
@@ -220,12 +220,12 @@ public class MyLinkedList {
         slow.next=null;
         return head;
     }
-    public static void searchList(MyLinkedList head,int val){
+    public static void searchList(MySLL head,int val){
         if(head==null){
             System.out.println("Empty List!");
         }
         int pos=0;
-        MyLinkedList temp=head;
+        MySLL temp=head;
         while(temp!=null){
             pos++;
             if(temp.data==val){
@@ -236,14 +236,14 @@ public class MyLinkedList {
         }
         System.out.println("Node With Value "+val+" Not Found");
     }
-    public static void lgInList(MyLinkedList head){
+    public static void lgInList(MySLL head){
         if(head==null){
             System.out.println("Max and Min Not Found Empty List!");
             return;
         }
         int maxi=Integer.MIN_VALUE;
         int mini=Integer.MAX_VALUE;
-        MyLinkedList temp=head;
+        MySLL temp=head;
         while(temp!=null){
             maxi=Math.max(maxi,temp.data);
             mini=Math.min(temp.data, mini);
@@ -251,18 +251,18 @@ public class MyLinkedList {
         }
         System.out.println("Max Value "+maxi+" | "+"Min Value "+mini);
     }
-    public static void nThElement(MyLinkedList head,Scanner sc){
+    public static void nThElement(MySLL head,Scanner sc){
         if(head==null){
             System.out.println("List is Empty");
             return;
         }
         System.out.println("Enter the Nth Position");
         int nThPos=sc.nextInt();
-       if(nThPos>MyLinkedList.listSize(head)){
+       if(nThPos>MySLL.listSize(head)){
        System.out.println("Unable To Fetch the Position,Out of List Bounds");
       }
         int cnt=0;
-        MyLinkedList temp=head;
+        MySLL temp=head;
         while(temp!=null){
           cnt++;
           if(cnt==nThPos){
@@ -272,13 +272,13 @@ public class MyLinkedList {
           temp=temp.next;
         }
     }
-    public static void allOccs(MyLinkedList head,int val){
+    public static void allOccs(MySLL head,int val){
         if(head==null){
             System.out.println("Empty List!");
         }
         List<Integer> allOcc=new LinkedList<>();
         int pos=0;
-        MyLinkedList temp=head;
+        MySLL temp=head;
         while(temp!=null){
             pos++;
             if(temp.data==val){
@@ -301,12 +301,12 @@ public class MyLinkedList {
             System.out.println("Element Not Found!");
         }
     }
-    public static void sumPro(MyLinkedList head){
+    public static void sumPro(MySLL head){
         if(head==null){
             System.out.println("Empty List!");
             return;
         }
-        MyLinkedList temp=head;
+        MySLL temp=head;
         long sum=0;
         long prod=1;
         while(temp!=null){
@@ -316,13 +316,13 @@ public class MyLinkedList {
         }
         System.out.println("Sum "+sum+" | Product "+prod);
     }
-    public static MyLinkedList nodeBeforeMiddle(MyLinkedList head){
+    public static MySLL nodeBeforeMiddle(MySLL head){
         if(head == null || head.next==null){
             return null;
         }
-        MyLinkedList nodeBeforeMiddle=null;
-        MyLinkedList slow=head;
-        MyLinkedList fast=head;
+        MySLL nodeBeforeMiddle=null;
+        MySLL slow=head;
+        MySLL fast=head;
         while(fast!=null && fast.next!=null){
             nodeBeforeMiddle=slow;
             slow=slow.next;
@@ -330,11 +330,11 @@ public class MyLinkedList {
         }
         return nodeBeforeMiddle;
     }
-    private static MyLinkedList mergeTwoLists(MyLinkedList list1, MyLinkedList list2) {
-        MyLinkedList left=list1;
-        MyLinkedList right=list2;
-        MyLinkedList dummy=new MyLinkedList(-1);
-        MyLinkedList current=dummy;
+    private static MySLL mergeTwoLists(MySLL list1, MySLL list2) {
+        MySLL left=list1;
+        MySLL right=list2;
+        MySLL dummy=new MySLL(-1);
+        MySLL current=dummy;
         while(left!=null && right!=null){
             if(left.data<=right.data){
                 current.next=left;
@@ -353,32 +353,32 @@ public class MyLinkedList {
         else{current.next=right;}
         return dummy.next;
     }
-    public static MyLinkedList sortList(MyLinkedList head){
+    public static MySLL sortList(MySLL head){
       if(head==null || head.next==null){
         return head;
       }
-      MyLinkedList nodeBeforeMiddle=nodeBeforeMiddle(head);
-      MyLinkedList leftHead=head;
-      MyLinkedList rightHead=nodeBeforeMiddle.next;
+      MySLL nodeBeforeMiddle=nodeBeforeMiddle(head);
+      MySLL leftHead=head;
+      MySLL rightHead=nodeBeforeMiddle.next;
       nodeBeforeMiddle.next=null;
       leftHead=sortList(leftHead);
       rightHead=sortList(rightHead);
       return mergeTwoLists(leftHead,rightHead);
     }
-    public static void updateValue(MyLinkedList head,Scanner sc){
+    public static void updateValue(MySLL head,Scanner sc){
         if(head==null){
             System.out.println("List is Empty!");
             return;
         }
         System.out.println("Enter the Position");
         int updPos=sc.nextInt();
-        if(updPos>MyLinkedList.listSize(head)){
+        if(updPos>MySLL.listSize(head)){
         System.out.println("Unable To Fetch the Position,MayBe Out of List Bounds!");
          }
         else{
         System.out.println("Enter the New Value to be Updated");
         int updVal=sc.nextInt();
-        MyLinkedList temp=head;
+        MySLL temp=head;
         int pos=0;
         while(temp!=null){
         pos++;

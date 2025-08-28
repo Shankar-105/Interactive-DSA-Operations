@@ -20,7 +20,7 @@ public class Main{
         }
     }
     private static void handleSLL(Scanner sc){
-            MyLinkedList head=null;
+            MySLL head=null;
             System.out.println("Welcome to Linked List Operations");
             System.out.println("1.  Create a Linked List");
             System.out.println("2.  Insertion Operations");
@@ -38,7 +38,7 @@ public class Main{
             case 1:
             System.out.println("Enter the values of each Node in the Linked List(Enter -1 to Stop)");
             head=null;
-            head=MyLinkedList.inputNodeValues(sc,head);
+            head=MySLL.inputNodeValues(sc,head);
             System.out.println("Linked List Created");
             break;
             case 2:
@@ -52,13 +52,13 @@ public class Main{
             case 1:
             System.out.println("Enter the Value to be Inserted at the beginning");
             int valSt=sc.nextInt();
-            head=MyLinkedList.insertAtHead(head,valSt);
+            head=MySLL.insertAtHead(head,valSt);
             System.out.println("Successfully pushed at the Beginning:)");
             break;
             case 2:
             System.out.println("Enter the Value to be Inserted at the end");
             int valEnd=sc.nextInt();
-            head=MyLinkedList.insertAtTail(head,valEnd);
+            head=MySLL.insertAtTail(head,valEnd);
             System.out.println("Successfully appended:)");
             break;
             case 3:
@@ -66,7 +66,7 @@ public class Main{
             int posK=sc.nextInt();
             System.err.println("Enter the Value");
             int valK=sc.nextInt();
-            head=MyLinkedList.insertAtK(head,posK,valK);
+            head=MySLL.insertAtK(head,posK,valK);
             System.out.println("Pushed in Between Nodes "+(posK-1)+" and "+(posK));
             System.out.println("Wanna look at the List(Click 9)");
             break;
@@ -86,23 +86,23 @@ public class Main{
             int delOp=sc.nextInt();
             switch(delOp){
             case 1:
-            head=MyLinkedList.deleteHead(head);
+            head=MySLL.deleteHead(head);
             System.out.println("Deleted The Head.\nWanna See the Change(Click 10)");
             break;
             case 2:
-            head=MyLinkedList.deleteTail(head);
+            head=MySLL.deleteTail(head);
             System.out.println("Removed:)");
             break;
             case 3:
             System.out.println("Enter the position K");
             int delposK=sc.nextInt();
-            head=MyLinkedList.deleteAtK(head,delposK);
+            head=MySLL.deleteAtK(head,delposK);
             System.out.println("The Node at position "+delposK+" is removed<<\nHave A Look at the List for Better Experiance.");
             break;
             case 4:
             System.out.println("Enter the Value of the Node to be deleted");
             int nodeVal=sc.nextInt();
-            head=MyLinkedList.deleteNodeK(head,nodeVal);
+            head=MySLL.deleteNodeK(head,nodeVal);
             System.out.println("Node With Value "+nodeVal+" is removed:)");
             break;
             case 5:
@@ -123,16 +123,16 @@ public class Main{
                 case 1:
                 System.out.println("Enter the Value to Search for");
                 int seaVal=sc.nextInt();
-                MyLinkedList.searchList(head, seaVal);
+                MySLL.searchList(head, seaVal);
                 break;
                 case 2:
-                MyLinkedList.lgInList(head);
+                MySLL.lgInList(head);
                 break;
                 case 3:
-                MyLinkedList.sumPro(head);
+                MySLL.sumPro(head);
                 break;
                 case 4:
-                MyLinkedList.updateValue(head,sc);
+                MySLL.updateValue(head,sc);
                 break;
                 case 5:
                 break;
@@ -149,16 +149,16 @@ public class Main{
             int posOps=sc.nextInt();
             switch(posOps){
                 case 1:
-                MyLinkedList.deleteMiddleNode(head);
+                MySLL.deleteMiddleNode(head);
                 System.out.println("Middle Node Deleted");
                 break;
                 case 2:
-                MyLinkedList.nThElement(head, sc);
+                MySLL.nThElement(head, sc);
                 break;
                 case 3:
                 System.out.println("Enter a Value");
                 int val=sc.nextInt();
-                MyLinkedList.allOccs(head,val);
+                MySLL.allOccs(head,val);
                 break;
                 case 4:
                 break;
@@ -174,11 +174,11 @@ public class Main{
             int advOp=sc.nextInt();
             switch(advOp){
                 case 1:
-                head=MyLinkedList.reverseLinkedList(head);
+                head=MySLL.reverseLinkedList(head);
                 System.out.println("Oops You Just Performed the Reverse Operation...The List gets Changed Entirely have a look at it...");
                 break;
                 case 2:
-                head=MyLinkedList.sortList(head);
+                head=MySLL.sortList(head);
                 System.out.println("List Sorted!");
                 break;
                 case 3:
@@ -188,7 +188,7 @@ public class Main{
             }
            break;
            case 10:
-            MyLinkedList.printLinkedList(head);
+            MySLL.printLinkedList(head);
             break;
             case 11:
             head=null;
