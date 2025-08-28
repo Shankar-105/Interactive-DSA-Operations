@@ -430,4 +430,32 @@ public static MyDLL inputNodes(Scanner sc,MyDLL head){
         }
     }
     }
+    public static void zigZagDisplay(MyDLL head) {
+    if (head == null) {
+        System.out.print("List is Empty");
+        return;
+    }
+    MyDLL temp = head;
+    while (temp.next != null) {
+        temp = temp.next;
+    }
+    MyDLL dummyHead = head;
+    MyDLL tail = temp;
+    boolean toggle = true;
+    while (true) {
+        if (dummyHead == tail) {
+            System.out.print("[" + dummyHead.data + "]");
+            
+            return;
+        } else if (toggle == true) {
+            System.out.print("[" + dummyHead.data + "]" + " <-> ");
+            dummyHead = dummyHead.next;
+        } 
+        else {
+            System.out.print("[" + tail.data + "]" + " <-> ");
+            tail = tail.prev;
+        }
+        toggle = !toggle;
+    }
+}
 }
