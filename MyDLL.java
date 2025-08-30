@@ -458,4 +458,78 @@ public static MyDLL inputNodes(Scanner sc,MyDLL head){
         toggle = !toggle;
     }
 }
+public static MyDLL rotateClockwise(MyDLL head, int k) {
+    if (head == null || head.next == null || k == 0) {
+        return head;
+    }
+    int size = listSize(head);
+    k = k % size;
+    if (k == 0) {
+        return head;
+    }
+    int stepsToNewTail = size - k;
+    MyDLL newTail = head;
+    while (stepsToNewTail > 1) {
+        newTail = newTail.next;
+        stepsToNewTail--;
+    }
+    MyDLL newHead = newTail.next;
+    newTail.next = null;
+    newHead.prev = null;
+
+    MyDLL tail = newHead;
+    while (tail.next != null) {
+        tail = tail.next;
+    }
+    tail.next = head;
+    head.prev = tail;
+
+    return newHead;
+}
+public static MyDLL rotateAntiClockwise(MyDLL head, int k) {
+    if (head == null || head.next == null || k == 0) {
+        return head;
+    }
+    int size = listSize(head);
+    k = k % size;
+    if (k == 0) {
+        return head;
+    }
+    MyDLL newTail = head;
+    while (k > 1) {
+        newTail = newTail.next;
+        k--;
+    }
+    MyDLL newHead = newTail.next;
+    newTail.next = null;
+    newHead.prev = null;
+
+    MyDLL tail = newHead;
+    while (tail.next != null) {
+        tail = tail.next;
+    }
+    tail.next = head;
+    head.prev = tail;
+    return newHead;
+}
+public static MyDLL shuffleList(MyDLL head) {
+    if (head == null || head.next == null) {
+        return head;
+    }
+    List<MyDLL> nodes = new ArrayList<>();
+    MyDLL temp = head;
+    while (temp != null) {
+        nodes.add(temp);
+        temp = temp.next;
+    }
+    // Fisher Yates Shuffle
+    Collections.shuffle(nodes);
+    for (int i = 0; i < nodes.size() - 1; i++) {
+        nodes.get(i).next = nodes.get(i+1);
+        nodes.get(i+1).prev = nodes.get(i);
+    }
+    nodes.get(nodes.size()-1).next = null;
+    nodes.get(0).prev = null;
+    return nodes.get(0);
+}
 }

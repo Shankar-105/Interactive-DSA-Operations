@@ -326,7 +326,8 @@ public class Main{
             System.out.println("2. Max and Min Values in the List");
             System.out.println("3. Sum of All the Elements in the List");
             System.out.println("4. Update Node Value at Nth Position");
-            System.out.println("5. Back to DLL Menu");
+            System.out.println("5. Shuffle the List");
+            System.out.println("6. Back to DLL Menu");
             System.out.println("Choose an Option From the DLL's Freindly Menu");
             int freindlyOps=sc.nextInt();
             switch(freindlyOps){
@@ -345,6 +346,9 @@ public class Main{
                 MyDLL.updateValue(head, sc);
                 break;
                 case 5:
+                head=MyDLL.shuffleList(head);
+                break;
+                case 6:
                 break;
                 default:
                 System.out.println("Range of Input Integer's Provided For Operation is [1-4]");
@@ -397,10 +401,16 @@ public class Main{
                 int roatateOp=sc.nextInt();
                 switch(roatateOp){
                     case 1:
-                    // rotate right 
+                    System.out.println("Enter number of ClockWise Roatations K");
+                    int rotateRightByK=sc.nextInt();
+                    head=MyDLL.rotateClockwise(head, rotateRightByK);
+                    System.out.println("Right Rotation Done!");
                     break;
                     case 2:
-                    // rotate left
+                    System.out.println("Enter number of Counter ClockWise Roatations K");
+                    int rotateLeftByK=sc.nextInt();
+                    head=MyDLL.rotateClockwise(head, rotateLeftByK);
+                    System.out.println("Left Rotation Done!");
                     break;
                 }
                 break;

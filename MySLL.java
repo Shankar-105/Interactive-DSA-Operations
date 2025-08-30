@@ -450,6 +450,7 @@ public static MySLL shuffleList(MySLL head) {
             nodes.add(temp);
             temp = temp.next;
         }
+        // Fisher Yates Shuffle
         Collections.shuffle(nodes);
         for (int i = 0; i < nodes.size() - 1; i++) {
             nodes.get(i).next = nodes.get(i+1);
