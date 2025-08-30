@@ -117,7 +117,8 @@ public class Main{
             System.out.println("2. Max and Min Values in the List");
             System.out.println("3. Sum and Product of the List");
             System.out.println("4. Update Value at an Index N");
-            System.out.println("5. Back to List Menu");
+            System.out.println("5. Shuffle the Nodes in the List");
+            System.out.println("6. Back to List Menu");
             System.out.println("Choose an Option From the List's Freindly Menu");
             int freindlyOp=sc.nextInt();
             switch(freindlyOp){
@@ -136,6 +137,9 @@ public class Main{
                 MySLL.updateValue(head,sc);
                 break;
                 case 5:
+                head=MySLL.shuffleList(head);
+                break;
+                case 6:
                 break;
                 default:
                 System.out.println("Range of Input Integer's Provided For Operation is [1-4]");
@@ -189,10 +193,16 @@ public class Main{
                 int roatateOp=sc.nextInt();
                 switch(roatateOp){
                     case 1:
-                    // rotate right 
+                    System.out.println("Enter number of ClockWise Roatations K");
+                    int rotateRightByK=sc.nextInt();
+                    head=MySLL.rotateClockwise(head, rotateRightByK);
+                    System.out.println("Right Rotation Done!");
                     break;
                     case 2:
-                    // rotate left
+                    System.out.println("Enter number of Counter ClockWise Roatations K");
+                    int rotateLeftByK=sc.nextInt();
+                    head=MySLL.rotateClockwise(head, rotateLeftByK);
+                    System.out.println("Left Rotation Done!");
                     break;
                 }
                 break;

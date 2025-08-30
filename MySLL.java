@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
@@ -390,5 +392,69 @@ public class MySLL {
         temp=temp.next;
         }
     }
+    }
+    public static MySLL rotateClockwise(MySLL head, int k) {
+        if (head == null || head.next == null || k == 0) {
+            return head;
+        }
+        int size=listSize(head);
+        k = k % size;
+        if (k == 0){
+         return head;
+        }
+        int stepsToNewTail = size - k;
+        MySLL newTail = head;
+        while(stepsToNewTail>1){
+        newTail=newTail.next;
+        stepsToNewTail--;
+        }
+        MySLL newHead = newTail.next;
+        newTail.next = null;
+        MySLL tail =newHead;
+        while(tail.next!=null){
+           tail=tail.next;
+        }
+        tail.next = head;
+        return newHead;
+    }
+    public static MySLL rotateAntiClockwise(MySLL head, int k) {
+    if (head == null || head.next == null || k == 0) {
+        return head;
+    }
+    int size = listSize(head);
+    k = k % size;
+    if (k == 0) {
+        return head;
+    }
+    MySLL newTail = head;
+    while (k > 1) {
+        newTail = newTail.next;
+        k--;
+    }
+    MySLL newHead = newTail.next;
+    newTail.next = null;
+    MySLL tail = newHead;
+    while (tail.next != null) {
+        tail = tail.next;
+    }
+    tail.next = head;
+    return newHead;
+}
+public static MySLL shuffleList(MySLL head) {
+        if (head == null || head.next == null){
+         return head;
+        }
+        List<MySLL> nodes = new ArrayList<>();
+        MySLL temp = head;
+        while (temp != null) {
+            nodes.add(temp);
+            temp = temp.next;
+        }
+        Collections.shuffle(nodes);
+        for (int i = 0; i < nodes.size() - 1; i++) {
+            nodes.get(i).next = nodes.get(i+1);
+        }
+        nodes.get(nodes.size()-1).next = null;
+        return nodes.get(0);
     }
 }
