@@ -28,6 +28,7 @@ public class Main{
             System.out.println("4.  Freindly Operations");
             System.out.println("5.  Positional Operations");
             System.out.println("6.  Advanced Operations");
+            System.out.println("7.  Animated Traversal");
             System.out.println("10. Display the Linked List");
             System.out.println("11. Reset The List");
             System.out.println("12. Back to Main Menu");
@@ -116,7 +117,8 @@ public class Main{
             System.out.println("2. Max and Min Values in the List");
             System.out.println("3. Sum and Product of the List");
             System.out.println("4. Update Value at an Index N");
-            System.out.println("5. Back to List Menu");
+            System.out.println("5. Shuffle the Nodes in the List");
+            System.out.println("6. Back to List Menu");
             System.out.println("Choose an Option From the List's Freindly Menu");
             int freindlyOp=sc.nextInt();
             switch(freindlyOp){
@@ -135,6 +137,9 @@ public class Main{
                 MySLL.updateValue(head,sc);
                 break;
                 case 5:
+                head=MySLL.shuffleList(head);
+                break;
+                case 6:
                 break;
                 default:
                 System.out.println("Range of Input Integer's Provided For Operation is [1-4]");
@@ -169,7 +174,8 @@ public class Main{
             case 6:
             System.out.println("1. Reverse the List");
             System.out.println("2. Sort the List");
-            System.out.println("3. Back to List Menu");
+            System.out.println("3. Rotations on List");
+            System.out.println("4. Back to List Menu");
             System.out.println("Choose an Option From the List's Advanced Menu");
             int advOp=sc.nextInt();
             switch(advOp){
@@ -182,10 +188,32 @@ public class Main{
                 System.out.println("List Sorted!");
                 break;
                 case 3:
+                System.out.println("1. Rotate Right by K places (Clockwise Roatation)");
+                System.out.println("2. Rotate Left by K places (Anti-ClockWise Roatation)");
+                int roatateOp=sc.nextInt();
+                switch(roatateOp){
+                    case 1:
+                    System.out.println("Enter number of ClockWise Roatations K");
+                    int rotateRightByK=sc.nextInt();
+                    head=MySLL.rotateClockwise(head, rotateRightByK);
+                    System.out.println("Right Rotation Done!");
+                    break;
+                    case 2:
+                    System.out.println("Enter number of Counter ClockWise Roatations K");
+                    int rotateLeftByK=sc.nextInt();
+                    head=MySLL.rotateClockwise(head, rotateLeftByK);
+                    System.out.println("Left Rotation Done!");
+                    break;
+                }
+                break;
+                case 4:
                 break;
                 default:
                 System.out.println("Range of Input Integer's Provided For Operation is [1-3]");
             }
+           break;
+           case 7:
+           // animated traversal cmg soon
            break;
            case 10:
             MySLL.printLinkedList(head);
@@ -209,6 +237,7 @@ public class Main{
             System.out.println("4.  Freindly Operations");
             System.out.println("5.  Positional Operations");
             System.out.println("6.  Advanced Operations");
+            System.out.println("7.  Animated Traversals");
             System.out.println("10. Display the Linked List");
             System.out.println("11. Reset The List");
             System.out.println("12. Back to Main Menu");
@@ -297,7 +326,8 @@ public class Main{
             System.out.println("2. Max and Min Values in the List");
             System.out.println("3. Sum of All the Elements in the List");
             System.out.println("4. Update Node Value at Nth Position");
-            System.out.println("5. Back to DLL Menu");
+            System.out.println("5. Shuffle the List");
+            System.out.println("6. Back to DLL Menu");
             System.out.println("Choose an Option From the DLL's Freindly Menu");
             int freindlyOps=sc.nextInt();
             switch(freindlyOps){
@@ -316,6 +346,9 @@ public class Main{
                 MyDLL.updateValue(head, sc);
                 break;
                 case 5:
+                head=MyDLL.shuffleList(head);
+                break;
+                case 6:
                 break;
                 default:
                 System.out.println("Range of Input Integer's Provided For Operation is [1-4]");
@@ -349,6 +382,7 @@ public class Main{
             case 6:
             System.out.println("1. Reverse the List");
             System.out.println("2. Sort the List");
+            System.out.println("3. Rotations");
             System.out.println("3. Back to DLL Menu");
             System.out.println("Choose an Option From the DLL's Advanced Menu");
             int advOp=sc.nextInt();
@@ -362,9 +396,46 @@ public class Main{
                 System.out.println("List Sorted!");
                 break;
                 case 3:
+                System.out.println("1. Rotate Right by K places (Clockwise Roatation)");
+                System.out.println("2. Rotate Left by K places (Anti-ClockWise Roatation)");
+                int roatateOp=sc.nextInt();
+                switch(roatateOp){
+                    case 1:
+                    System.out.println("Enter number of ClockWise Roatations K");
+                    int rotateRightByK=sc.nextInt();
+                    head=MyDLL.rotateClockwise(head, rotateRightByK);
+                    System.out.println("Right Rotation Done!");
+                    break;
+                    case 2:
+                    System.out.println("Enter number of Counter ClockWise Roatations K");
+                    int rotateLeftByK=sc.nextInt();
+                    head=MyDLL.rotateClockwise(head, rotateLeftByK);
+                    System.out.println("Left Rotation Done!");
+                    break;
+                }
+                break;
+                case 4:
                 break;
                 default:
                 System.out.println("Range of Input Integer's Provided For Operation is [1-3]");
+            }
+            break;
+            case 7:
+            System.out.println("1. Forward Animated Traversal(Coming Soon)");
+            System.out.println("2. Backward Animated Traversal(Coming Soon)");
+            System.out.println("3. Zig Zag Animated Travresal(Coming Soon)");
+            System.out.println("Select any of the Above");
+            int traOp=sc.nextInt();
+            switch(traOp){
+                case 1:
+                //animated forward traversal
+                break;
+                case 2:
+                //animated backward traversal
+                break;
+                case 3:
+                MyDLL.zigZagDisplay(head);
+                System.out.println();
             }
             break;
             case 10:
