@@ -532,4 +532,36 @@ public static MyDLL shuffleList(MyDLL head) {
     nodes.get(0).prev = null;
     return nodes.get(0);
 }
+public static void animatedForwardTraversal(MyDLL head){
+        MyDLL temp=head;
+        System.out.print("[NULL] <- ");
+        while(temp!=null){
+            if(temp.next==null){
+                System.out.print("["+temp.data+"]"+" -> ");
+            }
+            else{
+                System.out.print("["+temp.data+"]"+" <-> ");
+            }
+            temp=temp.next;
+        }
+        System.out.println("[NULL]");
+    }
+    public static void animatedBackwardTraversal(MyDLL head){
+        MyDLL temp=head;
+        while(temp.next!=null){
+            temp=temp.next;
+        }
+        MyDLL tail=temp;
+        System.out.print("[NULL] <- ");
+        while(tail!=null){
+            if(tail.prev==null){
+                System.out.print("["+tail.data+"]"+" -> ");
+            }
+            else{
+                System.out.print("["+tail.data+"]"+" <-> ");
+            }
+            tail=tail.prev;
+        }
+        System.out.println("[NULL]");
+    }
 }

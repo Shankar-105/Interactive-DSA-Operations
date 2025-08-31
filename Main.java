@@ -81,7 +81,7 @@ public class Main{
             System.out.println("1.  Delete the First Node(Element)");
             System.out.println("2.  Delete the Last Node(Element)");
             System.out.println("3.  Delete the Node(Element) at Kth Position From the Begininng");
-            System.out.println("4.  Delete the Node(Element) with the Value K From the Begininng");
+            System.out.println("4.  Delete the Node(Element) with the Value K");
             System.out.println("5.  Back to List Menu");
             System.out.println("Choose an Option From the List's Deletion Menu");
             int delOp=sc.nextInt();
@@ -142,7 +142,7 @@ public class Main{
                 case 6:
                 break;
                 default:
-                System.out.println("Range of Input Integer's Provided For Operation is [1-4]");
+                System.out.println("Range of Input Integer's Provided For Operation is [1-6]");
             }
             break;
             case 5:
@@ -154,7 +154,7 @@ public class Main{
             int posOps=sc.nextInt();
             switch(posOps){
                 case 1:
-                MySLL.deleteMiddleNode(head);
+                head=MySLL.deleteMiddleNode(head);
                 System.out.println("Middle Node Deleted");
                 break;
                 case 2:
@@ -190,6 +190,7 @@ public class Main{
                 case 3:
                 System.out.println("1. Rotate Right by K places (Clockwise Roatation)");
                 System.out.println("2. Rotate Left by K places (Anti-ClockWise Roatation)");
+                System.out.println("3. Back to List Menu");
                 int roatateOp=sc.nextInt();
                 switch(roatateOp){
                     case 1:
@@ -204,22 +205,44 @@ public class Main{
                     head=MySLL.rotateClockwise(head, rotateLeftByK);
                     System.out.println("Left Rotation Done!");
                     break;
+                    case 3:
+                    break;
+                    default:
+                    System.out.println("Range of Input Integer's Provided For Operation is [1-3]");
                 }
                 break;
                 case 4:
                 break;
                 default:
-                System.out.println("Range of Input Integer's Provided For Operation is [1-3]");
+                System.out.println("Range of Input Integer's Provided For Operation is [1-4]");
             }
            break;
            case 7:
-           // animated traversal cmg soon
-           break;
+            System.out.println("1. Forward Animated Traversal(Coming Soon)");
+            System.out.println("2. Split the List At a Position with their Animated Traversal(Coming Soon)");
+            System.out.println("3. Back to List Menu");
+            System.out.println("Select any of the Above");
+            int traOp=sc.nextInt();
+            switch(traOp){
+                case 1:
+                //MySLL.animatedForwardTraversal(head);
+                //animation cmg soon
+                break;
+                case 2:
+                //split
+                break;
+                case 3:
+                break;
+                default:
+                System.out.println("Range of Input Integer's Provided For Operation is [1-3]");
+            }
+            break;
            case 10:
             MySLL.printLinkedList(head);
             break;
             case 11:
             head=null;
+            System.out.println("Reset Done!");
             break;
             case 12:
             return;
@@ -424,18 +447,27 @@ public class Main{
             System.out.println("1. Forward Animated Traversal(Coming Soon)");
             System.out.println("2. Backward Animated Traversal(Coming Soon)");
             System.out.println("3. Zig Zag Animated Travresal(Coming Soon)");
+            System.out.println("4. Split the List At a Position with their Animated Traversal(Coming Soon)");
             System.out.println("Select any of the Above");
             int traOp=sc.nextInt();
             switch(traOp){
                 case 1:
-                //animated forward traversal
+                MyDLL.animatedForwardTraversal(head);
+                //animation cmg soon
                 break;
                 case 2:
-                //animated backward traversal
+                MyDLL.animatedBackwardTraversal(head);
+                //animation cmg soon
                 break;
                 case 3:
                 MyDLL.zigZagDisplay(head);
                 System.out.println();
+                //animation cmg soon
+                break;
+                case 4:
+                //split
+                //animation cmg soon
+                break;
             }
             break;
             case 10:
