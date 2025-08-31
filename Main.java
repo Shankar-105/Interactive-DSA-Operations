@@ -1,7 +1,7 @@
 import java.util.*;
 public class Main{
     public static void handleLinkedLists(Scanner sc){
-        System.out.println("Select >");
+        System.out.println("Select Any List");
         System.out.println("1. Singly Linked List");
         System.out.println("2. Doubly Linked List");
         System.out.println("3. Back to Main Menu");
@@ -22,14 +22,14 @@ public class Main{
     private static void handleSLL(Scanner sc){
             MySLL head=null;
             System.out.println("Welcome to Linked List Operations");
-            System.out.println("1.  Create a Linked List");
+            System.out.println("1.  Create a Singly Linked List");
             System.out.println("2.  Insertion Operations");
             System.out.println("3.  Deletion Operations");
             System.out.println("4.  Freindly Operations");
             System.out.println("5.  Positional Operations");
             System.out.println("6.  Advanced Operations");
-            System.out.println("7.  Animated Traversal");
-            System.out.println("10. Display the Linked List");
+            System.out.println("7.  Animated Traversals");
+            System.out.println("10. Display the Singly Linked List");
             System.out.println("11. Reset The List");
             System.out.println("12. Back to Main Menu");
             while(true){
@@ -40,7 +40,7 @@ public class Main{
             System.out.println("Enter the values of each Node in the Linked List(Enter -1 to Stop)");
             head=null;
             head=MySLL.inputNodeValues(sc,head);
-            System.out.println("Linked List Created");
+            System.out.println("Singly Linked List Created");
             break;
             case 2:
             System.out.println("1. Insert at the Beginning");
@@ -51,7 +51,7 @@ public class Main{
             int insOp=sc.nextInt();
             switch(insOp){
             case 1:
-            System.out.println("Enter the Value to be Inserted at the beginning");
+            System.out.println("Enter the Value to be Inserted at the Beginning");
             int valSt=sc.nextInt();
             head=MySLL.insertAtHead(head,valSt);
             System.out.println("Successfully pushed at the Beginning:)");
@@ -69,12 +69,12 @@ public class Main{
             int valK=sc.nextInt();
             head=MySLL.insertAtK(head,posK,valK);
             System.out.println("Pushed in Between Nodes "+(posK-1)+" and "+(posK));
-            System.out.println("Wanna look at the List(Click 9)");
+            System.out.println("Wanna look at the List(Click 10)");
             break;
             case 4:
             break;
             default:
-            System.out.println("Range of Input Integer's Provided For Operation is [1-4]");
+            System.out.println("Choice Out of Insertion Menu Range [1-4]");
             }
             break;
             case 3:
@@ -109,14 +109,14 @@ public class Main{
             case 5:
             break;
             default:
-            System.out.println("Range of Input Integer's Provided For Operation is [1-5]");
+            System.out.println("Choice Out of Deletion Menu Range [1-5]");
             }
             break;
             case 4:
             System.out.println("1. Search for a Value in the List");
             System.out.println("2. Max and Min Values in the List");
             System.out.println("3. Sum and Product of the List");
-            System.out.println("4. Update Value at an Index N");
+            System.out.println("4. Update Value at an Index K");
             System.out.println("5. Shuffle the Nodes in the List");
             System.out.println("6. Back to List Menu");
             System.out.println("Choose an Option From the List's Freindly Menu");
@@ -142,13 +142,13 @@ public class Main{
                 case 6:
                 break;
                 default:
-                System.out.println("Range of Input Integer's Provided For Operation is [1-6]");
-            }
+                System.out.println("Choice Out of Menu Range [1-6]"); 
+              }
             break;
             case 5:
             System.out.println("1. Delete Middle Node in the List");
             System.out.println("2. Get the Nth Element in the List");
-            System.out.println("3. All the Occurences where an Element is Present in the List");
+            System.out.println("3. All the Occurences of an Element in the List");
             System.out.println("4. Back to List Menu");
             System.out.println("Choose an Option From the List's Positional Menu");
             int posOps=sc.nextInt();
@@ -168,7 +168,7 @@ public class Main{
                 case 4:
                 break;
                 default:
-                System.out.println("Range of Input Integer's Provided For Operation is [1-4]");
+                System.out.println("Choice Out of Menu Range [1-4]");
             }
             break;
             case 6:
@@ -208,13 +208,14 @@ public class Main{
                     case 3:
                     break;
                     default:
-                    System.out.println("Range of Input Integer's Provided For Operation is [1-3]");
+                    System.out.println("Choice Out of Range [1-3]");
                 }
                 break;
                 case 4:
                 break;
                 default:
-                System.out.println("Range of Input Integer's Provided For Operation is [1-4]");
+                System.out.println("Choice Out of Menu Range [1-4]");
+                System.out.println("Backing to List Menu");
             }
            break;
            case 7:
@@ -225,7 +226,7 @@ public class Main{
             int traOp=sc.nextInt();
             switch(traOp){
                 case 1:
-                //MySLL.animatedForwardTraversal(head);
+                MySLL.animatedForwardTraversal(head);
                 //animation cmg soon
                 break;
                 case 2:
@@ -247,7 +248,7 @@ public class Main{
             case 12:
             return;
             default:
-           System.out.println("Range of Input Integer's Provided For Operation is [1-12]");
+           System.out.println("Choice Out of Menu Range [1-12]");
            }
         }
         }

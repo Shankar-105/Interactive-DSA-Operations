@@ -458,4 +458,18 @@ public static MySLL shuffleList(MySLL head) {
         nodes.get(nodes.size()-1).next = null;
         return nodes.get(0);
     }
+    public static void animatedForwardTraversal(MySLL head){
+        MySLL temp=head;
+        System.out.print("[NULL] <- ");
+        while(temp!=null){
+            if(temp.next==null){
+                System.out.print("["+temp.data+"]"+" -> ");
+            }
+            else{
+                System.out.print("["+temp.data+"]"+" <-> ");
+            }
+            temp=temp.next;
+        }
+        System.out.println("[NULL]");
+    }
 }
