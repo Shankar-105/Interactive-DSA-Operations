@@ -472,4 +472,47 @@ public static MySLL shuffleList(MySLL head) {
         }
         System.out.println("[NULL]");
     }
+    public static void previewSplit(Scanner sc,MySLL head){   
+    if(head==null){
+        System.out.println("List is Empty");
+        return;
+    }
+    int size=listSize(head);
+    System.out.println("Split Position need to Range in between [1 to List Size)");
+    System.out.println("Current List Size:"+size);
+    System.out.println("Enter Split Position");
+    int splitAtK=sc.nextInt();
+    MySLL temp=head;
+    int cnt=0;
+    if(splitAtK>=size){
+        System.out.println("Out of Bounds");
+        return;
+    }
+    else{
+        while(temp!=null){
+        cnt++;
+        if(cnt==splitAtK){
+            assistPreviewSplit(head,temp.next);
+            break;
+        }
+        temp=temp.next;
+        }
+    }
+    System.out.println("This is Only a Traversal List Remains the same as Before!");
+    }
+    private static void assistPreviewSplit(MySLL head,MySLL newHead){
+        MySLL move=head;
+        System.out.println("First Half");
+            while(move.next!=newHead){
+                System.out.print("["+move.data+"]"+" -> ");
+                move=move.next;
+            }
+            System.out.println("["+move.data+"]");
+            System.out.println("Second Half");
+            while(newHead.next!=null){
+                System.out.print("["+newHead.data+"]"+" -> ");
+                newHead=newHead.next;
+            }
+            System.out.println("["+newHead.data+"]");
+    }
 }

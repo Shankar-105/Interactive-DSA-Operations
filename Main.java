@@ -219,8 +219,8 @@ public class Main{
             }
            break;
            case 7:
-            System.out.println("1. Forward Animated Traversal(Coming Soon)");
-            System.out.println("2. Split the List At a Position with their Animated Traversal(Coming Soon)");
+            System.out.println("1. Forward Animated Traversal");
+            System.out.println("2. Animated Split Traversal");
             System.out.println("3. Back to List Menu");
             System.out.println("Select any of the Above");
             int traOp=sc.nextInt();
@@ -230,6 +230,8 @@ public class Main{
                 //animation cmg soon
                 break;
                 case 2:
+                MySLL.previewSplit(sc,head);
+                //animation cmg soon
                 //split
                 break;
                 case 3:
