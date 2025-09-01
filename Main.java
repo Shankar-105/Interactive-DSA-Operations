@@ -213,6 +213,7 @@ public class Main{
                 }
                 break;
                 case 4:
+                head=MySLL.splitList(sc, head);
                 break;
                 case 5:
                 break;
