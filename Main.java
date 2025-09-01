@@ -175,7 +175,8 @@ public class Main{
             System.out.println("1. Reverse the List");
             System.out.println("2. Sort the List");
             System.out.println("3. Rotations on List");
-            System.out.println("4. Back to List Menu");
+            System.out.println("4. Split the List At a Value K");
+            System.out.println("5. Back to List Menu");
             System.out.println("Choose an Option From the List's Advanced Menu");
             int advOp=sc.nextInt();
             switch(advOp){
@@ -212,6 +213,8 @@ public class Main{
                 }
                 break;
                 case 4:
+                break;
+                case 5:
                 break;
                 default:
                 System.out.println("Choice Out of Menu Range [1-4]");
@@ -409,7 +412,8 @@ public class Main{
             System.out.println("1. Reverse the List");
             System.out.println("2. Sort the List");
             System.out.println("3. Rotations");
-            System.out.println("3. Back to DLL Menu");
+            System.out.println("4. Split the List At a Value");
+            System.out.println("5. Back to DLL Menu");
             System.out.println("Choose an Option From the DLL's Advanced Menu");
             int advOp=sc.nextInt();
             switch(advOp){
@@ -441,6 +445,9 @@ public class Main{
                 }
                 break;
                 case 4:
+                // split the list
+                break;
+                case 5:
                 break;
                 default:
                 System.out.println("Range of Input Integer's Provided For Operation is [1-3]");
@@ -450,7 +457,8 @@ public class Main{
             System.out.println("1. Forward Animated Traversal(Coming Soon)");
             System.out.println("2. Backward Animated Traversal(Coming Soon)");
             System.out.println("3. Zig Zag Animated Travresal(Coming Soon)");
-            System.out.println("4. Split the List At a Position with their Animated Traversal(Coming Soon)");
+            System.out.println("4. Animated Split Traversal");
+            System.out.println("5. Back to Main Menu");
             System.out.println("Select any of the Above");
             int traOp=sc.nextInt();
             switch(traOp){
@@ -468,8 +476,11 @@ public class Main{
                 //animation cmg soon
                 break;
                 case 4:
+                MyDLL.previewSplit(sc, head);
                 //split
                 //animation cmg soon
+                break;
+                case 5:
                 break;
             }
             break;
