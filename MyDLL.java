@@ -592,7 +592,6 @@ public static void animatedForwardTraversal(MyDLL head){
     }
     System.out.println("This is Only a Traversal List Remains the same as Before!");
 }
-
 private static void assistPreviewSplit(MyDLL head, MyDLL newHead) {
     MyDLL move = head;
     System.out.println("First Half");
@@ -637,7 +636,11 @@ private static MyDLL assistSplitListDLL(MyDLL head, MyDLL splitNode, Scanner sc)
     System.out.println("[" + move.data + "]");
     System.out.println("Second Half");
     MyDLL secMover = splitNode.next;
-    while (secMover!=null) {
+    if(secMover==null){
+        System.out.println("[NULL]");
+    }
+    else{
+        while (secMover!=null) {
         System.out.print("[" + secMover.data + "]");
         if (secMover.next != null){
             System.out.print(" <-> ");
@@ -645,31 +648,38 @@ private static MyDLL assistSplitListDLL(MyDLL head, MyDLL splitNode, Scanner sc)
         secMover = secMover.next;
     }
     System.out.println();
+    }
     System.out.println("Choose any of the Two Halves");
     System.out.println("Enter f to choose the first Half");
     System.out.println("Enter s to choose the second Half");
     System.out.println("Enter r to choose a random Half");
     System.out.print("choose (f/s/r): ");
-
-    String choice = sc.next(); 
+    String choice = sc.next().toLowerCase(); 
     int r;
     if (choice.equals("r")) {
-        r = ThreadLocalRandom.current().nextInt(1, 3);
-    } else if (choice.equals("f")) {
-        r = 1;
-    } else {
-        r = 2;
+        r=ThreadLocalRandom.current().nextInt(1, 3);
+    } 
+    else if(choice.equals("f")) {
+        r=1;
+    } 
+    else {
+        r=2;
     }
-    switch (r) {
+    switch(r){
         case 1:
-            MyDLL second = splitNode.next;
-            if (second != null) second.prev = null; 
+            if (splitNode.next!=null){
+            splitNode.next.prev=null;
+            } 
             splitNode.next = null;
             return head;
         case 2:
-            MyDLL newHead = splitNode.next;
-            if (newHead != null) newHead.prev = null; 
-            splitNode.next = null;
+            if (splitNode.next == null) {
+                System.out.println("Second half is EMPTY, returning null!");
+                return null;
+            }
+                MyDLL newHead = splitNode.next;
+                splitNode.next=null;
+                newHead.prev=null;
             return newHead;
     }
     return null;

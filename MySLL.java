@@ -516,65 +516,73 @@ public static MySLL shuffleList(MySLL head) {
             }
             System.out.println("["+newHead.data+"]");
     }
-    public static MySLL splitList(Scanner sc,MySLL head){   
-    if(head==null){
+public static MySLL splitList(Scanner sc, MySLL head) {   
+    if (head == null) {
         System.out.println("List is Empty");
         return null;
     }
-    //int size=listSize(head);
-    System.out.println("Enter the Value to be Split at<<<");
-    int splitAtK=sc.nextInt();
-    MySLL temp=head;
-    //int cnt=0;
-        while(temp!=null){
-        if(temp.data==splitAtK){
-            MySLL newHead=assistSplitList(head,temp,sc);
+    System.out.println("Enter the Value to be Split at <<<");
+    int splitAtK = sc.nextInt();
+    MySLL temp = head;
+    while (temp != null) {
+        if (temp.data == splitAtK) {
+            MySLL newHead = assistSplitList(head, temp, sc);
             return newHead;
         }
-        temp=temp.next;
-        }
+        temp = temp.next;
+    }
     System.out.println("Value Of Partition not found!");
     return head;
+}
+private static MySLL assistSplitList(MySLL head, MySLL splitNode, Scanner sc) {
+    System.out.println("First Half");
+    MySLL move = head;
+    while (move != splitNode) {
+        System.out.print("[" + move.data + "] -> ");
+        move = move.next;
     }
-    private static MySLL assistSplitList(MySLL head,MySLL splitNode,Scanner sc){
-        MySLL move=head;
-        System.out.println("First Half");
-            while(move!=splitNode){
-                System.out.print("["+move.data+"]"+" -> ");
-                move=move.next;
-            }
-            System.out.println("["+move.data+"]");
-            System.out.println("Second Half");
-            MySLL secMover=splitNode;
-            secMover=secMover.next;
-            while(secMover.next!=null){
-                System.out.print("["+secMover.data+"]"+" -> ");
-                secMover=secMover.next;
-            }
-            System.out.println("["+secMover.data+"]");
-
-            System.out.println("Choose any of the Two Halves");
-            System.out.println("Enter f to choose the first Half");
-            System.out.println("Enter s to choose the second Half");
-            System.out.println("Enter r to choose a random Half");
-            System.out.print("choose (f/s/r) ");
-            String choice=sc.next();
-            int r=0;
-
-            if(choice.equals("r")){
-            r=ThreadLocalRandom.current().nextInt(1,3);
-            }
-            else if(choice.equals("f")) r=1;
-            else r=2;
-            switch(r){
-                case 1:
-                splitNode.next=null;
-                return head;
-                case 2:
-                MySLL temp=splitNode.next;
-                splitNode.next=null;
-                return temp;
-            }
-            return null;
+    System.out.println("[" + move.data + "]");
+    System.out.println("Second Half");
+    if (splitNode.next == null) { 
+        System.out.println("[NULL]");
+    } 
+    else {
+        MySLL secMover = splitNode.next;
+        while (secMover.next != null) {
+            System.out.print("[" + secMover.data + "] -> ");
+            secMover = secMover.next;
+        }
+        System.out.println("[" + secMover.data + "]");
     }
+    System.out.println("Choose any of the Two Halves");
+    System.out.println("Enter f to choose the first Half");
+    System.out.println("Enter s to choose the second Half");
+    System.out.println("Enter r to choose a random Half");
+    System.out.print("choose (f/s/r): ");
+    String choice = sc.next();
+    int r = 0;
+    if (choice.equals("r")) {
+        r = ThreadLocalRandom.current().nextInt(1, 3); // 1 or 2
+    } 
+    else if (choice.equals("f")) {
+        r = 1;
+    } 
+    else {
+        r = 2;
+    }
+    switch (r) {
+        case 1:
+            splitNode.next = null;
+            return head;
+        case 2:
+            if (splitNode.next == null) {
+                System.out.println("Second half is EMPTY, returning null!");
+                return null;
+            }
+            MySLL temp = splitNode.next;
+            splitNode.next = null;
+            return temp;
+    }
+    return null;
+}
 }
