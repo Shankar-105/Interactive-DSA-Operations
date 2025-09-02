@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 public class MyDLL {
     int data;
     MyDLL next;
@@ -607,5 +608,70 @@ private static void assistPreviewSplit(MyDLL head, MyDLL newHead) {
         newHead = newHead.next;
     }
     System.out.println("[" + newHead.data + "]");
+}
+public static MyDLL splitListDLL(Scanner sc, MyDLL head) {
+    if (head == null) {
+        System.out.println("List is Empty");
+        return null;
+    }
+    System.out.println("Enter the Value to be Split at<<<");
+    int splitAtK = sc.nextInt();
+    MyDLL temp = head;
+    while (temp != null && temp.data != splitAtK) {
+        temp = temp.next;
+    }
+    if (temp == null) {
+        System.out.println("Value Of Partition not found!");
+        return head;
+    }
+    MyDLL newHead = assistSplitListDLL(head, temp, sc);
+    return newHead;
+}
+private static MyDLL assistSplitListDLL(MyDLL head, MyDLL splitNode, Scanner sc) {
+    System.out.println("First Half");
+    MyDLL move = head;
+    while (move != splitNode) {
+        System.out.print("[" + move.data + "] <-> ");
+        move = move.next;
+    }
+    System.out.println("[" + move.data + "]");
+    System.out.println("Second Half");
+    MyDLL secMover = splitNode.next;
+    while (secMover!=null) {
+        System.out.print("[" + secMover.data + "]");
+        if (secMover.next != null){
+            System.out.print(" <-> ");
+        }
+        secMover = secMover.next;
+    }
+    System.out.println();
+    System.out.println("Choose any of the Two Halves");
+    System.out.println("Enter f to choose the first Half");
+    System.out.println("Enter s to choose the second Half");
+    System.out.println("Enter r to choose a random Half");
+    System.out.print("choose (f/s/r): ");
+
+    String choice = sc.next(); 
+    int r;
+    if (choice.equals("r")) {
+        r = ThreadLocalRandom.current().nextInt(1, 3);
+    } else if (choice.equals("f")) {
+        r = 1;
+    } else {
+        r = 2;
+    }
+    switch (r) {
+        case 1:
+            MyDLL second = splitNode.next;
+            if (second != null) second.prev = null; 
+            splitNode.next = null;
+            return head;
+        case 2:
+            MyDLL newHead = splitNode.next;
+            if (newHead != null) newHead.prev = null; 
+            splitNode.next = null;
+            return newHead;
+    }
+    return null;
 }
 }

@@ -1,4 +1,3 @@
-import java.nio.file.SecureDirectoryStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
@@ -561,7 +560,7 @@ public static MySLL shuffleList(MySLL head) {
             System.out.print("choose (f/s/r) ");
             String choice=sc.next();
             int r=0;
-            
+
             if(choice.equals("r")){
             r=ThreadLocalRandom.current().nextInt(1,3);
             }

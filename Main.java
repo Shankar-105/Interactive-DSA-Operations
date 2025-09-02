@@ -446,6 +446,7 @@ public class Main{
                 }
                 break;
                 case 4:
+                MyDLL.splitListDLL(sc, head);
                 // split the list
                 break;
                 case 5:
