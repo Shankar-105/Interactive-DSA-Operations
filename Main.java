@@ -357,7 +357,8 @@ public class Main{
             System.out.println("3. Sum of All the Elements in the List");
             System.out.println("4. Update Node Value at Nth Position");
             System.out.println("5. Shuffle the List");
-            System.out.println("6. Back to DLL Menu");
+            System.out.println("6. Move to Next/Previous Node");
+            System.out.println("7. Back to DLL Menu");
             System.out.println("Choose an Option From the DLL's Freindly Menu");
             int freindlyOps=sc.nextInt();
             switch(freindlyOps){
@@ -379,6 +380,9 @@ public class Main{
                 head=MyDLL.shuffleList(head);
                 break;
                 case 6:
+                MyDLL.prevNxtNodes(head,sc);
+                break;
+                case 7:
                 break;
                 default:
                 System.out.println("Range of Input Integer's Provided For Operation is [1-4]");

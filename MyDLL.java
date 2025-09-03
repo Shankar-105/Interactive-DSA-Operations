@@ -684,4 +684,29 @@ private static MyDLL assistSplitListDLL(MyDLL head, MyDLL splitNode, Scanner sc)
     }
     return null;
 }
+public static void prevNxtNodes(MyDLL head,Scanner sc){
+    if(head==null){
+        System.out.println("List is Empty");
+    }
+    System.out.println("Select a Node");
+    MyDLL temp=head;
+    int choice=sc.nextInt();
+    while(temp!=null){
+    if(temp.data==choice){
+        if(temp.prev!=null){
+            System.out.print("Previous Node "+temp.prev.data+" |");
+        }
+        else System.out.print("NULL |");
+        System.out.print(" Current Node "+temp.data+" |");
+        if(temp.next!=null){
+            System.out.print(" Next Node "+temp.next.data);
+        }
+        else System.out.print("NULL");
+        System.out.println();
+        return;
+    }
+    temp=temp.next;
+    }
+    System.out.println("Node Not Found!");
+}
 }
