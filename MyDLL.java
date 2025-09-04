@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 public class MyDLL {
     int data;
     MyDLL next;
@@ -430,4 +431,282 @@ public static MyDLL inputNodes(Scanner sc,MyDLL head){
         }
     }
     }
+    public static void zigZagDisplay(MyDLL head) {
+    if (head == null) {
+        System.out.print("List is Empty");
+        return;
+    }
+    MyDLL temp = head;
+    while (temp.next != null) {
+        temp = temp.next;
+    }
+    MyDLL dummyHead = head;
+    MyDLL tail = temp;
+    boolean toggle = true;
+    while (true) {
+        if (dummyHead == tail) {
+            System.out.print("[" + dummyHead.data + "]");
+            
+            return;
+        } else if (toggle == true) {
+            System.out.print("[" + dummyHead.data + "]" + " <-> ");
+            dummyHead = dummyHead.next;
+        } 
+        else {
+            System.out.print("[" + tail.data + "]" + " <-> ");
+            tail = tail.prev;
+        }
+        toggle = !toggle;
+    }
+}
+public static MyDLL rotateClockwise(MyDLL head, int k) {
+    if (head == null || head.next == null || k == 0) {
+        return head;
+    }
+    int size = listSize(head);
+    k = k % size;
+    if (k == 0) {
+        return head;
+    }
+    int stepsToNewTail = size - k;
+    MyDLL newTail = head;
+    while (stepsToNewTail > 1) {
+        newTail = newTail.next;
+        stepsToNewTail--;
+    }
+    MyDLL newHead = newTail.next;
+    newTail.next = null;
+    newHead.prev = null;
+
+    MyDLL tail = newHead;
+    while (tail.next != null) {
+        tail = tail.next;
+    }
+    tail.next = head;
+    head.prev = tail;
+
+    return newHead;
+}
+public static MyDLL rotateAntiClockwise(MyDLL head, int k) {
+    if (head == null || head.next == null || k == 0) {
+        return head;
+    }
+    int size = listSize(head);
+    k = k % size;
+    if (k == 0) {
+        return head;
+    }
+    MyDLL newTail = head;
+    while (k > 1) {
+        newTail = newTail.next;
+        k--;
+    }
+    MyDLL newHead = newTail.next;
+    newTail.next = null;
+    newHead.prev = null;
+
+    MyDLL tail = newHead;
+    while (tail.next != null) {
+        tail = tail.next;
+    }
+    tail.next = head;
+    head.prev = tail;
+    return newHead;
+}
+public static MyDLL shuffleList(MyDLL head) {
+    if (head == null || head.next == null) {
+        return head;
+    }
+    List<MyDLL> nodes = new ArrayList<>();
+    MyDLL temp = head;
+    while (temp != null) {
+        nodes.add(temp);
+        temp = temp.next;
+    }
+    // Fisher Yates Shuffle
+    Collections.shuffle(nodes);
+    for (int i = 0; i < nodes.size() - 1; i++) {
+        nodes.get(i).next = nodes.get(i+1);
+        nodes.get(i+1).prev = nodes.get(i);
+    }
+    nodes.get(nodes.size()-1).next = null;
+    nodes.get(0).prev = null;
+    return nodes.get(0);
+}
+public static void animatedForwardTraversal(MyDLL head){
+        MyDLL temp=head;
+        System.out.print("[NULL] <- ");
+        while(temp!=null){
+            if(temp.next==null){
+                System.out.print("["+temp.data+"]"+" -> ");
+            }
+            else{
+                System.out.print("["+temp.data+"]"+" <-> ");
+            }
+            temp=temp.next;
+        }
+        System.out.println("[NULL]");
+    }
+    public static void animatedBackwardTraversal(MyDLL head){
+        MyDLL temp=head;
+        while(temp.next!=null){
+            temp=temp.next;
+        }
+        MyDLL tail=temp;
+        System.out.print("[NULL] <- ");
+        while(tail!=null){
+            if(tail.prev==null){
+                System.out.print("["+tail.data+"]"+" -> ");
+            }
+            else{
+                System.out.print("["+tail.data+"]"+" <-> ");
+            }
+            tail=tail.prev;
+        }
+        System.out.println("[NULL]");
+    }
+    public static void previewSplit(Scanner sc, MyDLL head) {   
+    if (head == null) {
+        System.out.println("List is Empty");
+        return;
+    }
+    int size = listSize(head);
+    System.out.println("Split Position need to Range in between [1 to List Size)");
+    System.out.println("Current List Size: " + size);
+    System.out.println("Enter Split Position");
+    int splitAtK = sc.nextInt();
+    MyDLL temp = head;
+    int cnt = 0;
+    if (splitAtK >= size) {
+        System.out.println("Out of Bounds");
+        return;
+    } else {
+        while (temp != null) {
+            cnt++;
+            if (cnt == splitAtK) {
+                assistPreviewSplit(head, temp.next);
+                break;
+            }
+            temp = temp.next;
+        }
+    }
+    System.out.println("This is Only a Traversal List Remains the same as Before!");
+}
+private static void assistPreviewSplit(MyDLL head, MyDLL newHead) {
+    MyDLL move = head;
+    System.out.println("First Half");
+    while (move.next != newHead) {
+        System.out.print("[" + move.data + "] <-> ");
+        move = move.next;
+    }
+    System.out.println("[" + move.data + "]");
+
+    System.out.println("Second Half");
+    while (newHead.next != null) {
+        System.out.print("[" + newHead.data + "] <-> ");
+        newHead = newHead.next;
+    }
+    System.out.println("[" + newHead.data + "]");
+}
+public static MyDLL splitListDLL(Scanner sc, MyDLL head) {
+    if (head == null) {
+        System.out.println("List is Empty");
+        return null;
+    }
+    System.out.println("Enter the Value to be Split at<<<");
+    int splitAtK = sc.nextInt();
+    MyDLL temp = head;
+    while (temp != null && temp.data != splitAtK) {
+        temp = temp.next;
+    }
+    if (temp == null) {
+        System.out.println("Value Of Partition not found!");
+        return head;
+    }
+    MyDLL newHead = assistSplitListDLL(head, temp, sc);
+    return newHead;
+}
+private static MyDLL assistSplitListDLL(MyDLL head, MyDLL splitNode, Scanner sc) {
+    System.out.println("First Half");
+    MyDLL move = head;
+    while (move != splitNode) {
+        System.out.print("[" + move.data + "] <-> ");
+        move = move.next;
+    }
+    System.out.println("[" + move.data + "]");
+    System.out.println("Second Half");
+    MyDLL secMover = splitNode.next;
+    if(secMover==null){
+        System.out.println("[NULL]");
+    }
+    else{
+        while (secMover!=null) {
+        System.out.print("[" + secMover.data + "]");
+        if (secMover.next != null){
+            System.out.print(" <-> ");
+        }
+        secMover = secMover.next;
+    }
+    System.out.println();
+    }
+    System.out.println("Choose any of the Two Halves");
+    System.out.println("Enter f to choose the first Half");
+    System.out.println("Enter s to choose the second Half");
+    System.out.println("Enter r to choose a random Half");
+    System.out.print("choose (f/s/r): ");
+    String choice = sc.next().toLowerCase(); 
+    int r;
+    if (choice.equals("r")) {
+        r=ThreadLocalRandom.current().nextInt(1, 3);
+    } 
+    else if(choice.equals("f")) {
+        r=1;
+    } 
+    else {
+        r=2;
+    }
+    switch(r){
+        case 1:
+            if (splitNode.next!=null){
+            splitNode.next.prev=null;
+            } 
+            splitNode.next = null;
+            return head;
+        case 2:
+            if (splitNode.next == null) {
+                System.out.println("Second half is EMPTY, returning null!");
+                return null;
+            }
+                MyDLL newHead = splitNode.next;
+                splitNode.next=null;
+                newHead.prev=null;
+            return newHead;
+    }
+    return null;
+}
+public static void prevNxtNodes(MyDLL head,Scanner sc){
+    if(head==null){
+        System.out.println("List is Empty");
+    }
+    System.out.println("Select a Node");
+    MyDLL temp=head;
+    int choice=sc.nextInt();
+    while(temp!=null){
+    if(temp.data==choice){
+        if(temp.prev!=null){
+            System.out.print("Previous Node "+temp.prev.data+" |");
+        }
+        else System.out.print("NULL |");
+        System.out.print(" Current Node "+temp.data+" |");
+        if(temp.next!=null){
+            System.out.print(" Next Node "+temp.next.data);
+        }
+        else System.out.print("NULL");
+        System.out.println();
+        return;
+    }
+    temp=temp.next;
+    }
+    System.out.println("Node Not Found!");
+}
 }
