@@ -887,20 +887,31 @@ public class Main{
     }
     public static void handleMinHeap(Scanner sc){
             List<Integer> minHeap=new ArrayList<>();
-            System.out.println("Welcome to Linked List Operations");
+            System.out.println("Welcome to Min Heap Operations");
             System.out.println("1. Create a MinHeap");
-            System.out.println("2. Display the Min Heap");
-            System.out.println("3. Reset The Min Heap");
-            System.out.println("4. Back to Main Menu");
+            System.out.println("2. Insert a Value into the MinHeap");
+            System.out.println("3. Display the Min Heap");
+           // System.out.println("4. Reset The Min Heap");
+           // System.out.println("5. Back to Main Menu");
             while(true){
-            System.out.println("Choose an Option From the Queue's Menu");
+            System.out.print("Choose an Option From the Min Heap's Menu  ");
             int op=sc.nextInt();
                 switch(op){
                 case 1:
                 MyMinHeap.buildMinHeap(sc,minHeap);
                 break;
                 case 2:
-                MyMinHeap.heapifyUp(minHeap,op);
+                System.out.println("Enter Value to insert");
+                int val=sc.nextInt();
+                MyMinHeap.heapifyUp(minHeap,val);
+                break;
+                case 3:
+                //for(int i=0;i<minHeap.size();i++){
+                  //  System.out.print(minHeap.get(i)+" ");
+                //}
+                System.out.println("Min Heap");
+                MyTree minHeapRoot=MyTree.buildTree(minHeap);
+                MyTree.showTree(minHeapRoot, "", true);
                 break;
                 }
             }
