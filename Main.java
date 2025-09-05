@@ -886,7 +886,24 @@ public class Main{
         }
     }
     public static void handleMinHeap(Scanner sc){
-    
+            List<Integer> minHeap=new ArrayList<>();
+            System.out.println("Welcome to Linked List Operations");
+            System.out.println("1. Create a MinHeap");
+            System.out.println("2. Display the Min Heap");
+            System.out.println("3. Reset The Min Heap");
+            System.out.println("4. Back to Main Menu");
+            while(true){
+            System.out.println("Choose an Option From the Queue's Menu");
+            int op=sc.nextInt();
+                switch(op){
+                case 1:
+                MyMinHeap.buildMinHeap(sc,minHeap);
+                break;
+                case 2:
+                MyMinHeap.heapifyUp(minHeap,op);
+                break;
+                }
+            }
     }
     public static void handleMaxHeap(Scanner sc){
 

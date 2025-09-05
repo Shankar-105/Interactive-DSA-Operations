@@ -177,7 +177,6 @@ public static void showTree(MyTree node, String prefix, boolean isTail) {
         if (node == null){
             System.out.println("Tree Has Nothing to Show Input some Nodes");
         }
-
         System.out.println(prefix + (isTail ? "└── " : "├── ") + node.data);
 
         List<MyTree> children = new ArrayList<>();
