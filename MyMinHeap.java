@@ -15,6 +15,13 @@ public class MyMinHeap {
         minHeap.set(i, minHeap.get(j));
         minHeap.set(j, temp);
     }
+    public static void top(List<Integer> minHeap) {
+        if (minHeap.isEmpty()){
+        System.out.println("Heap is Empty");
+        return;
+        }
+        System.out.println("The Top Element is"+minHeap.get(0));
+    }
     public static void buildMinHeap(Scanner sc,List<Integer> minHeap){
     System.out.println("Enter Nodes");
     while(true){

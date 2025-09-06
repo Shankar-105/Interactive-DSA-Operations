@@ -889,8 +889,10 @@ public class Main{
             List<Integer> minHeap=new ArrayList<>();
             System.out.println("Welcome to Min Heap Operations");
             System.out.println("1. Create a MinHeap");
-            System.out.println("2. Insert a Value into the MinHeap");
-            System.out.println("3. Display the Min Heap");
+            System.out.println("2. Insert a Value into the Min Heap");
+            System.out.println("3. Peek Element in the MinHeap");
+            System.out.println("4. Delete Element in the MinHeap");
+            System.out.println("5. Display the Min Heap");
            // System.out.println("4. Reset The Min Heap");
            // System.out.println("5. Back to Main Menu");
             while(true){
@@ -906,6 +908,11 @@ public class Main{
                 MyMinHeap.heapifyUp(minHeap,val);
                 break;
                 case 3:
+                MyMinHeap.top(minHeap);
+                break;
+                case 4:
+                break;
+                case 5:
                 //for(int i=0;i<minHeap.size();i++){
                   //  System.out.print(minHeap.get(i)+" ");
                 //}
