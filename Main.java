@@ -911,15 +911,19 @@ public class Main{
                 MyMinHeap.top(minHeap);
                 break;
                 case 4:
+                MyMinHeap.deleteMin(minHeap);
                 break;
                 case 5:
                 //for(int i=0;i<minHeap.size();i++){
                   //  System.out.print(minHeap.get(i)+" ");
                 //}
                 System.out.println("Min Heap");
+                //if(minHeap.isEmpty()) System.out.println("Heap is Empty");
                 MyTree minHeapRoot=MyTree.buildTree(minHeap);
                 MyTree.showTree(minHeapRoot, "", true);
                 break;
+                default:
+                System.out.println("Choice Out of Input Range [1-3]");
                 }
             }
     }
