@@ -937,7 +937,7 @@ public class Main{
     public static void handleMaxHeap(Scanner sc){
             List<Integer> maxHeap=new ArrayList<>();
             System.out.println("Welcome to Min Heap Operations");
-            System.out.println("1. Create a MinHeap");
+            System.out.println("1. Create a Max Heap");
             System.out.println("2. Insert a Value into the Max Heap");
             System.out.println("3. Peek Element in the Max Heap");
             System.out.println("4. Delete Element in the Max Heap");
@@ -948,7 +948,13 @@ public class Main{
             System.out.print("Choose an Option From the Max Heap's Menu  ");
             int op=sc.nextInt();
             switch(op){
-                
+                case 1:
+                MyMinHeap.buildMinHeap(sc,maxHeap);
+                break;
+                case 2:
+                System.out.println("Enter Value to insert");
+                int val=sc.nextInt();
+                MyMinHeap.heapifyUp(maxHeap,val);
             }
         }
     }
