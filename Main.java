@@ -893,6 +893,8 @@ public class Main{
             System.out.println("3. Peek Element in the MinHeap");
             System.out.println("4. Delete Element in the MinHeap");
             System.out.println("5. Display the Min Heap");
+            System.out.println("6. Reset Min Heap");
+            System.out.println("7. Back to Main Menu");
            // System.out.println("4. Reset The Min Heap");
            // System.out.println("5. Back to Main Menu");
             while(true){
@@ -922,13 +924,33 @@ public class Main{
                 MyTree minHeapRoot=MyTree.buildTree(minHeap);
                 MyTree.showTree(minHeapRoot, "", true);
                 break;
+                case 6:
+                minHeap=null;
+                break;
+                case 7:
+                return;
                 default:
                 System.out.println("Choice Out of Input Range [1-3]");
                 }
             }
     }
     public static void handleMaxHeap(Scanner sc){
-
+            List<Integer> maxHeap=new ArrayList<>();
+            System.out.println("Welcome to Min Heap Operations");
+            System.out.println("1. Create a MinHeap");
+            System.out.println("2. Insert a Value into the Max Heap");
+            System.out.println("3. Peek Element in the Max Heap");
+            System.out.println("4. Delete Element in the Max Heap");
+            System.out.println("5. Display the Max Heap");
+            System.out.println("6. Reset Max Heap");
+            System.out.println("7. Back to Main Menu");
+            while(true){
+            System.out.print("Choose an Option From the Max Heap's Menu  ");
+            int op=sc.nextInt();
+            switch(op){
+                
+            }
+        }
     }
         public static void main(String[] args){
         Scanner sc=new Scanner(System.in);
