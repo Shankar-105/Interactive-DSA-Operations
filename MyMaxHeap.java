@@ -14,7 +14,7 @@ public class MyMaxHeap {
     while(true){
             int nodeVal =sc.nextInt();
             if(nodeVal==-1) break;
-            heapifyUp(maxHeap, nodeVal);
+            MyMaxHeap.heapifyUp(maxHeap, nodeVal);
         }
     }
     public static void heapifyUp(List<Integer> maxHeap,int val) {

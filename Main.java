@@ -895,8 +895,6 @@ public class Main{
             System.out.println("5. Display the Min Heap");
             System.out.println("6. Reset Min Heap");
             System.out.println("7. Back to Main Menu");
-           // System.out.println("4. Reset The Min Heap");
-           // System.out.println("5. Back to Main Menu");
             while(true){
             System.out.print("Choose an Option From the Min Heap's Menu  ");
             int op=sc.nextInt();
@@ -916,11 +914,7 @@ public class Main{
                 MyMinHeap.deleteMin(minHeap);
                 break;
                 case 5:
-                //for(int i=0;i<minHeap.size();i++){
-                  //  System.out.print(minHeap.get(i)+" ");
-                //}
                 System.out.println("Min Heap");
-                //if(minHeap.isEmpty()) System.out.println("Heap is Empty");
                 MyTree minHeapRoot=MyTree.buildTree(minHeap);
                 MyTree.showTree(minHeapRoot, "", true);
                 break;
@@ -930,7 +924,7 @@ public class Main{
                 case 7:
                 return;
                 default:
-                System.out.println("Choice Out of Input Range [1-3]");
+                System.out.println("Choice Out of Input Range [1-7]");
                 }
             }
     }
@@ -949,12 +943,20 @@ public class Main{
             int op=sc.nextInt();
             switch(op){
                 case 1:
-                MyMinHeap.buildMinHeap(sc,maxHeap);
+                MyMaxHeap.buildMaxHeap(sc,maxHeap);
                 break;
                 case 2:
                 System.out.println("Enter Value to insert");
                 int val=sc.nextInt();
-                MyMinHeap.heapifyUp(maxHeap,val);
+                MyMaxHeap.heapifyUp(maxHeap,val);
+                case 5:
+                System.out.println("Max Heap");
+                MyTree maxHeapRoot=MyTree.buildTree(maxHeap);
+                MyTree.showTree(maxHeapRoot, "", true);
+                case 7:
+                return;
+                default:
+                System.out.println("Choice Out of Input Range [1-7]");
             }
         }
     }
@@ -970,6 +972,7 @@ public class Main{
             System.out.println("5. Heaps");
             System.out.println("6. Graphs(Coming soon)");
             System.out.println("7. Exit");
+            System.out.print("Choose an Option From the Menu  ");
             int choice=sc.nextInt();
             switch(choice){
                 case 1:
@@ -994,7 +997,7 @@ public class Main{
                 System.out.println("Exiting Thankyou");
                 return;
                 default:
-                System.out.println("Range of Input Integer's Provided For Operation is [1-6]");
+                System.out.println("Range of Input Integer's Provided For Operation is [1-7]");
            }
             }
         }
