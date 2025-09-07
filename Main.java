@@ -949,10 +949,14 @@ public class Main{
                 System.out.println("Enter Value to insert");
                 int val=sc.nextInt();
                 MyMaxHeap.heapifyUp(maxHeap,val);
+                case 4:
+                MyMaxHeap.deleteMin(maxHeap);
+                break;
                 case 5:
                 System.out.println("Max Heap");
                 MyTree maxHeapRoot=MyTree.buildTree(maxHeap);
                 MyTree.showTree(maxHeapRoot, "", true);
+                break;
                 case 7:
                 return;
                 default:
