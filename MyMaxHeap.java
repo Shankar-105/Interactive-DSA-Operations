@@ -15,6 +15,13 @@ public class MyMaxHeap {
         maxHeap.set(i, maxHeap.get(j));
         maxHeap.set(j, temp);
     }
+    public static void top(List<Integer> minHeap) {
+        if (minHeap.isEmpty()){
+        System.out.println("MaxHeap is Empty");
+        return;
+        }
+        System.out.println("The Top Element is "+minHeap.get(0));
+    }
     public static void buildMaxHeap(Scanner sc,List<Integer> maxHeap){
     System.out.println("Enter Nodes");
     while(true){
@@ -31,7 +38,7 @@ public class MyMaxHeap {
             i = parent(i);
         }
     }
-    public static void deleteMin(List<Integer> maxHeap) {
+    public static void deleteMax(List<Integer> maxHeap) {
         if (maxHeap.isEmpty()){
             System.out.println("Heap is Empty Insert Some Nodes!");
             return;
