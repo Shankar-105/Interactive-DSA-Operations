@@ -62,7 +62,9 @@ This project is being built step-by-step to simulate DSA operations in Java for 
 - Last Element of the Queue
 - Print the Queue
 - Reset the Queue
-### Trees
+## Trees
+
+### Binary Trees
 - Binary Tree Creation By User Input
 - Display Tree in Various Ways
 - BFS (Level Wise Display in a User Freindly Way)
