@@ -866,7 +866,111 @@ public class Main{
             }
             }
       }
-          public static void main(String[] args){
+      public static void handleHeaps(Scanner sc){
+        System.out.println("Select Any Heap");
+        System.out.println("1. Min Heap");
+        System.out.println("2. Max Heap");
+        System.out.println("3. Back to Main Menu");
+        int choice =sc.nextInt();
+        switch(choice){
+            case 1:
+            handleMinHeap(sc);
+            break;
+            case 2:
+            handleMaxHeap(sc);
+            break;
+            case 3:
+            return;
+            default:
+            System.out.println("Range of Input Integer's Provided For Operation is [1-3]");
+        }
+    }
+    public static void handleMinHeap(Scanner sc){
+            List<Integer> minHeap=new ArrayList<>();
+            System.out.println("Welcome to Min Heap Operations");
+            System.out.println("1. Create a MinHeap");
+            System.out.println("2. Insert a Value into the Min Heap");
+            System.out.println("3. Peek Element in the MinHeap");
+            System.out.println("4. Delete Element in the MinHeap");
+            System.out.println("5. Display the Min Heap");
+            System.out.println("6. Reset Min Heap");
+            System.out.println("7. Back to Main Menu");
+            while(true){
+            System.out.print("Choose an Option From the Min Heap's Menu  ");
+            int op=sc.nextInt();
+                switch(op){
+                case 1:
+                MyMinHeap.buildMinHeap(sc,minHeap);
+                break;
+                case 2:
+                System.out.println("Enter Value to insert");
+                int val=sc.nextInt();
+                MyMinHeap.heapifyUp(minHeap,val);
+                break;
+                case 3:
+                MyMinHeap.top(minHeap);
+                break;
+                case 4:
+                MyMinHeap.deleteMin(minHeap);
+                break;
+                case 5:
+                System.out.println("Min Heap");
+                MyTree minHeapRoot=MyTree.buildTree(minHeap);
+                MyTree.showTree(minHeapRoot, "", true);
+                break;
+                case 6:
+                minHeap=null;
+                break;
+                case 7:
+                return;
+                default:
+                System.out.println("Choice Out of Input Range [1-7]");
+                }
+            }
+    }
+    public static void handleMaxHeap(Scanner sc){
+            List<Integer> maxHeap=new ArrayList<>();
+            System.out.println("Welcome to Max Heap Operations");
+            System.out.println("1. Create a Max Heap");
+            System.out.println("2. Insert a Value into the Max Heap");
+            System.out.println("3. Peek Element in the Max Heap");
+            System.out.println("4. Delete Element in the Max Heap");
+            System.out.println("5. Display the Max Heap");
+            System.out.println("6. Reset Max Heap");
+            System.out.println("7. Back to Main Menu");
+            while(true){
+            System.out.print("Choose an Option From the Max Heap's Menu  ");
+            int op=sc.nextInt();
+            switch(op){
+                case 1:
+                MyMaxHeap.buildMaxHeap(sc,maxHeap);
+                break;
+                case 2:
+                System.out.println("Enter Value to insert");
+                int val=sc.nextInt();
+                MyMaxHeap.heapifyUp(maxHeap,val);
+                case 3:
+                MyMaxHeap.top(maxHeap);
+                break;
+                case 4:
+                MyMaxHeap.deleteMax(maxHeap);
+                break;
+                case 5:
+                System.out.println("Max Heap");
+                MyTree maxHeapRoot=MyTree.buildTree(maxHeap);
+                MyTree.showTree(maxHeapRoot, "", true);
+                break;
+                case 6:
+                maxHeap=null;
+                break;
+                case 7:
+                return;
+                default:
+                System.out.println("Choice Out of Input Range [1-7]");
+            }
+        }
+    }
+        public static void main(String[] args){
         Scanner sc=new Scanner(System.in);
         System.out.println("Welcome to DSA Simulator");
         System.out.println("Choose a Data Structure");
@@ -875,8 +979,10 @@ public class Main{
             System.out.println("2. Stacks");
             System.out.println("3. Queues");
             System.out.println("4. Binary Trees");
-            System.out.println("5. Graphs(Coming soon)");
-            System.out.println("6. Exit");
+            System.out.println("5. Heaps");
+            System.out.println("6. Graphs(Coming soon)");
+            System.out.println("7. Exit");
+            System.out.print("Choose an Option From the Menu  ");
             int choice=sc.nextInt();
             switch(choice){
                 case 1:
@@ -892,13 +998,16 @@ public class Main{
                 handleTrees(sc);
                 break;
                 case 5:
-                System.out.println("Coming Soon....");
+                handleHeaps(sc);
                 break;
                 case 6:
+                System.out.println("Coming Soon....");
+                break;
+                case 7:
                 System.out.println("Exiting Thankyou");
                 return;
                 default:
-                System.out.println("Range of Input Integer's Provided For Operation is [1-6]");
+                System.out.println("Range of Input Integer's Provided For Operation is [1-7]");
            }
             }
         }
