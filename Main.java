@@ -627,20 +627,41 @@ public class Main{
         }
       }
       private static void handleTrees(Scanner sc){
+                System.out.println("1. Binary Trees");
+                System.out.println("2. Binary Search Trees (BST's)");
+                System.out.println("3. Self Balancing BST's");
+                System.out.println("4. Back to Main Menu");
+                System.out.print("Choose an Option From the Tree' Menu  ");
+                int treeChoice=sc.nextInt();
+                switch(treeChoice){
+                case 1:
+                handleBinaryTrees(sc);
+                case 2:
+                handleBinarySearchTrees(sc);
+                break;
+                case 3:
+                break;
+                case 4:
+                return;
+                default:
+                System.out.println("Range of Input Integer's Provided For Operation is [1-4]");
+                }
+      }
+      private static void handleBinaryTrees(Scanner sc){
             MyTree root=null;
             List<Integer> nodes=null;
-            System.out.println("Welcome to Tree Operations");
+            System.out.println("Welcome to Binary Tree Operations");
             System.out.println("1.  Create a Binary Tree");
-            System.out.println("2.  Traverse the Tree(BFS/DFS)");
-            System.out.println("3.  Three Special Tree Traversals (Zig Zag / Vertical / Boundary )");
-            System.out.println("4.  Search");
-            System.out.println("5.  Diameter Of the Tree");
+            System.out.println("2.  Traverse the Binary Tree(BFS/DFS)");
+            System.out.println("3.  Three Special Binary Tree Traversals (Zig Zag / Vertical / Boundary )");
+            System.out.println("4.  Search in the Binary Tree");
+            System.out.println("5.  Diameter Of the Binary Tree");
             System.out.println("6.  Lowest Common Ancestor of Any Two Children");
             System.out.println("7.  Root to Any Node Path");
-            System.out.println("8.  4 Side View of the Tree (Top / Right / Bottom / Left )");
+            System.out.println("8.  4 Side View of the Binary Tree (Top / Right / Bottom / Left )");
             System.out.println("9.  Mirror image of the Binary Tree");
-            System.out.println("10. Display Tree Structure");
-            System.out.println("11. Reset Tree");
+            System.out.println("10. Display Binary Tree Structure");
+            System.out.println("11. Reset Binary Tree");
             System.out.println("12. Leaf Nodes of the Binary Tree");
             System.out.println("13. Back to Main Menu");
             while(true){
@@ -866,6 +887,17 @@ public class Main{
             }
             }
       }
+      private static void handleBinarySearchTrees(Scanner sc){
+            System.out.println("Welcome to BST Operations");
+            System.out.println("1. Create a Binary Search Tree");
+            while(true){
+            System.out.print("Choose an Option From the BST's Menu  ");
+            int bstOp=sc.nextInt();
+                switch(bstOp){
+                    
+                }
+            }
+      }
       public static void handleHeaps(Scanner sc){
         System.out.println("Select Any Heap");
         System.out.println("1. Min Heap");
@@ -978,7 +1010,7 @@ public class Main{
             System.out.println("1. Linked Lists");
             System.out.println("2. Stacks");
             System.out.println("3. Queues");
-            System.out.println("4. Binary Trees");
+            System.out.println("4. Trees");
             System.out.println("5. Heaps");
             System.out.println("6. Graphs(Coming soon)");
             System.out.println("7. Exit");
