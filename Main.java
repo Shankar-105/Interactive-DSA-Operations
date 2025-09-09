@@ -888,13 +888,25 @@ public class Main{
             }
       }
       private static void handleBinarySearchTrees(Scanner sc){
+            MyBST root=null;
             System.out.println("Welcome to BST Operations");
             System.out.println("1. Create a Binary Search Tree");
+            System.out.println("2. Back to Main Menu");
+            //System.out.println("2.  Display BST");
             while(true){
             System.out.print("Choose an Option From the BST's Menu  ");
             int bstOp=sc.nextInt();
                 switch(bstOp){
-                    
+                case 1:
+                root=MyBST.buildBST(sc, root);
+                break;
+                case 3:
+                //MyBST.showTree(root, "", true);
+                break;
+                case 2:
+                return;
+                default:
+                System.out.println("Range of Input Integer's Provided For Operation is [1-2]");
                 }
             }
       }

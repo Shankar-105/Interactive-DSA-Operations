@@ -27,7 +27,7 @@ public class MyMinHeap {
     while(true){
             int nodeVal =sc.nextInt();
             if(nodeVal==-1) break;
-            MyMinHeap.heapifyUp(minHeap, nodeVal);
+            MyMinHeap.heapifyUp(minHeap,nodeVal);
         }
     }
     public static void heapifyUp(List<Integer> minHeap,int val) {
