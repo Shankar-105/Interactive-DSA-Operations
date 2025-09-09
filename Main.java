@@ -891,7 +891,8 @@ public class Main{
             MyBST root=null;
             System.out.println("Welcome to BST Operations");
             System.out.println("1. Create a Binary Search Tree");
-            System.out.println("2. Back to Main Menu");
+            System.out.println("2. Insert a Node into BST");
+            System.out.println("10. Back to Main Menu");
             //System.out.println("2.  Display BST");
             while(true){
             System.out.print("Choose an Option From the BST's Menu  ");
@@ -900,10 +901,13 @@ public class Main{
                 case 1:
                 root=MyBST.buildBST(sc, root);
                 break;
-                case 3:
+                case 2:
+                System.out.println("Enter Value to insert");
+                int val=sc.nextInt();
+                MyBST.insert(root,val);
                 //MyBST.showTree(root, "", true);
                 break;
-                case 2:
+                case 10:
                 return;
                 default:
                 System.out.println("Range of Input Integer's Provided For Operation is [1-2]");
