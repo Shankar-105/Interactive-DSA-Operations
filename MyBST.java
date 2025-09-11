@@ -1,5 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
-
 public class MyBST {
     int data;
     MyBST left,right;
@@ -37,7 +38,7 @@ public class MyBST {
            dummyPtr=dummyPtr.right; 
         }
     }
-        else{
+    else if(dummyPtr.data<val){
             if(dummyPtr.left==null){
             dummyPtr.left=new MyBST(val);
             break;
@@ -45,6 +46,9 @@ public class MyBST {
         else{
            dummyPtr=dummyPtr.left; 
         }
+        }
+        else{
+            break;
         }
     }
     return root;
