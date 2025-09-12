@@ -908,7 +908,7 @@ public class Main{
                 MyBST.insert(root,val);
                 break;
                 case 3:
-                //MyBST.showTree(root, "", true);
+                MyBST.showTree(root, "", true);
                 break;
                 case 10:
                 return;
