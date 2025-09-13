@@ -72,4 +72,21 @@ public class MyBST {
             showTree(children.get(children.size() - 1), prefix + (isTail ? "    " : "│   "), true);
         }
     }
+    public static void search(MyBST root,int key){
+        MyBST temp=root;
+        while(temp!=null && temp.data!=key){
+            if (temp.data > key){
+            temp = temp.left;   
+        } 
+        else{
+            temp = temp.right;  
+        }
+        }
+        if(temp!=null){
+            System.out.println("Element "+key+"Found in the BST");
+        }
+        else{
+            System.out.println("Element "+key+" not Found in the BST");
+        }
+    }
 }

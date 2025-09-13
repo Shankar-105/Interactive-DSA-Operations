@@ -893,6 +893,7 @@ public class Main{
             System.out.println("1.  Create a Binary Search Tree");
             System.out.println("2.  Insert a Node into BST");
             System.out.println("3.  Display BST");
+            System.out.println("4.  Search for a value");
             System.out.println("10. Back to Main Menu");
             while(true){
             System.out.print("Choose an Option From the BST's Menu  ");
@@ -909,6 +910,11 @@ public class Main{
                 break;
                 case 3:
                 MyBST.showTree(root, "", true);
+                break;
+                case 4:
+                System.out.println("Enter the value to search for ");
+                int searchVal=sc.nextInt();
+                MyBST.search(root,searchVal);
                 break;
                 case 10:
                 return;
