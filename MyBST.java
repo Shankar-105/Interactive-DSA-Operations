@@ -30,21 +30,21 @@ public class MyBST {
     MyBST dummyPtr=root;
     while(dummyPtr!=null){
     if(dummyPtr.data>val){
-        if(dummyPtr.right==null){
-            dummyPtr.right=new MyBST(val);
-            break;
-        }
-        else{
-           dummyPtr=dummyPtr.right; 
-        }
-    }
-    else if(dummyPtr.data<val){
-            if(dummyPtr.left==null){
+        if(dummyPtr.left==null){
             dummyPtr.left=new MyBST(val);
             break;
         }
         else{
            dummyPtr=dummyPtr.left; 
+        }
+    }
+    else if(dummyPtr.data<val){
+            if(dummyPtr.right==null){
+            dummyPtr.right=new MyBST(val);
+            break;
+        }
+        else{
+           dummyPtr=dummyPtr.right; 
         }
         }
         else{

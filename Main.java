@@ -890,6 +890,7 @@ public class Main{
       }
       private static void handleBinarySearchTrees(Scanner sc){
             MyBST root=null;
+           // List<Integer> nodes=new ArrayList<>();
             System.out.println("Welcome to BST Operations");
             System.out.println("1.  Create a Binary Search Tree");
             System.out.println("2.  Insert a Node into BST");
@@ -924,6 +925,8 @@ public class Main{
                 break;
                 case 6:
                 MyBST.maxValueNode(root);
+                break;
+                case 7:
                 break;
                 case 10:
                 return;
