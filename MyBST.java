@@ -100,4 +100,15 @@ public class MyBST {
         }
         System.out.println("Lowest Value in the BST is "+temp.data);
     }
+    public static void maxValueNode(MyBST root){
+        if(root==null){
+            System.out.println("Empty Tree");
+            return;
+        }
+        MyBST temp=root;
+        while(temp.right!=null){
+            temp=temp.right;
+        }
+        System.out.println("Highest Value in the BST is "+temp.data);
+    }
 }
