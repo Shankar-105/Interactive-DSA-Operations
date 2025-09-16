@@ -83,10 +83,21 @@ public class MyBST {
         }
         }
         if(temp!=null){
-            System.out.println("Element "+key+"Found in the BST");
+            System.out.println("Element "+key+" Found in the BST");
         }
         else{
             System.out.println("Element "+key+" not Found in the BST");
         }
+    }
+    public static void minValueNode(MyBST root){
+        if(root==null){
+            System.out.println("Empty Tree");
+            return;
+        }
+        MyBST temp=root;
+        while(temp.left!=null){
+            temp=temp.left;
+        }
+        System.out.println("Lowest Value in the BST is "+temp.data);
     }
 }

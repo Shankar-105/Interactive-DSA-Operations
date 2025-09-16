@@ -636,6 +636,7 @@ public class Main{
                 switch(treeChoice){
                 case 1:
                 handleBinaryTrees(sc);
+                break;
                 case 2:
                 handleBinarySearchTrees(sc);
                 break;
@@ -894,6 +895,7 @@ public class Main{
             System.out.println("2.  Insert a Node into BST");
             System.out.println("3.  Display BST");
             System.out.println("4.  Search for a value");
+            System.out.println("5.  Minimum Value in the BST");
             System.out.println("10. Back to Main Menu");
             while(true){
             System.out.print("Choose an Option From the BST's Menu  ");
@@ -915,6 +917,9 @@ public class Main{
                 System.out.println("Enter the value to search for ");
                 int searchVal=sc.nextInt();
                 MyBST.search(root,searchVal);
+                break;
+                case 5:
+                MyBST.minValueNode(root);
                 break;
                 case 10:
                 return;
