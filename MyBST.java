@@ -108,4 +108,36 @@ public class MyBST {
         }
         System.out.println("Highest Value in the BST is "+temp.data);
     }
-}
+    private static MyBST assistDeleteroot(MyBST root){
+        if(root==null){
+            return root;
+        }
+        MyBST temp=root;
+        while(temp.left!=null){
+            temp=temp.left;
+        }
+        return temp;
+    }
+    public static MyBST deleteNode(MyBST root,int data){
+        if (root == null) {
+            return null;
+        }
+        if (data < root.data) {
+            root.left = deleteNode(root.left, data);
+        } 
+        else if (data > root.data) {
+            root.right = deleteNode(root.right, data);
+        } 
+        else {
+            if (root.left == null) {
+                return root.right;
+            } 
+            else if (root.right == null) {
+                return root.left;
+            }
+            root.data = assistDeleteroot(root.right).data;
+            root.right = deleteNode(root.right, root.data);
+        }
+        return root;
+    }
+    }

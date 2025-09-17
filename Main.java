@@ -898,6 +898,7 @@ public class Main{
             System.out.println("4.  Search for a value");
             System.out.println("5.  Minimum Value in the BST");
             System.out.println("6.  Maximum Value in the BST");
+            System.out.println("7.  Delete a Value from BST");
             System.out.println("10. Back to Main Menu");
             while(true){
             System.out.print("Choose an Option From the BST's Menu  ");
@@ -913,6 +914,7 @@ public class Main{
                 root=MyBST.insert(root,val);
                 break;
                 case 3:
+                System.out.println("BST");
                 MyBST.showTree(root, "", true);
                 break;
                 case 4:
@@ -927,6 +929,9 @@ public class Main{
                 MyBST.maxValueNode(root);
                 break;
                 case 7:
+                System.out.println("Enter the Value to Delete ");
+                int delete=sc.nextInt();
+                MyBST.deleteNode(root,delete);
                 break;
                 case 10:
                 return;
