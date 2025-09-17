@@ -59,15 +59,12 @@ public class MyBST {
             return;
         }
         System.out.println(prefix + (isTail ? "└── " : "├── ") + node.data);
-
         List<MyBST> children = new ArrayList<>();
-        if (node.left != null) children.add(node.left);
         if (node.right != null) children.add(node.right);
-
+        if (node.left != null) children.add(node.left);
         for (int i = 0; i < children.size() - 1; i++) {
             showTree(children.get(i), prefix + (isTail ? "    " : "│   "), false);
         }
-
         if (!children.isEmpty()) {
             showTree(children.get(children.size() - 1), prefix + (isTail ? "    " : "│   "), true);
         }
