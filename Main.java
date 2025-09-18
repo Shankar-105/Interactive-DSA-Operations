@@ -895,10 +895,10 @@ public class Main{
       }
       private static void handleBinarySearchTrees(Scanner sc){
             MyBST root=null;
-           // List<Integer> nodes=new ArrayList<>();
             System.out.println("Welcome to BST Operations");
             System.out.println("1.  Create a Binary Search Tree");
-            System.out.println("2.  Insert a Node into BST");
+            System.out.println("2.  Traverse the Binary Search Tree");
+            System.out.println("9.  Insert a Node into BST");
             System.out.println("3.  Display BST");
             System.out.println("4.  Search for a value");
             System.out.println("5.  Minimum Value in the BST");
@@ -914,6 +914,28 @@ public class Main{
                 root=MyBST.buildBST(sc, root);
                 break;
                 case 2:
+                System.out.println("Choose the traversal you like");
+                System.out.println("1. BFS(Level Wise)");
+                System.out.println("2. DFS(Depth Wise)");
+                System.out.println("3. Back to Tree's Menu");
+                int traOp=sc.nextInt();
+                switch(traOp){
+                    case 2:
+                    List<Integer> dfsNodes=new ArrayList<>();
+                    System.out.println("Choose a DFS Technique From the Below");
+                    System.out.println("1. PreOrder Traversal");
+                    // inorder
+                    // postOrder
+                    int dfsOp=sc.nextInt();
+                    switch(dfsOp){
+                      case 1:
+                      MyBST.preOrderTraversal(root,dfsNodes);
+                      break;
+                    }
+                    break;
+                }
+                break;
+                case 9:
                 System.out.println("Enter Value to insert");
                 int val=sc.nextInt();
                 root=MyBST.insert(root,val);

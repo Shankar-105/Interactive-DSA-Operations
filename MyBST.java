@@ -140,4 +140,12 @@ public class MyBST {
         }
         return root;
     }
+    public static void preOrderTraversal(MyBST root,List<Integer> nodes){
+         if(root==null){
+            return;
+         }
+         nodes.add(root.data);
+         preOrderTraversal(root.left,nodes);
+         preOrderTraversal(root.right,nodes);
+    }
     }
