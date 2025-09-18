@@ -930,6 +930,8 @@ public class Main{
                     switch(dfsOp){
                       case 1:
                       MyBST.preOrderTraversal(root,dfsNodes);
+                      System.out.println("Pre Order Traversal ");
+                      MyBST.printDFSTraversals(dfsNodes);
                       break;
                     }
                     break;

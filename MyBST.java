@@ -148,4 +148,12 @@ public class MyBST {
          preOrderTraversal(root.left,nodes);
          preOrderTraversal(root.right,nodes);
     }
+    public static void printDFSTraversals(List<Integer> result){
+    for (int i = 0; i < result.size(); i++) {
+            System.out.print(result.get(i));
+        if (i != result.size() - 1){
+            System.out.print(" -> ");
+        }
+    }
+}
     }
