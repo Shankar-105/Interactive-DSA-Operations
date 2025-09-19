@@ -14,7 +14,7 @@ public class MyBST {
         this.right=r;
     }
     public static MyBST buildBST(Scanner sc,MyBST root){
-    System.out.println("Enter Nodes");
+    System.out.println("Enter Each Node Values (-1) to stop");
     while(true){
             int nodeVal =sc.nextInt();
             if(nodeVal==-1) break;
@@ -147,6 +147,14 @@ public class MyBST {
          nodes.add(root.data);
          preOrderTraversal(root.left,nodes);
          preOrderTraversal(root.right,nodes);
+    }
+    public static void postOrderTraversal(MyBST root,List<Integer> nodes){
+         if(root==null){
+            return;
+         }
+         postOrderTraversal(root.left,nodes);
+         postOrderTraversal(root.right,nodes);
+         nodes.add(root.data);
     }
     public static void printDFSTraversals(List<Integer> result){
     for (int i = 0; i < result.size(); i++) {
