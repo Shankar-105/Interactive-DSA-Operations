@@ -919,13 +919,19 @@ public class Main{
                     List<Integer> dfsNodes=new ArrayList<>();
                     System.out.println("Choose a DFS Technique From the Below");
                     System.out.println("1. PreOrder Traversal");
+                    System.out.println("2. InOrder Traversal");
                     System.out.println("3. PostOrder Traversal");
-                    // inorder
                     int dfsOp=sc.nextInt();
                     switch(dfsOp){
                       case 1:
                       MyBST.preOrderTraversal(root,dfsNodes);
                       System.out.println("Pre Order Traversal ");
+                      MyBST.printDFSTraversals(dfsNodes);
+                      System.out.println();
+                      break;
+                      case 2:
+                      MyBST.inOrderTraversal(root,dfsNodes);
+                      System.out.println("In Order Traversal ");
                       MyBST.printDFSTraversals(dfsNodes);
                       System.out.println();
                       break;

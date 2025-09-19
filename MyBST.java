@@ -148,6 +148,14 @@ public class MyBST {
          preOrderTraversal(root.left,nodes);
          preOrderTraversal(root.right,nodes);
     }
+    public static void inOrderTraversal(MyBST root,List<Integer> nodes){
+         if(root==null){
+            return;
+         }
+         inOrderTraversal(root.left,nodes);
+         nodes.add(root.data);
+         inOrderTraversal(root.right,nodes);
+    }
     public static void postOrderTraversal(MyBST root,List<Integer> nodes){
          if(root==null){
             return;
