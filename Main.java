@@ -5,6 +5,7 @@ public class Main{
         System.out.println("1. Singly Linked List");
         System.out.println("2. Doubly Linked List");
         System.out.println("3. Back to Main Menu");
+        System.out.printf("4. MLSS\n");
         int choice =sc.nextInt();
         switch(choice){
             case 1:
