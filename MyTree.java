@@ -37,10 +37,35 @@ public class MyTree {
         }
         return nodes;
     }
+    public static void insert(MyTree root,int val) {
+        MyTree newNode=new MyTree(val);
+        if (root == null){
+            root=newNode;
+            return;
+        }
+        Queue<MyTree> q = new LinkedList<>();
+        q.offer(root);
+        while (!q.isEmpty()) {
+                MyTree node = q.poll();
+                if(node.left!=null){
+                    q.offer(node.left);
+                }
+                else{
+                    node.left=newNode;
+                    break;
+                }
+                if(node.right!=null){
+                    q.offer(node.left);
+                }
+                else{
+                    node.right=newNode;
+                    break;
+                }
+        }
+    }
     //Consturcting Tree From User Input
     public static MyTree buildTree(List<Integer> nodes) {
     if (nodes == null || nodes.isEmpty() || nodes.get(0) == -1) return null;
-    
     MyTree root = new MyTree(nodes.get(0));
     Queue<MyTree> q = new LinkedList<>();
     q.offer(root);
