@@ -64,30 +64,7 @@ public class MyTree {
         }
     }
     //Consturcting Tree From User Input
-    public static MyTree buildTree(List<Integer> nodes) {
-    if (nodes == null || nodes.isEmpty() || nodes.get(0) == -1) return null;
-    MyTree root = new MyTree(nodes.get(0));
-    Queue<MyTree> q = new LinkedList<>();
-    q.offer(root);
-    int i = 1;
-    while (i < nodes.size()) {
-        MyTree current = q.poll();
-        // Left child
-        if (nodes.get(i) != -1) {
-            current.left = new MyTree(nodes.get(i));
-            q.offer(current.left);
-        }
-        i++;
-        // Right child
-        if (i < nodes.size() && nodes.get(i) != -1) {
-            current.right = new MyTree(nodes.get(i));
-            q.offer(current.right);
-        }
-        i++;
-    }
-    return root;
-}
-     // Breadth First Search
+    // Breadth First Search
     public static List<List<Integer>> bfsTraversal(MyTree root) {
         List<List<Integer>> result = new ArrayList<>();
         if (root == null) return null;

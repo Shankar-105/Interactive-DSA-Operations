@@ -673,7 +673,7 @@ public class Main{
                 case 1:
                 System.out.println("Enter the nodes level wise Enter -1 for null");
                 nodes=MyTree.inputNodeValues(sc);
-                root=MyTree.buildTree(nodes);
+               //root=MyTree.buildTree(nodes);
                 System.out.println("Tree SuccessFully Built :)");
                 break;
                 case 2:
@@ -995,8 +995,8 @@ public class Main{
                 break;
                 case 5:
                 System.out.println("Min Heap");
-                MyTree minHeapRoot=MyTree.buildTree(minHeap);
-                MyTree.showTree(minHeapRoot, "", true);
+               // MyTree minHeapRoot=MyTree.buildTree(minHeap);
+               // MyTree.showTree(minHeapRoot, "", true);
                 break;
                 case 6:
                 minHeap=null;
@@ -1037,8 +1037,8 @@ public class Main{
                 break;
                 case 5:
                 System.out.println("Max Heap");
-                MyTree maxHeapRoot=MyTree.buildTree(maxHeap);
-                MyTree.showTree(maxHeapRoot, "", true);
+              //  MyTree maxHeapRoot=MyTree.buildTree(maxHeap);
+                //MyTree.showTree(maxHeapRoot, "", true);
                 break;
                 case 6:
                 maxHeap=null;
