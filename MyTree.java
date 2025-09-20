@@ -28,20 +28,22 @@ public class MyTree {
         this.right=r;
     }
     //Storing Values into List
-    public static List<Integer> inputNodeValues(Scanner sc){
-        List<Integer> nodes=new LinkedList<Integer>();
+    public static MyTree inputNodeValues(MyTree root,List<Integer> nodes,Scanner sc){
         while(true){
             int nodeVal =sc.nextInt();
-            if(nodeVal==-2) break;
+            if(nodeVal==-1){
+                break;
+            }
             nodes.add(nodeVal);
+            root=insert(root,nodeVal);
         }
-        return nodes;
+        return root;
     }
-    public static void insert(MyTree root,int val) {
+    public static MyTree insert(MyTree root,int val) {
         MyTree newNode=new MyTree(val);
         if (root == null){
             root=newNode;
-            return;
+            return root;
         }
         Queue<MyTree> q = new LinkedList<>();
         q.offer(root);
@@ -62,8 +64,8 @@ public class MyTree {
                     break;
                 }
         }
+        return root;
     }
-    //Consturcting Tree From User Input
     // Breadth First Search
     public static List<List<Integer>> bfsTraversal(MyTree root) {
         List<List<Integer>> result = new ArrayList<>();

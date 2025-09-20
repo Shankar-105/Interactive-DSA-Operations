@@ -650,7 +650,7 @@ public class Main{
       }
       private static void handleBinaryTrees(Scanner sc){
             MyTree root=null;
-            List<Integer> nodes=null;
+            List<Integer> nodes=new ArrayList<>();
             System.out.println("Welcome to Binary Tree Operations");
             System.out.println("1.  Create a Binary Tree");
             System.out.println("2.  Traverse the Binary Tree(BFS/DFS)");
@@ -671,9 +671,8 @@ public class Main{
                 int op=sc.nextInt();
             switch(op){
                 case 1:
-                System.out.println("Enter the nodes level wise Enter -1 for null");
-                nodes=MyTree.inputNodeValues(sc);
-               //root=MyTree.buildTree(nodes);
+                System.out.println("Enter the nodes (-1) to stop");
+                root=MyTree.inputNodeValues(root,nodes,sc);
                 System.out.println("Tree SuccessFully Built :)");
                 break;
                 case 2:
