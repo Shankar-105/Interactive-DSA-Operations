@@ -683,10 +683,10 @@ public class Main{
                 int choice =sc.nextInt();
                 switch(choice){
                     case 1:
-                    List<List<Integer>> res=MyTree.bfsTraversal(root);
+                    List<List<Integer>> bfs=MyTree.bfsTraversal(root);
                     System.out.println("BFS a Level Wise Traversal Technique");
-                    MyTree.assistPLOTraversal(res);
-                    MyTree.printLevelOrderTraversals(res);
+                    MyTree.assistPLOTraversal(bfs);
+                    MyTree.printLevelOrderTraversals(bfs);
                     System.out.println("Level Order Traversal Done:)");
                     break;
                     case 2:
@@ -921,7 +921,10 @@ public class Main{
                 int traOp=sc.nextInt();
                 switch(traOp){
                     case 1:
-                    MyBST.bfsTraversal(root);
+                    List<List<Integer>> bfs=MyBST.bfsTraversal(root);
+                    System.out.println("BFS a Level Wise Traversal Technique");
+                    MyBST.printLevelOrderTraversals(bfs);
+                    System.out.println("Level Order Traversal Done:)");
                     break;
                     case 2:
                     List<Integer> dfsNodes=new ArrayList<>();
