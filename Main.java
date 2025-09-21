@@ -920,6 +920,9 @@ public class Main{
                 System.out.println("3. Back to Tree's Menu");
                 int traOp=sc.nextInt();
                 switch(traOp){
+                    case 1:
+                    MyBST.bfsTraversal(root);
+                    break;
                     case 2:
                     List<Integer> dfsNodes=new ArrayList<>();
                     System.out.println("Choose a DFS Technique From the Below");
