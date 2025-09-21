@@ -28,41 +28,45 @@ public class MyTree {
         this.right=r;
     }
     //Storing Values into List
-    public static List<Integer> inputNodeValues(Scanner sc){
-        List<Integer> nodes=new LinkedList<Integer>();
+    public static MyTree inputNodeValues(MyTree root,List<Integer> nodes,Scanner sc){
         while(true){
             int nodeVal =sc.nextInt();
-            if(nodeVal==-2) break;
+            if(nodeVal==-1){
+                break;
+            }
             nodes.add(nodeVal);
+            root=insert(root,nodeVal);
         }
-        return nodes;
+        return root;
     }
-    //Consturcting Tree From User Input
-    public static MyTree buildTree(List<Integer> nodes) {
-    if (nodes == null || nodes.isEmpty() || nodes.get(0) == -1) return null;
-    
-    MyTree root = new MyTree(nodes.get(0));
-    Queue<MyTree> q = new LinkedList<>();
-    q.offer(root);
-    int i = 1;
-    while (i < nodes.size()) {
-        MyTree current = q.poll();
-        // Left child
-        if (nodes.get(i) != -1) {
-            current.left = new MyTree(nodes.get(i));
-            q.offer(current.left);
+    public static MyTree insert(MyTree root,int val) {
+        MyTree newNode=new MyTree(val);
+        if (root == null){
+            root=newNode;
+            return root;
         }
-        i++;
-        // Right child
-        if (i < nodes.size() && nodes.get(i) != -1) {
-            current.right = new MyTree(nodes.get(i));
-            q.offer(current.right);
+        Queue<MyTree> q = new LinkedList<>();
+        q.offer(root);
+        while (!q.isEmpty()) {
+                MyTree node = q.poll();
+                if(node.left!=null){
+                    q.offer(node.left);
+                }
+                else{
+                    node.left=newNode;
+                    break;
+                }
+                if(node.right!=null){
+                    q.offer(node.left);
+                }
+                else{
+                    node.right=newNode;
+                    break;
+                }
         }
-        i++;
+        return root;
     }
-    return root;
-}
-     // Breadth First Search
+    // Breadth First Search
     public static List<List<Integer>> bfsTraversal(MyTree root) {
         List<List<Integer>> result = new ArrayList<>();
         if (root == null) return null;
