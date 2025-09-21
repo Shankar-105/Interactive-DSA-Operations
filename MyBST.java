@@ -192,4 +192,17 @@ public static List<List<Integer>> bfsTraversal(MyBST root) {
         }
         return result;
     }
+    public static void printLevelOrderTraversals(List<List<Integer>> result){
+    int level=0;
+    while (level<result.size()) {
+        List<Integer> eachLevel = result.get(level);
+            int size = eachLevel.size();
+            System.out.print("Level " + (level+1) + ":   ");
+            for (int i = 0; i < size; i++) {
+                System.out.print(eachLevel.get(i)+"  ");
+            }
+            System.out.println();
+            level++;
+        }
+}
     }
