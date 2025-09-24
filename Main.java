@@ -1037,8 +1037,8 @@ public class Main{
                 break;
                 case 5:
                 System.out.println("Min Heap");
-               // MyTree minHeapRoot=MyTree.buildTree(minHeap);
-               // MyTree.showTree(minHeapRoot, "", true);
+                MyTree minHeapRoot=MyTree.buildTree(minHeap);
+                MyTree.showTree(minHeapRoot, "", true);
                 break;
                 case 6:
                 minHeap=null;
@@ -1079,7 +1079,7 @@ public class Main{
                 break;
                 case 5:
                 System.out.println("Max Heap");
-              //  MyTree maxHeapRoot=MyTree.buildTree(maxHeap);
+                //MyTree maxHeapRoot=MyTree.buildTree(maxHeap);
                 //MyTree.showTree(maxHeapRoot, "", true);
                 break;
                 case 6:

@@ -66,6 +66,30 @@ public class MyTree {
         }
         return root;
     }
+    // build tree from a bunch of nodes
+    public static MyTree buildTree(List<Integer> nodes) {
+    if (nodes == null || nodes.isEmpty()){
+        return null;
+    }
+    MyTree root = new MyTree(nodes.get(0));
+    Queue<MyTree> q = new LinkedList<>();
+    q.offer(root);
+    int i = 1;
+    while (i < nodes.size()) {
+        MyTree current = q.poll();
+        if (i < nodes.size()) {
+            current.left = new MyTree(nodes.get(i));
+            q.offer(current.left);
+            i++;
+        }
+        if (i < nodes.size()) {
+            current.right = new MyTree(nodes.get(i));
+            q.offer(current.right);
+            i++;
+        }
+    }
+    return root;
+}
     // Breadth First Search
     public static List<List<Integer>> bfsTraversal(MyTree root) {
         List<List<Integer>> result = new ArrayList<>();
