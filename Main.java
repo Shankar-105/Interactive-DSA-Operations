@@ -1079,8 +1079,8 @@ public class Main{
                 break;
                 case 5:
                 System.out.println("Max Heap");
-                //MyTree maxHeapRoot=MyTree.buildTree(maxHeap);
-                //MyTree.showTree(maxHeapRoot, "", true);
+                MyTree maxHeapRoot=MyTree.buildTree(maxHeap);
+                MyTree.showTree(maxHeapRoot, "", true);
                 break;
                 case 6:
                 maxHeap=null;
