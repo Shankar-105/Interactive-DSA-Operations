@@ -193,6 +193,10 @@ public static List<List<Integer>> bfsTraversal(MyBST root) {
         return result;
     }
     public static void printLevelOrderTraversals(List<List<Integer>> result){
+    if(result == null){
+        System.out.println("BST is Empty Insert few Nodes!");
+        return;
+        }
     int level=0;
     while (level<result.size()) {
         List<Integer> eachLevel = result.get(level);

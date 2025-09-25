@@ -189,6 +189,10 @@ for (int i = 0; i < result.size(); i++) {
     }
     }
 public static void printLevelOrderTraversals(List<List<Integer>> result){
+    if(result == null){
+        System.out.println("Tree is Empty Insert few Nodes!");
+        return;
+        }
     int level=0;
     while (level<result.size()) {
         List<Integer> eachLevel = result.get(level);

@@ -661,7 +661,7 @@ public class Main{
             System.out.println("7.  Lowest Common Ancestor of Any Two Children");
             System.out.println("8.  Root to Any Node Path");
             System.out.println("9.  4 Side View of the Binary Tree (Top / Right / Bottom / Left )");
-            System.out.println("10.  Mirror image of the Binary Tree");
+            System.out.println("10. Mirror image of the Binary Tree");
             System.out.println("11. Display Binary Tree Structure");
             System.out.println("12. Reset Binary Tree");
             System.out.println("13. Leaf Nodes of the Binary Tree");
@@ -925,7 +925,6 @@ public class Main{
                     List<List<Integer>> bfs=MyBST.bfsTraversal(root);
                     System.out.println("BFS a Level Wise Traversal Technique");
                     MyBST.printLevelOrderTraversals(bfs);
-                    System.out.println("Level Order Traversal Done:)");
                     break;
                     case 2:
                     List<Integer> dfsNodes=new ArrayList<>();
