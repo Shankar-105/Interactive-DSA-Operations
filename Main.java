@@ -905,6 +905,7 @@ public class Main{
             System.out.println("5.  Minimum Value in the BST");
             System.out.println("6.  Maximum Value in the BST");
             System.out.println("7.  Delete a Value from BST");
+            System.out.println("13. Leaf Nodes of the Binary Tree");
             System.out.println("10. Back to Main Menu");
             while(true){
             System.out.print("Choose an Option From the BST's Menu  ");
