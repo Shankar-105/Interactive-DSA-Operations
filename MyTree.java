@@ -151,7 +151,9 @@ for (int i = 0; i < result.size(); i++) {
 //Zig Zag Level Order Traversal
     public static List<List<Integer>> zigZagLevelOrder(MyTree root) {
         List<List<Integer>> result = new ArrayList<>();
-        if (root == null) return result;
+        if (root == null){
+            return result;
+        }
         Queue<MyTree> queue = new LinkedList<>();
         queue.offer(root);
         boolean leftToRight = true;

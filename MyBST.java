@@ -209,4 +209,31 @@ public static List<List<Integer>> bfsTraversal(MyBST root) {
             level++;
         }
 }
+public static List<List<Integer>> zigZagLevelOrder(MyBST root) {
+        List<List<Integer>> result = new ArrayList<>();
+        if (root == null){
+            return result;
+        }
+        Queue<MyBST> queue = new LinkedList<>();
+        queue.offer(root);
+        boolean leftToRight = true;
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            List<Integer> level = new ArrayList<>();
+            for (int i = 0; i < size; i++) {
+                MyBST node = queue.poll();
+                if (leftToRight) {
+                    level.add(node.data);
+                } else {
+                    // Add at the beginning for reverse order
+                    level.add(0, node.data);
+                }
+                if (node.left != null) queue.offer(node.left);
+                if (node.right != null) queue.offer(node.right);
+            }
+            result.add(level);
+            leftToRight = !leftToRight; // Toggle direction
+        }
+        return result;
+    }
     }

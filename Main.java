@@ -667,7 +667,7 @@ public class Main{
             System.out.println("13. Leaf Nodes of the Binary Tree");
             System.out.println("14. Back to Main Menu");
             while(true){
-                System.out.println("Choose an Option From the Tree's Menu");
+                System.out.print("Choose an Option From the Tree's Menu ");
                 int op=sc.nextInt();
             switch(op){
                 case 1:
@@ -738,7 +738,6 @@ public class Main{
                 List<List<Integer>> res=MyTree.zigZagLevelOrder(root);
                 System.out.println("A Level Order Traversal with a Zig Zag Traversing Nature");
                 MyTree.assistPLOTraversal(res);
-                res=MyTree.bfsTraversal(root);
                 MyTree.printLevelOrderTraversals(res);
                 break;
                 case 2:
@@ -876,7 +875,7 @@ public class Main{
                 break;
                 case 12:
                 root=null;
-                nodes=null;
+                nodes.clear();
                 System.out.println("Tree SuccessFully Reloaded");
                 break;
                 case 13:
@@ -899,8 +898,9 @@ public class Main{
             System.out.println("Welcome to BST Operations");
             System.out.println("1.  Create a Binary Search Tree");
             System.out.println("2.  Traverse the Binary Search Tree");
+            System.out.println("3.  Three Special Binary Tree Traversals (Zig Zag / Vertical / Boundary )");
             System.out.println("9.  Insert a Node into BST");
-            System.out.println("3.  Display BST");
+            System.out.println("11.  Display BST");
             System.out.println("4.  Search for a value");
             System.out.println("5.  Minimum Value in the BST");
             System.out.println("6.  Maximum Value in the BST");
@@ -957,12 +957,29 @@ public class Main{
                     break;
                 }
                 break;
+                case 3:
+                System.out.println("Choose a Special Traversal Technique From the Below");
+                System.out.println("1. Zig Zag Traversal");
+                System.out.println("2. Vertical Order Traversal");
+                System.out.println("3. Boundary Traversal");
+                System.out.println("4. Back to Tree's Menu");
+                int specChoice=sc.nextInt();
+                switch(specChoice){
+                case 1:
+                List<List<Integer>> res=MyBST.zigZagLevelOrder(root);
+                System.out.println("A Level Order Traversal with a Zig Zag Traversing Nature");
+                MyTree.printLevelOrderTraversals(res);
+                break;
+                case 4:
+                break;
+                }
+                break;
                 case 9:
                 System.out.println("Enter Value to insert");
                 int val=sc.nextInt();
                 root=MyBST.insert(root,val);
                 break;
-                case 3:
+                case 11:
                 System.out.println("BST");
                 MyBST.showTree(root, "", true);
                 break;
