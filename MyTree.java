@@ -57,7 +57,7 @@ public class MyTree {
                     break;
                 }
                 if(node.right!=null){
-                    q.offer(node.left);
+                    q.offer(node.right);
                 }
                 else{
                     node.right=newNode;

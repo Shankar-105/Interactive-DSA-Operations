@@ -671,6 +671,7 @@ public class Main{
                 int op=sc.nextInt();
             switch(op){
                 case 1:
+                root=null;
                 System.out.println("Enter the nodes (-1) to stop");
                 root=MyTree.inputNodeValues(root,nodes,sc);
                 System.out.println("Tree SuccessFully Built :)");
