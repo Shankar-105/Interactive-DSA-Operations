@@ -236,4 +236,12 @@ public static List<List<Integer>> zigZagLevelOrder(MyBST root) {
         }
         return result;
     }
+    private static int bstHeight(MyBST root){
+    if(root==null){
+        return 0;
+    }
+    int leftHeight=bstHeight(root.left);
+    int rightHeight=bstHeight(root.right);
+    return Math.max(leftHeight, rightHeight);
+    }
     }
