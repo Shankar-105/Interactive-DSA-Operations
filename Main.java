@@ -905,7 +905,7 @@ public class Main{
             System.out.println("6.  Maximum Value in the BST");
             System.out.println("7.  Delete a Value from BST");
             System.out.println("9.  Insert a Node into BST");
-            System.out.println("11.  Display BST");
+            System.out.println("11. Display BST");
             System.out.println("13. Leaf Nodes of the Binary Tree");
             System.out.println("10. Back to Main Menu");
             while(true){

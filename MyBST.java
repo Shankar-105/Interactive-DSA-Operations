@@ -262,10 +262,13 @@ public static List<List<Integer>> zigZagLevelOrder(MyBST root) {
     return isBalanced(root)!=-1?"Yes":"No";
     }
     public static void bstSummary(MyBST root,List<Integer> nodes){
+        // height of a tree is the number of edges in the longest path
+        // from root to any node(leaves)
+        int bstHeight=bstHeight(root)-1;
         System.out.println("== Tree Summary ==");
         System.out.print("Root Node: "+root.data);
         System.out.print(" | Total Nodes:"+nodes.size());
         System.out.print(" | Balanced:"+isBstBalanced(root));
-        System.out.println(" | Height:"+bstHeight(root));
+        System.out.println(" | Height:"+bstHeight);
     }
     }
