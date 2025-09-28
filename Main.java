@@ -665,7 +665,8 @@ public class Main{
             System.out.println("11. Display Binary Tree Structure");
             System.out.println("12. Reset Binary Tree");
             System.out.println("13. Leaf Nodes of the Binary Tree");
-            System.out.println("14. Back to Main Menu");
+            System.out.println("14. Maximum Depth in the Tree");
+            System.out.println("15. Back to Main Menu");
             while(true){
                 System.out.print("Choose an Option From the Tree's Menu ");
                 int op=sc.nextInt();
@@ -887,6 +888,9 @@ public class Main{
                 System.out.println();
                 break;
                 case 14:
+                System.out.println("Maximum Depth in the Tree is "+MyTree.treeMaxDepth(root));
+                break;
+                case 15:
                 return;
                 default:
                 System.out.println("Range of Input Integer's Provided For Operation is [1-15]");

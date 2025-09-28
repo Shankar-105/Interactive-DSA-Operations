@@ -223,10 +223,10 @@ public static void showTree(MyTree node, String prefix, boolean isTail) {
             showTree(children.get(children.size() - 1), prefix + (isTail ? "    " : "│   "), true);
         }
     }
-    private static int treeHeight(MyTree root) {
+    public static int treeMaxDepth(MyTree root) {
     if (root == null) return 0;
-    int leftHeight=treeHeight(root.left);
-    int rightHeight=treeHeight(root.right);
+    int leftHeight=treeMaxDepth(root.left);
+    int rightHeight=treeMaxDepth(root.right);
     return 1 + Math.max(leftHeight,rightHeight);
 }
 public static void searchInTree(MyTree root,int target) {
@@ -265,11 +265,12 @@ public static void searchInTree(MyTree root,int target) {
         return (assistIsBalanced(root)!=-1)? "Yes" : "No" ;
     }
     public static void treeSummary(MyTree root,List<Integer> nodes){
+        int treeHeight=treeMaxDepth(root)-1;
         System.out.println("== Tree Summary ==");
         System.out.print("Root Node: "+root.data);
         System.out.print(" | Total Nodes:"+nodes.size());
         System.out.print(" | Balanced:"+isBalanced(root));
-        System.out.println(" | Height:"+treeHeight(root));
+        System.out.println(" | Height:"+treeHeight);
     }
     private static int assistDiameter(MyTree root,int[] maxi){
       if(root==null) return 0;
