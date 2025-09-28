@@ -901,13 +901,13 @@ public class Main{
             System.out.println("2.  Traverse the Binary Search Tree");
             System.out.println("3.  Three Special Binary Tree Traversals (Zig Zag / Vertical / Boundary )");
             System.out.println("4.  Search for a value");
-            System.out.println("5.  Minimum Value in the BST");
-            System.out.println("6.  Maximum Value in the BST");
+            System.out.println("5.  Maximum Depth in the BST");
             System.out.println("7.  Delete a Value from BST");
+            System.out.println("8.  Min and Max Values in the BST");
             System.out.println("9.  Insert a Node into BST");
-            System.out.println("11. Display BST");
-            System.out.println("13. Leaf Nodes of the Binary Tree");
-            System.out.println("10. Back to Main Menu");
+            System.out.println("10. Display BST");
+            System.out.println("11. Leaf Nodes of the Binary Tree");
+            System.out.println("12. Back to Main Menu");
             while(true){
             System.out.print("Choose an Option From the BST's Menu  ");
             int bstOp=sc.nextInt();
@@ -991,15 +991,16 @@ public class Main{
                 MyBST.search(root,searchVal);
                 break;
                 case 5:
-                MyBST.minValueNode(root);
-                break;
-                case 6:
-                MyBST.maxValueNode(root);
+                System.out.println("Maximum Depth in the BST is "+MyBST.bstMaxDepth(root));
                 break;
                 case 7:
                 System.out.println("Enter the Value to Delete ");
                 int delete=sc.nextInt();
                 MyBST.deleteNode(root,delete);
+                break;
+                case 8:
+                MyBST.maxValueNode(root);
+                MyBST.minValueNode(root);
                 break;
                 case 10:
                 return;
