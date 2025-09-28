@@ -15,11 +15,12 @@ public class MyBST {
         this.left=l;
         this.right=r;
     }
-    public static MyBST buildBST(Scanner sc,MyBST root){
+    public static MyBST buildBST(Scanner sc,List<Integer> nodes,MyBST root){
     System.out.println("Enter Each Node Values (-1) to stop");
     while(true){
             int nodeVal =sc.nextInt();
             if(nodeVal==-1) break;
+            nodes.add(nodeVal);
             root=MyBST.insert(root, nodeVal);
         }
         return root;
@@ -243,5 +244,12 @@ public static List<List<Integer>> zigZagLevelOrder(MyBST root) {
     int leftHeight=bstHeight(root.left);
     int rightHeight=bstHeight(root.right);
     return Math.max(leftHeight, rightHeight);
+    }
+    public static void bstSummary(MyBST root,List<Integer> nodes){
+        System.out.println("== Tree Summary ==");
+        System.out.print("Root Node: "+root.data);
+        System.out.print(" | Total Nodes:"+nodes.size());
+      //  System.out.print(" | Balanced:"+isBalanced(root));
+        System.out.println(" | Height:"+bstHeight(root));
     }
     }

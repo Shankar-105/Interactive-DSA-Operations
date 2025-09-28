@@ -895,16 +895,17 @@ public class Main{
       }
       private static void handleBinarySearchTrees(Scanner sc){
             MyBST root=null;
+            List<Integer> nodes=new LinkedList<>();
             System.out.println("Welcome to BST Operations");
             System.out.println("1.  Create a Binary Search Tree");
             System.out.println("2.  Traverse the Binary Search Tree");
             System.out.println("3.  Three Special Binary Tree Traversals (Zig Zag / Vertical / Boundary )");
-            System.out.println("9.  Insert a Node into BST");
-            System.out.println("11.  Display BST");
             System.out.println("4.  Search for a value");
             System.out.println("5.  Minimum Value in the BST");
             System.out.println("6.  Maximum Value in the BST");
             System.out.println("7.  Delete a Value from BST");
+            System.out.println("9.  Insert a Node into BST");
+            System.out.println("11.  Display BST");
             System.out.println("13. Leaf Nodes of the Binary Tree");
             System.out.println("10. Back to Main Menu");
             while(true){
@@ -913,7 +914,7 @@ public class Main{
                 switch(bstOp){
                 case 1:
                 root=null;
-                root=MyBST.buildBST(sc, root);
+                root=MyBST.buildBST(sc,nodes,root);
                 break;
                 case 2:
                 System.out.println("Choose the traversal you like");
@@ -982,6 +983,7 @@ public class Main{
                 case 11:
                 System.out.println("BST");
                 MyBST.showTree(root, "", true);
+                MyBST.bstSummary(root,nodes);
                 break;
                 case 4:
                 System.out.println("Enter the value to search for ");
