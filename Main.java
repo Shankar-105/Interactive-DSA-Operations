@@ -911,8 +911,8 @@ public class Main{
             System.out.println("8.  Min and Max Values in the BST");
             System.out.println("9.  Insert a Node into BST");
             System.out.println("10. Display BST");
-            System.out.println("11. Leaf Nodes of the Binary Tree");
-            System.out.println("12. Back to Main Menu");
+            System.out.println("12. Indorder Successor and Predecessor");
+            System.out.println("15. Back to Main Menu");
             while(true){
             System.out.print("Choose an Option From the BST's Menu  ");
             int bstOp=sc.nextInt();
@@ -985,7 +985,7 @@ public class Main{
                 int val=sc.nextInt();
                 root=MyBST.insert(root,val);
                 break;
-                case 11:
+                case 10:
                 System.out.println("BST");
                 MyBST.showTree(root, "", true);
                 MyBST.bstSummary(root,nodes);
@@ -1032,7 +1032,12 @@ public class Main{
                 MyBST.maxValueNode(root);
                 MyBST.minValueNode(root);
                 break;
-                case 10:
+                case 12:
+                System.out.println("Enter A Value ");
+                int inSucOf=sc.nextInt();
+                MyBST.inorderSuccessor(root,inSucOf);
+                break;
+                case 15:
                 return;
                 default:
                 System.out.println("Range of Input Integer's Provided For Operation is [1-2]");
