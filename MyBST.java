@@ -290,4 +290,23 @@ public static List<List<Integer>> zigZagLevelOrder(MyBST root) {
             System.out.println("Floor of the Number "+target+" in the BST doesnt exist");
         }
     }
+    public static void ceilInBST(MyBST root,int target){
+        int mini=Integer.MAX_VALUE;
+        MyBST temp=root;
+        while(temp!=null){
+            if(temp.data>=target){
+                mini=Math.min(temp.data,mini);
+                temp=temp.left;
+            }
+            else{
+                temp=temp.right;
+            }
+        }
+        if(mini!=Integer.MAX_VALUE){
+            System.out.println("Ceil of the Number "+target+" in the BST is "+mini);
+        }
+        else{
+            System.out.println("Ceil of the Number "+target+" in the BST doesnt exist");
+        }
     }
+}

@@ -999,9 +999,23 @@ public class Main{
                 System.out.println("Maximum Depth in the BST is "+MyBST.bstMaxDepth(root));
                 break;
                 case 6:
+                System.out.println("1. Floor Of a Number in the BST");
+                System.out.println("2. Ceil Of a Number in the BST");
+                System.out.println("3. Both Floor and Ceil Of a Number in the BST");
+                System.out.println("Choose an Operation frm the Above");
+                int cho=sc.nextInt();
+                switch(cho){
+                case 1:
                 System.out.println("Enter a Value to compute its FLoor");
                 int floorOf=sc.nextInt();
                 MyBST.floorInBST(root, floorOf);
+                break;
+                case 2:
+                System.out.println("Enter a Value to compute its Ceil");
+                int ceilOf=sc.nextInt();
+                MyBST.ceilInBST(root,ceilOf);
+                break;
+                }
                 break;
                 case 7:
                 System.out.println("Enter the Value to Delete ");
