@@ -906,6 +906,7 @@ public class Main{
             System.out.println("3.  Three Special Binary Tree Traversals (Zig Zag / Vertical / Boundary )");
             System.out.println("4.  Search for a value");
             System.out.println("5.  Maximum Depth in the BST");
+            System.out.println("6.  Floor and Ceil in BST");
             System.out.println("7.  Delete a Value from BST");
             System.out.println("8.  Min and Max Values in the BST");
             System.out.println("9.  Insert a Node into BST");
@@ -996,6 +997,11 @@ public class Main{
                 break;
                 case 5:
                 System.out.println("Maximum Depth in the BST is "+MyBST.bstMaxDepth(root));
+                break;
+                case 6:
+                System.out.println("Enter a Value to compute its FLoor");
+                int floorOf=sc.nextInt();
+                MyBST.floorInBST(root, floorOf);
                 break;
                 case 7:
                 System.out.println("Enter the Value to Delete ");

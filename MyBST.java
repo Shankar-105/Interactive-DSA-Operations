@@ -271,4 +271,23 @@ public static List<List<Integer>> zigZagLevelOrder(MyBST root) {
         System.out.print(" | Balanced:"+isBstBalanced(root));
         System.out.println(" | Height:"+bstHeight);
     }
+    public static void floorInBST(MyBST root,int target){
+        int maxi=Integer.MIN_VALUE;
+        MyBST temp=root;
+        while(temp!=null){
+            if(temp.data<=target){
+                maxi=Math.max(temp.data,maxi);
+                temp=temp.right;
+            }
+            else{
+                temp=temp.left;
+            }
+        }
+        if(maxi!=Integer.MIN_VALUE){
+            System.out.println("Floor of the Number "+target+" in the BST is "+maxi);
+        }
+        else{
+            System.out.println("Floor of the Number "+target+" in the BST doesnt exist");
+        }
+    }
     }
