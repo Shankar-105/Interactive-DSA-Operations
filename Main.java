@@ -1015,6 +1015,12 @@ public class Main{
                 int ceilOf=sc.nextInt();
                 MyBST.ceilInBST(root,ceilOf);
                 break;
+                case 3:
+                System.out.println("Enter a Number to Find its floor as well As ceil");
+                int fcOf=sc.nextInt();
+                MyBST.floorInBST(root,fcOf);
+                MyBST.ceilInBST(root,fcOf);
+                break;
                 }
                 break;
                 case 7:
