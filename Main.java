@@ -986,7 +986,7 @@ public class Main{
                 break;
                 case 3:
                 System.out.println("1.  Min and Max Values in the BST");
-                System.out.println("2.  Indorder Successor and Predecessor");
+                System.out.println("2.  Indorder Successor and Predecessor of a Value in the BST");
                 System.out.println("Choose an option from the Orde Based Menu in the BST ");
                 int obOp=sc.nextInt();
                 switch(obOp){
@@ -995,9 +995,10 @@ public class Main{
                 MyBST.minValueNode(root);
                 break;
                 case 2:
-                System.out.println("Enter A Value ");
-                int inSucOf=sc.nextInt();
-                MyBST.inorderSuccessor(root,inSucOf);
+                System.out.println("Enter a Value ");
+                int inOf=sc.nextInt();
+                MyBST.inorderSuccessor(root,inOf);
+                MyBST.inorderPredecessor(root,inOf);
                 break;
                 }
                 break;

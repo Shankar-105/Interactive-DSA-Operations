@@ -328,4 +328,23 @@ public static List<List<Integer>> zigZagLevelOrder(MyBST root) {
             System.out.println("Indorder Successor doesnt exist");
         }
     }
+    public static void inorderPredecessor(MyBST root,int target){
+        int predecessor=0;
+        MyBST temp=root;
+        while(temp!=null){
+            if(temp.data<target){
+                predecessor=temp.data;
+                temp=temp.right;
+            }
+            else{
+                temp=temp.left;
+            }
+        }
+        if(predecessor!=0){
+            System.out.println("The Inorder Predecessor of "+target+" is "+predecessor);
+        }
+        else{
+            System.out.println("Indorder Predecessor doesnt exist");
+        }
+    }
 }
