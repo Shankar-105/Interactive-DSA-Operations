@@ -654,7 +654,7 @@ public class Main{
             System.out.println("Welcome to Binary Tree Operations");
             System.out.println("1.  Create a Binary Tree");
             System.out.println("2.  Traverse the Binary Tree(BFS/DFS)");
-            System.out.println("3.  Three Special Binary Tree Traversals (Zig Zag / Vertical / Boundary )");
+            System.out.println("3.  Special Binary Tree Traversals");
             System.out.println("4.  Insert a Node into the Tree");
             System.out.println("5.  Search in the Binary Tree");
             System.out.println("6.  Diameter Of the Binary Tree");
@@ -845,13 +845,13 @@ public class Main{
                     if (rView == null) rView = MyTree.rightSideView(root);
                     if (bView == null) bView = MyTree.bottomView(root);
                     if (lView == null) lView = MyTree.leftSideView(root);
-                    System.out.print(">Top View    ");
+                    System.out.print("Top View    ");
                     MyTree.printDFSTraversals(tView);
-                    System.out.print(">Right View  ");
+                    System.out.print("Right View  ");
                     MyTree.printDFSTraversals(rView);
-                    System.out.print(">Bottom View ");
+                    System.out.print("Bottom View ");
                     MyTree.printDFSTraversals(bView);
-                    System.out.print(">Left View   ");
+                    System.out.print("Left View   ");
                     MyTree.printDFSTraversals(lView);
                     break;
                     case 6:
@@ -902,24 +902,33 @@ public class Main{
             List<Integer> nodes=new LinkedList<>();
             System.out.println("Welcome to BST Operations");
             System.out.println("1.  Create a Binary Search Tree");
-            System.out.println("2.  Traverse the Binary Search Tree");
-            System.out.println("3.  Three Special Binary Tree Traversals (Zig Zag / Vertical / Boundary )");
-            System.out.println("4.  Search for a value");
+            System.out.println("2.  Basic General Operations in BST");
+            System.out.println("3.  Order Based Operations in BST");
+            System.out.println("4.  Special Traversals"); 
             System.out.println("5.  Maximum Depth in the BST");
-            System.out.println("6.  Floor and Ceil in BST");
-            System.out.println("7.  Delete a Value from BST");
-            System.out.println("8.  Min and Max Values in the BST");
-            System.out.println("9.  Insert a Node into BST");
+            System.out.println("6.  Floor and Ceil in BST"); 
             System.out.println("10. Display BST");
-            System.out.println("12. Indorder Successor and Predecessor");
             System.out.println("15. Back to Main Menu");
             while(true){
-            System.out.print("Choose an Option From the BST's Menu  ");
+            System.out.print("Choose an Option From the BST's Menu ");
             int bstOp=sc.nextInt();
                 switch(bstOp){
                 case 1:
                 root=null;
                 root=MyBST.buildBST(sc,nodes,root);
+                break;
+                case 2:
+                System.out.println("1.  Insert a Node into BST");
+                System.out.println("2.  Traverse the Binary Search Tree");
+                System.out.println("3.  Search for a value");
+                System.out.println("4.  Delete a Value from BST");
+                System.out.println("Choose an Operation from the above menu");
+                int bgOp=sc.nextInt();
+                switch(bgOp){
+                case 1:
+                System.out.println("Enter Value to insert");
+                int val=sc.nextInt();
+                root=MyBST.insert(root,val);
                 break;
                 case 2:
                 System.out.println("Choose the traversal you like");
@@ -964,6 +973,35 @@ public class Main{
                 }
                 break;
                 case 3:
+                System.out.println("Enter the value to search for ");
+                int searchVal=sc.nextInt();
+                MyBST.search(root,searchVal);
+                break;
+                case 4:
+                System.out.println("Enter the Value to Delete ");
+                int delete=sc.nextInt();
+                MyBST.deleteNode(root,delete);
+                break;
+                }
+                break;
+                case 3:
+                System.out.println("1.  Min and Max Values in the BST");
+                System.out.println("2.  Indorder Successor and Predecessor");
+                System.out.println("Choose an option from the Orde Based Menu in the BST ");
+                int obOp=sc.nextInt();
+                switch(obOp){
+                case 1:
+                MyBST.maxValueNode(root);
+                MyBST.minValueNode(root);
+                break;
+                case 2:
+                System.out.println("Enter A Value ");
+                int inSucOf=sc.nextInt();
+                MyBST.inorderSuccessor(root,inSucOf);
+                break;
+                }
+                break;
+                case 4:
                 System.out.println("Choose a Special Traversal Technique From the Below");
                 System.out.println("1. Zig Zag Traversal");
                 System.out.println("2. Vertical Order Traversal");
@@ -980,20 +1018,10 @@ public class Main{
                 break;
                 }
                 break;
-                case 9:
-                System.out.println("Enter Value to insert");
-                int val=sc.nextInt();
-                root=MyBST.insert(root,val);
-                break;
                 case 10:
                 System.out.println("BST");
                 MyBST.showTree(root, "", true);
                 MyBST.bstSummary(root,nodes);
-                break;
-                case 4:
-                System.out.println("Enter the value to search for ");
-                int searchVal=sc.nextInt();
-                MyBST.search(root,searchVal);
                 break;
                 case 5:
                 System.out.println("Maximum Depth in the BST is "+MyBST.bstMaxDepth(root));
@@ -1022,20 +1050,6 @@ public class Main{
                 MyBST.ceilInBST(root,fcOf);
                 break;
                 }
-                break;
-                case 7:
-                System.out.println("Enter the Value to Delete ");
-                int delete=sc.nextInt();
-                MyBST.deleteNode(root,delete);
-                break;
-                case 8:
-                MyBST.maxValueNode(root);
-                MyBST.minValueNode(root);
-                break;
-                case 12:
-                System.out.println("Enter A Value ");
-                int inSucOf=sc.nextInt();
-                MyBST.inorderSuccessor(root,inSucOf);
                 break;
                 case 15:
                 return;
