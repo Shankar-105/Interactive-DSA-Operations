@@ -651,29 +651,31 @@ public class Main{
       }
       private static void handleBinaryTrees(Scanner sc){
             MyTree root=null;
-            List<Integer> nodes=null;
+            List<Integer> nodes=new ArrayList<>();
             System.out.println("Welcome to Binary Tree Operations");
             System.out.println("1.  Create a Binary Tree");
             System.out.println("2.  Traverse the Binary Tree(BFS/DFS)");
-            System.out.println("3.  Three Special Binary Tree Traversals (Zig Zag / Vertical / Boundary )");
-            System.out.println("4.  Search in the Binary Tree");
-            System.out.println("5.  Diameter Of the Binary Tree");
-            System.out.println("6.  Lowest Common Ancestor of Any Two Children");
-            System.out.println("7.  Root to Any Node Path");
-            System.out.println("8.  4 Side View of the Binary Tree (Top / Right / Bottom / Left )");
-            System.out.println("9.  Mirror image of the Binary Tree");
-            System.out.println("10. Display Binary Tree Structure");
-            System.out.println("11. Reset Binary Tree");
-            System.out.println("12. Leaf Nodes of the Binary Tree");
-            System.out.println("13. Back to Main Menu");
+            System.out.println("3.  Special Binary Tree Traversals");
+            System.out.println("4.  Insert a Node into the Tree");
+            System.out.println("5.  Search in the Binary Tree");
+            System.out.println("6.  Diameter Of the Binary Tree");
+            System.out.println("7.  Lowest Common Ancestor of Any Two Children");
+            System.out.println("8.  Root to Any Node Path");
+            System.out.println("9.  4 Side View of the Binary Tree (Top / Right / Bottom / Left )");
+            System.out.println("10. Mirror image of the Binary Tree");
+            System.out.println("11. Display Binary Tree Structure");
+            System.out.println("12. Reset Binary Tree");
+            System.out.println("13. Leaf Nodes of the Binary Tree");
+            System.out.println("14. Maximum Depth in the Tree");
+            System.out.println("15. Back to Main Menu");
             while(true){
-                System.out.println("Choose an Option From the Tree's Menu");
+                System.out.print("Choose an Option From the Tree's Menu ");
                 int op=sc.nextInt();
             switch(op){
                 case 1:
-                System.out.println("Enter the nodes level wise Enter -1 for null");
-                nodes=MyTree.inputNodeValues(sc);
-                root=MyTree.buildTree(nodes);
+                root=null;
+                System.out.println("Enter the nodes (-1) to stop");
+                root=MyTree.inputNodeValues(root,nodes,sc);
                 System.out.println("Tree SuccessFully Built :)");
                 break;
                 case 2:
@@ -684,10 +686,10 @@ public class Main{
                 int choice =sc.nextInt();
                 switch(choice){
                     case 1:
-                    List<List<Integer>> res=MyTree.bfsTraversal(root);
+                    List<List<Integer>> bfs=MyTree.bfsTraversal(root);
                     System.out.println("BFS a Level Wise Traversal Technique");
-                    MyTree.assistPLOTraversal(res);
-                    MyTree.printLevelOrderTraversals(res);
+                    MyTree.assistPLOTraversal(bfs);
+                    MyTree.printLevelOrderTraversals(bfs);
                     System.out.println("Level Order Traversal Done:)");
                     break;
                     case 2:
@@ -738,7 +740,6 @@ public class Main{
                 List<List<Integer>> res=MyTree.zigZagLevelOrder(root);
                 System.out.println("A Level Order Traversal with a Zig Zag Traversing Nature");
                 MyTree.assistPLOTraversal(res);
-                res=MyTree.bfsTraversal(root);
                 MyTree.printLevelOrderTraversals(res);
                 break;
                 case 2:
@@ -774,14 +775,19 @@ public class Main{
                 }
                 break;
                 case 4:
+                System.out.println("Enter the Value to Insert into the Tree");
+                int insVal=sc.nextInt();
+                MyTree.insert(root, insVal);
+                break;
+                case 5:
                 System.out.print("Enter the value to search: ");
                 int target = sc.nextInt();
                 MyTree.searchInTree(root, target);
                 break;
-                case 5:
+                case 6:
                 System.out.println("Diameter of the Binary Tree "+MyTree.computeDiameter(root));
                 break;
-                case 6:
+                case 7:
                 System.out.println("Enter the Two Nodes value: ");
                 int val1 = sc.nextInt();
                 MyTree node1=new MyTree(val1);
@@ -789,14 +795,14 @@ public class Main{
                 MyTree node2=new MyTree(val2);
                 System.out.println("The Lowest Common Ancestor Of the Two Nodes "+val1+" and "+ val2 +" is "+MyTree.LowestCommonAncestor(root,node1,node2).data);
                 break;
-                case 7:
+                case 8:
                 System.out.println("Enter the Node value: ");
                 int toNode = sc.nextInt();
                 List<Integer> path=new java.util.LinkedList<>();
                 MyTree.rootToNodePath(root,toNode,path);
                 MyTree.printDFSTraversals(path);
                 break;
-                case 8:
+                case 9:
                 System.out.println("Choose any Tree View From the Below");
                 System.out.println("1. Top View");
                 System.out.println("2. Right View");
@@ -840,13 +846,13 @@ public class Main{
                     if (rView == null) rView = MyTree.rightSideView(root);
                     if (bView == null) bView = MyTree.bottomView(root);
                     if (lView == null) lView = MyTree.leftSideView(root);
-                    System.out.print(">Top View    ");
+                    System.out.print("Top View    ");
                     MyTree.printDFSTraversals(tView);
-                    System.out.print(">Right View  ");
+                    System.out.print("Right View  ");
                     MyTree.printDFSTraversals(rView);
-                    System.out.print(">Bottom View ");
+                    System.out.print("Bottom View ");
                     MyTree.printDFSTraversals(bView);
-                    System.out.print(">Left View   ");
+                    System.out.print("Left View   ");
                     MyTree.printDFSTraversals(lView);
                     break;
                     case 6:
@@ -855,7 +861,7 @@ public class Main{
                   System.out.println("Range of Input Integer's Provided For Operation is [1-6]");
                 }
                 break;
-                case 9:
+                case 10:
                 System.out.println("Tree Actual Image");
                 List<List<Integer>> resMir=MyTree.bfsTraversal(root);
                 MyTree.printLevelOrderTraversals(resMir);
@@ -863,18 +869,18 @@ public class Main{
                 List<List<Integer>> inverseRes=MyTree.invertTree(root);
                 MyTree.printLevelOrderTraversals(inverseRes);
                 break;
-                case 10:
+                case 11:
                 System.out.println();
                 System.out.println("== Current Tree SnapShot ==");
                 MyTree.showTree(root,"",true);
                 MyTree.treeSummary(root, nodes);
                 break;
-                case 11:
+                case 12:
                 root=null;
-                nodes=null;
+                nodes.clear();
                 System.out.println("Tree SuccessFully Reloaded");
                 break;
-                case 12:
+                case 13:
                 System.out.println("Leaf Nodes (Left to Right) ");
                 List<Integer> leaves=new java.util.LinkedList<>();
                 leaves=MyTree.leafNodes(root, leaves);
@@ -882,7 +888,10 @@ public class Main{
                 MyTree.printDFSTraversals(leaves);
                 System.out.println();
                 break;
-                case 13:
+                case 14:
+                System.out.println("Maximum Depth in the Tree is "+MyTree.treeMaxDepth(root));
+                break;
+                case 15:
                 return;
                 default:
                 System.out.println("Range of Input Integer's Provided For Operation is [1-15]");
@@ -891,50 +900,159 @@ public class Main{
       }
       private static void handleBinarySearchTrees(Scanner sc){
             MyBST root=null;
-           // List<Integer> nodes=new ArrayList<>();
+            List<Integer> nodes=new LinkedList<>();
             System.out.println("Welcome to BST Operations");
             System.out.println("1.  Create a Binary Search Tree");
-            System.out.println("2.  Insert a Node into BST");
-            System.out.println("3.  Display BST");
-            System.out.println("4.  Search for a value");
-            System.out.println("5.  Minimum Value in the BST");
-            System.out.println("6.  Maximum Value in the BST");
-            System.out.println("7.  Delete a Value from BST");
-            System.out.println("10. Back to Main Menu");
+            System.out.println("2.  Basic General Operations in BST");
+            System.out.println("3.  Order Based Operations in BST");
+            System.out.println("4.  Special Traversals"); 
+            System.out.println("5.  Maximum Depth in the BST");
+            System.out.println("6.  Floor and Ceil in BST"); 
+            System.out.println("10. Display BST");
+            System.out.println("15. Back to Main Menu");
             while(true){
-            System.out.print("Choose an Option From the BST's Menu  ");
+            System.out.print("Choose an Option From the BST's Menu ");
             int bstOp=sc.nextInt();
                 switch(bstOp){
                 case 1:
                 root=null;
-                root=MyBST.buildBST(sc, root);
+                root=MyBST.buildBST(sc,nodes,root);
                 break;
                 case 2:
+                System.out.println("1.  Insert a Node into BST");
+                System.out.println("2.  Traverse the Binary Search Tree");
+                System.out.println("3.  Search for a value");
+                System.out.println("4.  Delete a Value from BST");
+                System.out.println("Choose an Operation from the above menu");
+                int bgOp=sc.nextInt();
+                switch(bgOp){
+                case 1:
                 System.out.println("Enter Value to insert");
                 int val=sc.nextInt();
                 root=MyBST.insert(root,val);
                 break;
-                case 3:
-                System.out.println("BST");
-                MyBST.showTree(root, "", true);
+                case 2:
+                System.out.println("Choose the traversal you like");
+                System.out.println("1. BFS(Level Wise)");
+                System.out.println("2. DFS(Depth Wise)");
+                System.out.println("3. Back to Tree's Menu");
+                int traOp=sc.nextInt();
+                switch(traOp){
+                    case 1:
+                    List<List<Integer>> bfs=MyBST.bfsTraversal(root);
+                    System.out.println("BFS a Level Wise Traversal Technique");
+                    MyBST.printLevelOrderTraversals(bfs);
+                    break;
+                    case 2:
+                    List<Integer> dfsNodes=new ArrayList<>();
+                    System.out.println("Choose a DFS Technique From the Below");
+                    System.out.println("1. PreOrder Traversal");
+                    System.out.println("2. InOrder Traversal");
+                    System.out.println("3. PostOrder Traversal");
+                    int dfsOp=sc.nextInt();
+                    switch(dfsOp){
+                      case 1:
+                      MyBST.preOrderTraversal(root,dfsNodes);
+                      System.out.println("Pre Order Traversal ");
+                      MyBST.printDFSTraversals(dfsNodes);
+                      System.out.println();
+                      break;
+                      case 2:
+                      MyBST.inOrderTraversal(root,dfsNodes);
+                      System.out.println("In Order Traversal ");
+                      MyBST.printDFSTraversals(dfsNodes);
+                      System.out.println();
+                      break;
+                      case 3:
+                      MyBST.postOrderTraversal(root,dfsNodes);
+                      System.out.println("Post Order Traversal ");
+                      MyBST.printDFSTraversals(dfsNodes);
+                      System.out.println();
+                      break;
+                    }
+                    break;
+                }
                 break;
-                case 4:
+                case 3:
                 System.out.println("Enter the value to search for ");
                 int searchVal=sc.nextInt();
                 MyBST.search(root,searchVal);
                 break;
-                case 5:
-                MyBST.minValueNode(root);
-                break;
-                case 6:
-                MyBST.maxValueNode(root);
-                break;
-                case 7:
+                case 4:
                 System.out.println("Enter the Value to Delete ");
                 int delete=sc.nextInt();
                 MyBST.deleteNode(root,delete);
                 break;
+                }
+                break;
+                case 3:
+                System.out.println("1.  Min and Max Values in the BST");
+                System.out.println("2.  Indorder Successor and Predecessor");
+                System.out.println("Choose an option from the Orde Based Menu in the BST ");
+                int obOp=sc.nextInt();
+                switch(obOp){
+                case 1:
+                MyBST.maxValueNode(root);
+                MyBST.minValueNode(root);
+                break;
+                case 2:
+                System.out.println("Enter A Value ");
+                int inSucOf=sc.nextInt();
+                MyBST.inorderSuccessor(root,inSucOf);
+                break;
+                }
+                break;
+                case 4:
+                System.out.println("Choose a Special Traversal Technique From the Below");
+                System.out.println("1. Zig Zag Traversal");
+                System.out.println("2. Vertical Order Traversal");
+                System.out.println("3. Boundary Traversal");
+                System.out.println("4. Back to Tree's Menu");
+                int specChoice=sc.nextInt();
+                switch(specChoice){
+                case 1:
+                List<List<Integer>> res=MyBST.zigZagLevelOrder(root);
+                System.out.println("A Level Order Traversal with a Zig Zag Traversing Nature");
+                MyTree.printLevelOrderTraversals(res);
+                break;
+                case 4:
+                break;
+                }
+                break;
                 case 10:
+                System.out.println("BST");
+                MyBST.showTree(root, "", true);
+                MyBST.bstSummary(root,nodes);
+                break;
+                case 5:
+                System.out.println("Maximum Depth in the BST is "+MyBST.bstMaxDepth(root));
+                break;
+                case 6:
+                System.out.println("1. Floor Of a Number in the BST");
+                System.out.println("2. Ceil Of a Number in the BST");
+                System.out.println("3. Both Floor and Ceil Of a Number in the BST");
+                System.out.println("Choose an Operation frm the Above");
+                int cho=sc.nextInt();
+                switch(cho){
+                case 1:
+                System.out.println("Enter a Value to compute its FLoor");
+                int floorOf=sc.nextInt();
+                MyBST.floorInBST(root, floorOf);
+                break;
+                case 2:
+                System.out.println("Enter a Value to compute its Ceil");
+                int ceilOf=sc.nextInt();
+                MyBST.ceilInBST(root,ceilOf);
+                break;
+                case 3:
+                System.out.println("Enter a Number to Find its floor as well As ceil");
+                int fcOf=sc.nextInt();
+                MyBST.floorInBST(root,fcOf);
+                MyBST.ceilInBST(root,fcOf);
+                break;
+                }
+                break;
+                case 15:
                 return;
                 default:
                 System.out.println("Range of Input Integer's Provided For Operation is [1-2]");

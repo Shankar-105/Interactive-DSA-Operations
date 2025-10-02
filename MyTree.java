@@ -28,41 +28,69 @@ public class MyTree {
         this.right=r;
     }
     //Storing Values into List
-    public static List<Integer> inputNodeValues(Scanner sc){
-        List<Integer> nodes=new LinkedList<Integer>();
+    public static MyTree inputNodeValues(MyTree root,List<Integer> nodes,Scanner sc){
         while(true){
             int nodeVal =sc.nextInt();
-            if(nodeVal==-2) break;
+            if(nodeVal==-1){
+                break;
+            }
             nodes.add(nodeVal);
+            root=insert(root,nodeVal);
         }
-        return nodes;
+        return root;
     }
-    //Consturcting Tree From User Input
+    public static MyTree insert(MyTree root,int val) {
+        MyTree newNode=new MyTree(val);
+        if (root == null){
+            root=newNode;
+            return root;
+        }
+        Queue<MyTree> q = new LinkedList<>();
+        q.offer(root);
+        while (!q.isEmpty()) {
+                MyTree node = q.poll();
+                if(node.left!=null){
+                    q.offer(node.left);
+                }
+                else{
+                    node.left=newNode;
+                    break;
+                }
+                if(node.right!=null){
+                    q.offer(node.right);
+                }
+                else{
+                    node.right=newNode;
+                    break;
+                }
+        }
+        return root;
+    }
+    // build tree from a bunch of nodes
     public static MyTree buildTree(List<Integer> nodes) {
-    if (nodes == null || nodes.isEmpty() || nodes.get(0) == -1) return null;
-    
+    if (nodes == null || nodes.isEmpty()){
+        return null;
+    }
     MyTree root = new MyTree(nodes.get(0));
     Queue<MyTree> q = new LinkedList<>();
     q.offer(root);
     int i = 1;
     while (i < nodes.size()) {
         MyTree current = q.poll();
-        // Left child
-        if (nodes.get(i) != -1) {
+        if (i < nodes.size()) {
             current.left = new MyTree(nodes.get(i));
             q.offer(current.left);
+            i++;
         }
-        i++;
-        // Right child
-        if (i < nodes.size() && nodes.get(i) != -1) {
+        if (i < nodes.size()) {
             current.right = new MyTree(nodes.get(i));
             q.offer(current.right);
+            i++;
         }
-        i++;
     }
     return root;
 }
-     // Breadth First Search
+    // Breadth First Search
     public static List<List<Integer>> bfsTraversal(MyTree root) {
         List<List<Integer>> result = new ArrayList<>();
         if (root == null) return null;
@@ -123,7 +151,9 @@ for (int i = 0; i < result.size(); i++) {
 //Zig Zag Level Order Traversal
     public static List<List<Integer>> zigZagLevelOrder(MyTree root) {
         List<List<Integer>> result = new ArrayList<>();
-        if (root == null) return result;
+        if (root == null){
+            return result;
+        }
         Queue<MyTree> queue = new LinkedList<>();
         queue.offer(root);
         boolean leftToRight = true;
@@ -161,6 +191,10 @@ for (int i = 0; i < result.size(); i++) {
     }
     }
 public static void printLevelOrderTraversals(List<List<Integer>> result){
+    if(result == null){
+        System.out.println("Tree is Empty Insert few Nodes!");
+        return;
+        }
     int level=0;
     while (level<result.size()) {
         List<Integer> eachLevel = result.get(level);
@@ -179,23 +213,20 @@ public static void showTree(MyTree node, String prefix, boolean isTail) {
             return;
         }
         System.out.println(prefix + (isTail ? "└── " : "├── ") + node.data);
-
         List<MyTree> children = new ArrayList<>();
-        if (node.left != null) children.add(node.left);
         if (node.right != null) children.add(node.right);
-
+        if (node.left != null) children.add(node.left);
         for (int i = 0; i < children.size() - 1; i++) {
             showTree(children.get(i), prefix + (isTail ? "    " : "│   "), false);
         }
-
         if (!children.isEmpty()) {
             showTree(children.get(children.size() - 1), prefix + (isTail ? "    " : "│   "), true);
         }
     }
-    private static int treeHeight(MyTree root) {
+    public static int treeMaxDepth(MyTree root) {
     if (root == null) return 0;
-    int leftHeight=treeHeight(root.left);
-    int rightHeight=treeHeight(root.right);
+    int leftHeight=treeMaxDepth(root.left);
+    int rightHeight=treeMaxDepth(root.right);
     return 1 + Math.max(leftHeight,rightHeight);
 }
 public static void searchInTree(MyTree root,int target) {
@@ -234,11 +265,12 @@ public static void searchInTree(MyTree root,int target) {
         return (assistIsBalanced(root)!=-1)? "Yes" : "No" ;
     }
     public static void treeSummary(MyTree root,List<Integer> nodes){
+        int treeHeight=treeMaxDepth(root)-1;
         System.out.println("== Tree Summary ==");
         System.out.print("Root Node: "+root.data);
         System.out.print(" | Total Nodes:"+nodes.size());
         System.out.print(" | Balanced:"+isBalanced(root));
-        System.out.println(" | Height:"+treeHeight(root));
+        System.out.println(" | Height:"+treeHeight);
     }
     private static int assistDiameter(MyTree root,int[] maxi){
       if(root==null) return 0;
