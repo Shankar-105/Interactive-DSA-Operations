@@ -515,14 +515,30 @@ public static List<Integer> leftSideView(MyTree root){
         addLeaves(root.right,res,leaves);
     }
     public static List<List<Integer>> boundaryTraversal(MyTree root) {
+        // list which stores the entire boundaryTraversal (left,leaves,right)
         List<Integer> boundaryTraversalList = new LinkedList<>();
+
+        // list to store all boundary traversals with the entire boundary traversal
+        // (leftBoundary,leaves,rightBoundary,entireBoundaryTraversalList)
         List<List<Integer>> allBoundaries=new LinkedList<>();
-        if (root == null) return allBoundaries;
-        if (!isLeaf(root)) boundaryTraversalList.add(root.data);
+
+        if (root == null){
+            return allBoundaries;
+        }
+        if (!isLeaf(root)){
+            boundaryTraversalList.add(root.data);
+        }
+        //list to store left boundary travarsel
         List<Integer> leftBoundary=addLeftBoundary(root,boundaryTraversalList);
+
+        //list to store bottom that is the leaves
         List<Integer> leafNodes=new LinkedList<>();
         addLeaves(root,boundaryTraversalList,leafNodes);
+
+        //list to store right boundary travarsel
         List<Integer> rightBoundary=addRightBoundary(root, boundaryTraversalList);
+        
+        // storing all list's into allBoundaries list
         allBoundaries.add(leftBoundary);
         allBoundaries.add(leafNodes);
         allBoundaries.add(rightBoundary);

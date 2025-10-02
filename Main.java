@@ -653,10 +653,9 @@ public class Main{
             List<Integer> nodes=new ArrayList<>();
             System.out.println("Welcome to Binary Tree Operations");
             System.out.println("1.  Create a Binary Tree");
-            System.out.println("2.  Traverse the Binary Tree(BFS/DFS)");
-            System.out.println("3.  Special Binary Tree Traversals");
-            System.out.println("4.  Insert a Node into the Tree");
-            System.out.println("5.  Search in the Binary Tree");
+            System.out.println("2.  Basic Binary Tree Operations");
+            System.out.println("3.  Traverse the Binary Tree");
+            System.out.println("5.  Special Binary Tree Traversals");
             System.out.println("6.  Diameter Of the Binary Tree");
             System.out.println("7.  Lowest Common Ancestor of Any Two Children");
             System.out.println("8.  Root to Any Node Path");
@@ -678,6 +677,25 @@ public class Main{
                 System.out.println("Tree SuccessFully Built :)");
                 break;
                 case 2:
+                System.out.println("1.  Insert a Node into the Tree");
+                System.out.println("2.  Search in the Binary Tree");
+                System.out.println("3.  Back to Main menu");
+                System.out.println("Choose an Operation from the above");
+                int bgOp=sc.nextInt();
+                switch(bgOp){
+                case 1:
+                System.out.println("Enter the Value to Insert into the Tree");
+                int insVal=sc.nextInt();
+                MyTree.insert(root, insVal);
+                break;
+                case 2:
+                System.out.print("Enter the value to search: ");
+                int target = sc.nextInt();
+                MyTree.searchInTree(root, target);
+                break;
+                }
+                break;
+                case 3:
                 System.out.println("Choose the traversal you like");
                 System.out.println("1. BFS(Level Wise)");
                 System.out.println("2. DFS(Depth Wise)");
@@ -727,7 +745,7 @@ public class Main{
                 System.out.println("Range of Input Integer's Provided For Operation is [1-3]");
             }
                 break;
-                case 3:
+                case 5:
                 System.out.println("Choose a Special Traversal Technique From the Below");
                 System.out.println("1. Zig Zag Traversal");
                 System.out.println("2. Vertical Order Traversal");
@@ -751,7 +769,11 @@ public class Main{
                 System.out.println("- All leaf nodes (left to right)");
                 System.out.println("- Right boundary nodes (excluding leaves, in reverse)");
                 List<List<Integer>> allBoundaries=new java.util.LinkedList<>();
+
+                // list which has allBoundaries
+                // left,leaves,right and the entire list which already has these combined
                 allBoundaries=MyTree.boundaryTraversal(root);
+
                 System.out.println("Boundary Traversal:");
                 List<Integer> boundaryTraversalList=allBoundaries.getLast();
                 MyTree.printDFSTraversals(boundaryTraversalList);
@@ -773,16 +795,7 @@ public class Main{
                 System.out.println("Range of Input Integer's Provided For Operation is [1-4]");
                 }
                 break;
-                case 4:
-                System.out.println("Enter the Value to Insert into the Tree");
-                int insVal=sc.nextInt();
-                MyTree.insert(root, insVal);
-                break;
-                case 5:
-                System.out.print("Enter the value to search: ");
-                int target = sc.nextInt();
-                MyTree.searchInTree(root, target);
-                break;
+                
                 case 6:
                 System.out.println("Diameter of the Binary Tree "+MyTree.computeDiameter(root));
                 break;
