@@ -751,7 +751,11 @@ public class Main{
                 System.out.println("- All leaf nodes (left to right)");
                 System.out.println("- Right boundary nodes (excluding leaves, in reverse)");
                 List<List<Integer>> allBoundaries=new java.util.LinkedList<>();
+                
+                // list which has allBoundaries
+                // left,leaves,right and the entire list which already has these combined
                 allBoundaries=MyTree.boundaryTraversal(root);
+
                 System.out.println("Boundary Traversal:");
                 List<Integer> boundaryTraversalList=allBoundaries.getLast();
                 MyTree.printDFSTraversals(boundaryTraversalList);
