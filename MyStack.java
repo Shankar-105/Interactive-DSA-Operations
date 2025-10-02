@@ -54,6 +54,5 @@ public static void printStack(Node head){
         System.out.println("------------");
     }
 public static void main(String[] args) {
-    System.out.println("_______STACK_______");
 }
 }
