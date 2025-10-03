@@ -144,6 +144,7 @@ This ABOUT.md file summarizes every menu and operation available in the Interact
   - Maximum Depth
 
 ---
+
 ### 5. Heaps
 
 #### Min Heap
@@ -161,5 +162,12 @@ This ABOUT.md file summarizes every menu and operation available in the Interact
 - **Delete:** Remove maximum (root) element.
 - **Display:** Tree representation.
 - **Reset:** Clear the heap.
+
+---
+
+### 📚 Documentation
+
+- For algorithm explanations and code, see `/docs`.
+- Each operation is documented in simple beginner freindly words to help you understand the logic and approach.
 
 ---
