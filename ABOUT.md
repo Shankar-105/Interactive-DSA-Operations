@@ -96,3 +96,28 @@ This ABOUT.md file summarizes every menu and operation available in the Interact
 - **Display:** Show all queue elements (FIFO order).
 - **Reset:** Clear the queue.
 ---
+
+### 4. Trees
+
+#### Binary Trees
+- **Create a Tree:** Input nodes manually.
+- **Basic Operations:**
+  - Insert Node
+  - Search Value
+- **Traverse:**
+  - BFS (Level Order)
+  - DFS (Preorder, Inorder, Postorder)
+- **Special Traversals:**
+  - Zig Zag Traversal
+  - Vertical Order Traversal
+  - Boundary Traversal (Left, Leaves, Right)
+- **Other Operations:**
+  - Diameter
+  - Lowest Common Ancestor
+  - Root-to-Node Path
+  - Four Side Views (Top, Bottom, Left, Right, All)
+  - Mirror Image
+  - Display Tree (pretty print)
+  - Reset Tree
+  - Leaf Nodes
+  - Maximum Depth
