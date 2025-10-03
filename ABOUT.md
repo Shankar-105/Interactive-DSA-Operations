@@ -144,3 +144,22 @@ This ABOUT.md file summarizes every menu and operation available in the Interact
   - Maximum Depth
 
 ---
+### 5. Heaps
+
+#### Min Heap
+- **Create Min Heap:** Input values to initialize.
+- **Insert:** Add value while maintaining min-heap property.
+- **Peek:** View minimum (root) element.
+- **Delete:** Remove minimum (root) element.
+- **Display:** Tree representation.
+- **Reset:** Clear the heap.
+
+#### Max Heap
+- **Create Max Heap:** Input values to initialize.
+- **Insert:** Add value while maintaining max-heap property.
+- **Peek:** View maximum (root) element.
+- **Delete:** Remove maximum (root) element.
+- **Display:** Tree representation.
+- **Reset:** Clear the heap.
+
+---
