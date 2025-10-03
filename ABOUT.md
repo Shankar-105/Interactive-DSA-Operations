@@ -36,7 +36,7 @@ This ABOUT.md file summarizes every menu and operation available in the Interact
 - **Others:**
   - Display List
   - Reset List
-  
+
 #### Doubly Linked List (DLL)
 - **Create a List:** Enter values for a DLL.
 - **Insertion:**
@@ -72,5 +72,27 @@ This ABOUT.md file summarizes every menu and operation available in the Interact
 - **Other:**
   - Display List
   - Reset List
+---
+### 2. Stack
 
+- **Push:** Add element to the stack.
+- **Pop:** Remove top element.
+- **Is Empty:** Check if stack is empty.
+- **Size:** Number of elements in stack.
+- **Peek:** View top element.
+- **Display:** Show all stack elements (LIFO order).
+- **Reset:** Clear the stack.
+
+---
+
+### 3. Queue
+
+- **Enqueue:** Add element to the queue.
+- **Dequeue:** Remove front element.
+- **Is Empty:** Check if queue is empty.
+- **Size:** Number of elements in queue.
+- **Peek:** View front element.
+- **Last:** View last element.
+- **Display:** Show all queue elements (FIFO order).
+- **Reset:** Clear the queue.
 ---
