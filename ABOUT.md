@@ -121,3 +121,26 @@ This ABOUT.md file summarizes every menu and operation available in the Interact
   - Reset Tree
   - Leaf Nodes
   - Maximum Depth
+  
+  #### Binary Search Trees (BST)
+- **Create BST:** Insert multiple nodes via user input.
+- **General Operations:**
+  - Insert Node
+  - Delete Node
+  - Search Value
+- **Traverse:**
+  - BFS (Level Order)
+  - DFS (Preorder, Inorder, Postorder)
+- **Order-Based Operations:**
+  - Find Min/Max Node
+  - Inorder Successor/Predecessor
+- **Special Traversals:**
+  - Zig Zag Traversal
+  - Vertical Order Traversal
+  - Boundary Traversal
+- **Other Operations:**
+  - Floor/Ceil of a Value
+  - Display BST (pretty print)
+  - Maximum Depth
+
+---
