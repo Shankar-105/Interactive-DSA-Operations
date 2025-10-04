@@ -56,3 +56,57 @@
 **Space Complexity:** O(1)
 
 ---
+## Deleting the Head Node
+**_Method: `deleteHead`_**
+
+**Algorithm:**  
+1. If the list is empty or has one node, return null.  
+2. Otherwise, set head to head.next.  
+3. Return new head.
+
+**Time Complexity:** O(1)  
+**Space Complexity:** O(1)
+
+---
+
+## Deleting the Tail Node
+**_Method: `deleteTail`_**
+
+**Algorithm:**  
+1. If the list is empty or has one node, return null.  
+2. Traverse to the second-last node.  
+3. Set its next pointer to null.  
+4. Return head.
+
+**Time Complexity:** O(n)  
+**Space Complexity:** O(1)
+
+---
+
+## Deleting at a Given Position
+**_Method: `deleteAtK`_**
+
+**Algorithm:**  
+1. If the list is empty, return.  
+2. If k=1, call deleteHead.  
+3. Otherwise, traverse to (k-1)th node and unlink the kth node.  
+4. Return head.
+
+**Time Complexity:** O(n)  
+**Space Complexity:** O(1)
+
+---
+
+## Deleting by Value
+**_Method: `deleteNodeK`_**
+
+**Algorithm:**  
+1. If the list is empty, return null.  
+2. If only one node and it matches value, return null.  
+3. Otherwise, traverse and remove all nodes with the given value.  
+4. Return head.
+
+**Time Complexity:** O(n)  
+**Space Complexity:** O(1)
+
+---
