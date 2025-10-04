@@ -110,3 +110,30 @@
 **Space Complexity:** O(1)
 
 ---
+## Rotating Clockwise
+**_Method: `rotateClockwise`_**
+
+**Algorithm:**  
+1. If empty or k=0, return head.  
+2. Find new tail at (size-k)th position.  
+3. Break the list at new tail; link the end to the original head.  
+4. Return new head.
+
+**Time Complexity:** O(n)  
+**Space Complexity:** O(1)
+
+---
+
+## Rotating Anti-Clockwise
+**_Method: `rotateAntiClockwise`_**
+
+**Algorithm:**  
+1. If empty or k=0, return head.  
+2. Find new tail at kth position.  
+3. Break list, link end to original head.  
+4. Return new head.
+
+**Time Complexity:** O(n)  
+**Space Complexity:** O(1)
+
+---
