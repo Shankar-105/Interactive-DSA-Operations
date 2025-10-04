@@ -729,3 +729,68 @@ public static MySLL sortList(MySLL head) {
 ```
 
 ---
+## Listing the Summary
+**_Method: `listSummary` (private)_**
+
+*Prints the number of nodes, the middle node, and whether the list is empty.*
+
+```java
+private static void listSummary(MySLL head) {
+    int length = listSize(head);
+    MySLL middleNode = middleNode(head);
+    System.out.print("Length: " + length);
+    if(middleNode != null){
+        System.out.print(" | Middle Node: " + middleNode.data);
+    }
+    else{
+        System.out.print(" | Middle Node: Not Found");
+    }
+    if(length == 0){
+        System.out.println(" | Empty: Yup");
+    }
+    else{
+        System.out.println(" | Empty: Nope");
+    }
+}
+```
+
+---
+## Counting the Nodes
+**_Method: `listSize` (protected)_**
+
+*Returns the number of nodes in the linked list.*
+
+```java
+protected static int listSize(MySLL head) {
+    MySLL temp = head;
+    int cnt = 0;
+    while(temp != null){
+        cnt++;
+        temp = temp.next;
+    }
+    return cnt;
+}
+```
+
+---
+
+## Reversing the List
+**_Method: `reverseLinkedList`_**
+
+*Reverses the singly linked list and returns the new head.*
+
+```java
+public static MySLL reverseLinkedList(MySLL head) {
+    MySLL previousNode = null;
+    MySLL afterNode = null;
+    MySLL temp = head;
+    while(temp != null){
+        afterNode = temp.next;
+        temp.next = previousNode;
+        previousNode = temp;
+        temp = afterNode;
+    }
+    return previousNode;
+}
+```
+---
