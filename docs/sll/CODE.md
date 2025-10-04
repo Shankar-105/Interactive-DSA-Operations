@@ -649,3 +649,83 @@ public static void allOccs(MySLL head, int val) {
 }
 ```
 ---
+## Calculating Sum and Product
+**_Method: `sumPro`_**
+
+*Calculates and prints the sum and product of all node values.*
+
+```java
+public static void sumPro(MySLL head) {
+    if(head == null){
+        System.out.println("Empty List!");
+        return;
+    }
+    MySLL temp = head;
+    long sum = 0;
+    long prod = 1;
+    while(temp != null){
+        sum += temp.data;
+        prod *= temp.data;
+        temp = temp.next;
+    }
+    System.out.println("Sum " + sum + " | Product " + prod);
+}
+```
+
+---
+## Updating Value at Position
+**_Method: `updateValue`_**
+
+*Updates the value of a node at a given position.*
+
+```java
+public static void updateValue(MySLL head, Scanner sc) {
+    if(head == null){
+        System.out.println("List is Empty!");
+        return;
+    }
+    System.out.println("Enter the Position");
+    int updPos = sc.nextInt();
+    if(updPos > MySLL.listSize(head)){
+        System.out.println("Unable To Fetch the Position,MayBe Out of List Bounds!");
+    }
+    else{
+        System.out.println("Enter the New Value to be Updated");
+        int updVal = sc.nextInt();
+        MySLL temp = head;
+        int pos = 0;
+        while(temp != null){
+            pos++;
+            if(pos == updPos){
+                temp.data = updVal;
+                System.out.println("Value of Node at Position " + updPos + " Changed to " + updVal);
+                return;
+            }
+            temp = temp.next;
+        }
+    }
+}
+```
+
+---
+## Sorting the List
+**_Method: `sortList`_**
+
+*Sorts the linked list using merge sort and returns the new head.*
+
+```java
+public static MySLL sortList(MySLL head) {
+    if(head == null || head.next == null){
+        return head;
+    }
+    MySLL nodeBeforeMiddle = nodeBeforeMiddle(head);
+    MySLL leftHead = head;
+    MySLL rightHead = nodeBeforeMiddle.next;
+    nodeBeforeMiddle.next = null;
+    leftHead = sortList(leftHead);
+    rightHead = sortList(rightHead);
+    return mergeTwoLists(leftHead, rightHead);
+}
+```
+
+---
