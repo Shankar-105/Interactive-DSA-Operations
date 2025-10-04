@@ -91,3 +91,104 @@ public static MySLL insertAtK(MySLL head, int k, int newele) {
 ```
 
 ---
+---
+
+## Deleting the Head Node
+**_Method: `deleteHead`_**
+
+*Deletes the head (first) node of the list.*
+
+```java
+public static MySLL deleteHead(MySLL head) {
+    if(head == null || head.next == null){
+        System.out.println("Oh Man there's no element after this operation the list is Empty");
+        return null;
+    }
+    MySLL newHead = head.next;
+    return newHead;
+}
+```
+
+---
+
+## Deleting the Tail Node
+**_Method: `deleteTail`_**
+
+*Deletes the tail (last) node of the list.*
+
+```java
+public static MySLL deleteTail(MySLL head) {
+    if(head == null || head.next == null){
+        System.out.println("Oh Man there will be no element after this operation the list goes empty(Insert and again perform these Deletions)");
+        return null;
+    }
+    MySLL temp = head;
+    while(temp.next.next != null){
+        temp = temp.next;
+    }
+    temp.next = null;
+    return head;
+}
+```
+
+---
+
+## Deleting at a Given Position
+**_Method: `deleteAtK`_**
+
+*Deletes the node at position k in the linked list.*
+
+```java
+public static MySLL deleteAtK(MySLL head, int k) {
+    if(head == null){
+        System.out.println("Oh Man there's no element after this operation the list is Empty");
+        return head;
+    }
+    else if(k == 1){
+        head = deleteHead(head);
+        return head;
+    }
+    else{
+        int cnt = 0;
+        MySLL temp = head;
+        while(temp != null){
+            cnt++;
+            if(cnt == (k-1)){
+                temp.next = temp.next.next;
+                break;
+            }
+            temp = temp.next;
+        }
+    }
+    return head;
+}
+```
+
+---
+
+## Deleting by Value
+**_Method: `deleteNodeK`_**
+
+*Deletes all nodes with the specified value from the list.*
+
+```java
+public static MySLL deleteNodeK(MySLL head, int val) {
+    if (head == null){
+        return null;
+    }
+    else if(head.next == null && head.data == val){
+        return null;
+    }
+    else{
+        MySLL temp = head;
+        while(temp != null && temp.next != null){
+            if(temp.next.data == val){
+                temp.next = temp.next.next;
+            }
+            temp = temp.next;
+        }
+    }
+    return head;
+}
+```
+---
