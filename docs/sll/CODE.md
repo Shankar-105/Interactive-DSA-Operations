@@ -402,3 +402,63 @@ private static MySLL assistSplitList(MySLL head, MySLL splitNode, Scanner sc) {
 }
 ```
 ---
+## Merging Two Sorted Lists
+**_Method: `mergeTwoLists` (private)_**
+
+*Merges two sorted linked lists into one sorted list.*
+
+```java
+private static MySLL mergeTwoLists(MySLL list1, MySLL list2) {
+    MySLL left = list1;
+    MySLL right = list2;
+    MySLL dummy = new MySLL(-1);
+    MySLL current = dummy;
+    while(left != null && right != null){
+        if(left.data <= right.data){
+            current.next = left;
+            current = left;
+            left = left.next;
+        }
+        else{
+            current.next = right;
+            current = right;
+            right = right.next;
+        }
+    }
+    if(left != null){
+        current.next = left;
+    }
+    else{
+        current.next = right;
+    }
+    return dummy.next;
+}
+```
+---
+## Shuffling the List
+**_Method: `shuffleList`_**
+
+*Shuffles the list randomly using Fisher-Yates shuffle and returns the new head.*
+
+```java
+public static MySLL shuffleList(MySLL head) {
+    if (head == null || head.next == null){
+        return head;
+    }
+    List<MySLL> nodes = new ArrayList<>();
+    MySLL temp = head;
+    while (temp != null) {
+        nodes.add(temp);
+        temp = temp.next;
+    }
+    // Fisher Yates Shuffle
+    Collections.shuffle(nodes);
+    for (int i = 0; i < nodes.size() - 1; i++) {
+        nodes.get(i).next = nodes.get(i+1);
+    }
+    nodes.get(nodes.size()-1).next = null;
+    return nodes.get(0);
+}
+```
+
+---
