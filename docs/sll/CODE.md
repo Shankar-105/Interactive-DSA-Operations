@@ -460,5 +460,73 @@ public static MySLL shuffleList(MySLL head) {
     return nodes.get(0);
 }
 ```
+---
+## Deleting the Middle Node
+**_Method: `deleteMiddleNode`_**
+
+*Deletes the middle node of the linked list.*
+
+```java
+public static MySLL deleteMiddleNode(MySLL head) {
+    if(head == null || head.next == null){
+        return null;
+    }
+    MySLL nodeBeforeMiddle = null;
+    MySLL slow = head;
+    MySLL fast = head;
+    while(fast != null && fast.next != null){
+        nodeBeforeMiddle = slow;
+        slow = slow.next;
+        fast = fast.next.next;
+    }
+    nodeBeforeMiddle.next = slow.next;
+    slow.next = null;
+    return head;
+}
+```
+
+---
+## Finding Node Before Middle
+**_Method: `nodeBeforeMiddle`_**
+
+*Returns the node before the middle node in the list.*
+
+```java
+public static MySLL nodeBeforeMiddle(MySLL head) {
+    if(head == null || head.next == null){
+        return null;
+    }
+    MySLL nodeBeforeMiddle = null;
+    MySLL slow = head;
+    MySLL fast = head;
+    while(fast != null && fast.next != null){
+        nodeBeforeMiddle = slow;
+        slow = slow.next;
+        fast = fast.next.next;
+    }
+    return nodeBeforeMiddle;
+}
+```
+
+---
+## Locating the Middle Node
+**_Method: `middleNode` (private)_**
+
+*Finds and returns the middle node of the linked list.*
+
+```java
+private static MySLL middleNode(MySLL head) {
+    if(head == null || head.next == null){
+        return head;
+    }
+    MySLL slow = head;
+    MySLL fast = head;
+    while(fast != null && fast.next != null){
+        slow = slow.next;
+        fast = fast.next.next;
+    }
+    return slow;
+}
+```
 
 ---
