@@ -530,3 +530,122 @@ private static MySLL middleNode(MySLL head) {
 ```
 
 ---
+## Searching for a Value
+**_Method: `searchList`_**
+
+*Searches for a node by value and prints its position (if found).*
+
+```java
+public static void searchList(MySLL head, int val) {
+    if(head == null){
+        System.out.println("Empty List!");
+    }
+    int pos = 0;
+    MySLL temp = head;
+    while(temp != null){
+        pos++;
+        if(temp.data == val){
+            System.out.println("Node " + val + " Found at Position " + pos);
+            return;
+        }
+        temp = temp.next;
+    }
+    System.out.println("Node With Value " + val + " Not Found");
+}
+```
+
+---
+
+## Finding Maximum and Minimum
+**_Method: `lgInList`_**
+
+*Finds and prints the largest and smallest values in the list.*
+
+```java
+public static void lgInList(MySLL head) {
+    if(head == null){
+        System.out.println("Max and Min Not Found Empty List!");
+        return;
+    }
+    int maxi = Integer.MIN_VALUE;
+    int mini = Integer.MAX_VALUE;
+    MySLL temp = head;
+    while(temp != null){
+        maxi = Math.max(maxi, temp.data);
+        mini = Math.min(temp.data, mini);
+        temp = temp.next;
+    }
+    System.out.println("Max Value " + maxi + " | " + "Min Value " + mini);
+}
+```
+
+---
+
+## Finding the n-th Element
+**_Method: `nThElement`_**
+
+*Prints the value of the n-th node in the list.*
+
+```java
+public static void nThElement(MySLL head, Scanner sc) {
+    if(head == null){
+        System.out.println("List is Empty");
+        return;
+    }
+    System.out.println("Enter the Nth Position");
+    int nThPos = sc.nextInt();
+    if(nThPos > MySLL.listSize(head)){
+        System.out.println("Unable To Fetch the Position,Out of List Bounds");
+    }
+    int cnt = 0;
+    MySLL temp = head;
+    while(temp != null){
+        cnt++;
+        if(cnt == nThPos){
+            System.out.println("Element At Position " + nThPos + " is " + temp.data);
+            return;
+        }
+        temp = temp.next;
+    }
+}
+```
+
+---
+
+## Finding All Occurrences
+**_Method: `allOccs`_**
+
+*Finds and prints all positions where a given value appears in the list.*
+
+```java
+public static void allOccs(MySLL head, int val) {
+    if(head == null){
+        System.out.println("Empty List!");
+    }
+    List<Integer> allOcc = new LinkedList<>();
+    int pos = 0;
+    MySLL temp = head;
+    while(temp != null){
+        pos++;
+        if(temp.data == val){
+            allOcc.add(pos);
+        }
+        temp = temp.next;
+    }
+    if(!allOcc.isEmpty()){
+        System.out.println("Found Value " + val + " at");
+        for(int i = 0; i < allOcc.size(); i++){
+            if(i != allOcc.size() - 1){
+                System.out.print("Position " + allOcc.get(i) + " | ");
+            }
+            else{
+                System.out.println("Position " + allOcc.get(i));
+            }
+        }
+    }
+    else{
+        System.out.println("Element Not Found!");
+    }
+}
+```
+---
