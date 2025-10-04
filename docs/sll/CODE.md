@@ -192,3 +192,69 @@ public static MySLL deleteNodeK(MySLL head, int val) {
 }
 ```
 ---
+## Rotating Clockwise
+**_Method: `rotateClockwise`_**
+
+*Rotates the linked list clockwise by k positions.*
+
+```java
+public static MySLL rotateClockwise(MySLL head, int k) {
+    if (head == null || head.next == null || k == 0) {
+        return head;
+    }
+    int size = listSize(head);
+    k = k % size;
+    if (k == 0){
+        return head;
+    }
+    int stepsToNewTail = size - k;
+    MySLL newTail = head;
+    while(stepsToNewTail > 1){
+        newTail = newTail.next;
+        stepsToNewTail--;
+    }
+    MySLL newHead = newTail.next;
+    newTail.next = null;
+    MySLL tail = newHead;
+    while(tail.next != null){
+        tail = tail.next;
+    }
+    tail.next = head;
+    return newHead;
+}
+```
+
+---
+
+## Rotating Anti-Clockwise
+**_Method: `rotateAntiClockwise`_**
+
+*Rotates the linked list anti-clockwise by k positions.*
+
+```java
+public static MySLL rotateAntiClockwise(MySLL head, int k) {
+    if (head == null || head.next == null || k == 0) {
+        return head;
+    }
+    int size = listSize(head);
+    k = k % size;
+    if (k == 0) {
+        return head;
+    }
+    MySLL newTail = head;
+    while (k > 1) {
+        newTail = newTail.next;
+        k--;
+    }
+    MySLL newHead = newTail.next;
+    newTail.next = null;
+    MySLL tail = newHead;
+    while (tail.next != null) {
+        tail = tail.next;
+    }
+    tail.next = head;
+    return newHead;
+}
+```
+
+---
