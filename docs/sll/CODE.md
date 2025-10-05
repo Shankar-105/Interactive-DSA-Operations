@@ -1,8 +1,10 @@
-# MySLL.java — Method Codes
+# MySLL.java — Method Codes (Menu Order)
 
 ---
 
-## Building the List
+## Creation
+
+### Creating a List  
 **_Method: `inputNodeValues`_**
 
 *Reads integers from the user until -1 and builds a singly linked list from them.*
@@ -22,141 +24,9 @@ public static MySLL inputNodeValues(Scanner sc, MySLL head) {
 
 ---
 
-## Adding a Node to the End
-**_Method: `createLinkedList` (private)_**
+## Insertion
 
-*Adds a new node with the given value to the end of the list.*
-
-```java
-private static MySLL createLinkedList(MySLL node, int val) {
-    MySLL newNode = new MySLL(val);
-    if(node == null){
-        node = newNode;
-        return node;
-    }
-    MySLL temp = node;
-    while(temp.next != null){
-        temp = temp.next;
-    }
-    temp.next = newNode;
-    return node;
-}
-```
-
----
-
-## Displaying the List
-**_Method: `printLinkedList`_**
-
-*Prints all elements of the linked list from head to tail, then a summary.*
-
-```java
-public static void printLinkedList(MySLL head) {
-    MySLL temp = head;
-    System.out.println("== Curernt List Structure ==");
-    while(temp != null){
-        System.out.print("[" + temp.data + "]" + " -> ");
-        temp = temp.next;
-    }
-    System.out.println("[NULL]");
-    System.out.println("== List Summary ==");
-    listSummary(head);
-}
-```
-
----
-
-## Listing the Summary
-**_Method: `listSummary` (private)_**
-
-*Prints the number of nodes, the middle node, and whether the list is empty.*
-
-```java
-private static void listSummary(MySLL head) {
-    int length = listSize(head);
-    MySLL middleNode = middleNode(head);
-    System.out.print("Length: " + length);
-    if(middleNode != null){
-        System.out.print(" | Middle Node: " + middleNode.data);
-    }
-    else{
-        System.out.print(" | Middle Node: Not Found");
-    }
-    if(length == 0){
-        System.out.println(" | Empty: Yup");
-    }
-    else{
-        System.out.println(" | Empty: Nope");
-    }
-}
-```
-
----
-
-## Locating the Middle Node
-**_Method: `middleNode` (private)_**
-
-*Finds and returns the middle node of the linked list.*
-
-```java
-private static MySLL middleNode(MySLL head) {
-    if(head == null || head.next == null){
-        return head;
-    }
-    MySLL slow = head;
-    MySLL fast = head;
-    while(fast != null && fast.next != null){
-        slow = slow.next;
-        fast = fast.next.next;
-    }
-    return slow;
-}
-```
-
----
-
-## Counting the Nodes
-**_Method: `listSize` (protected)_**
-
-*Returns the number of nodes in the linked list.*
-
-```java
-protected static int listSize(MySLL head) {
-    MySLL temp = head;
-    int cnt = 0;
-    while(temp != null){
-        cnt++;
-        temp = temp.next;
-    }
-    return cnt;
-}
-```
-
----
-
-## Reversing the List
-**_Method: `reverseLinkedList`_**
-
-*Reverses the singly linked list and returns the new head.*
-
-```java
-public static MySLL reverseLinkedList(MySLL head) {
-    MySLL previousNode = null;
-    MySLL afterNode = null;
-    MySLL temp = head;
-    while(temp != null){
-        afterNode = temp.next;
-        temp.next = previousNode;
-        previousNode = temp;
-        temp = afterNode;
-    }
-    return previousNode;
-}
-```
-
----
-
-## Inserting at the Head
+### Insert at the Beginning  
 **_Method: `insertAtHead`_**
 
 *Inserts a new node at the beginning of the list.*
@@ -168,9 +38,7 @@ public static MySLL insertAtHead(MySLL head, int newele) {
 }
 ```
 
----
-
-## Inserting at the Tail
+### Insert at the End  
 **_Method: `insertAtTail`_**
 
 *Appends a new node at the end of the linked list.*
@@ -190,9 +58,7 @@ public static MySLL insertAtTail(MySLL head, int newele) {
 }
 ```
 
----
-
-## Inserting at a Given Position
+### Insert at the Kth Position  
 **_Method: `insertAtK`_**
 
 *Inserts a new node at the k-th position in the list.*
@@ -227,7 +93,9 @@ public static MySLL insertAtK(MySLL head, int k, int newele) {
 
 ---
 
-## Deleting the Head Node
+## Deletion
+
+### Delete First Node  
 **_Method: `deleteHead`_**
 
 *Deletes the head (first) node of the list.*
@@ -243,9 +111,7 @@ public static MySLL deleteHead(MySLL head) {
 }
 ```
 
----
-
-## Deleting the Tail Node
+### Delete Last Node  
 **_Method: `deleteTail`_**
 
 *Deletes the tail (last) node of the list.*
@@ -265,9 +131,7 @@ public static MySLL deleteTail(MySLL head) {
 }
 ```
 
----
-
-## Deleting at a Given Position
+### Delete at Kth Position  
 **_Method: `deleteAtK`_**
 
 *Deletes the node at position k in the linked list.*
@@ -298,9 +162,7 @@ public static MySLL deleteAtK(MySLL head, int k) {
 }
 ```
 
----
-
-## Deleting by Value
+### Delete by Value  
 **_Method: `deleteNodeK`_**
 
 *Deletes all nodes with the specified value from the list.*
@@ -328,33 +190,9 @@ public static MySLL deleteNodeK(MySLL head, int val) {
 
 ---
 
-## Deleting the Middle Node
-**_Method: `deleteMiddleNode`_**
+## Friendly Operations
 
-*Deletes the middle node of the linked list.*
-
-```java
-public static MySLL deleteMiddleNode(MySLL head) {
-    if(head == null || head.next == null){
-        return null;
-    }
-    MySLL nodeBeforeMiddle = null;
-    MySLL slow = head;
-    MySLL fast = head;
-    while(fast != null && fast.next != null){
-        nodeBeforeMiddle = slow;
-        slow = slow.next;
-        fast = fast.next.next;
-    }
-    nodeBeforeMiddle.next = slow.next;
-    slow.next = null;
-    return head;
-}
-```
-
----
-
-## Searching for a Value
+### Search for Value  
 **_Method: `searchList`_**
 
 *Searches for a node by value and prints its position (if found).*
@@ -378,9 +216,7 @@ public static void searchList(MySLL head, int val) {
 }
 ```
 
----
-
-## Finding Maximum and Minimum
+### Find Max/Min  
 **_Method: `lgInList`_**
 
 *Finds and prints the largest and smallest values in the list.*
@@ -403,9 +239,117 @@ public static void lgInList(MySLL head) {
 }
 ```
 
+### Sum/Product  
+**_Method: `sumPro`_**
+
+*Calculates and prints the sum and product of all node values.*
+
+```java
+public static void sumPro(MySLL head) {
+    if(head == null){
+        System.out.println("Empty List!");
+        return;
+    }
+    MySLL temp = head;
+    long sum = 0;
+    long prod = 1;
+    while(temp != null){
+        sum += temp.data;
+        prod *= temp.data;
+        temp = temp.next;
+    }
+    System.out.println("Sum " + sum + " | Product " + prod);
+}
+```
+
+### Update Value at Index  
+**_Method: `updateValue`_**
+
+*Updates the value of a node at a given position.*
+
+```java
+public static void updateValue(MySLL head, Scanner sc) {
+    if(head == null){
+        System.out.println("List is Empty!");
+        return;
+    }
+    System.out.println("Enter the Position");
+    int updPos = sc.nextInt();
+    if(updPos > MySLL.listSize(head)){
+        System.out.println("Unable To Fetch the Position,MayBe Out of List Bounds!");
+    }
+    else{
+        System.out.println("Enter the New Value to be Updated");
+        int updVal = sc.nextInt();
+        MySLL temp = head;
+        int pos = 0;
+        while(temp != null){
+            pos++;
+            if(pos == updPos){
+                temp.data = updVal;
+                System.out.println("Value of Node at Position " + updPos + " Changed to " + updVal);
+                return;
+            }
+            temp = temp.next;
+        }
+    }
+}
+```
+
+### Shuffle List  
+**_Method: `shuffleList`_**
+
+*Shuffles the list randomly using Fisher-Yates shuffle and returns the new head.*
+
+```java
+public static MySLL shuffleList(MySLL head) {
+    if (head == null || head.next == null){
+        return head;
+    }
+    List<MySLL> nodes = new ArrayList<>();
+    MySLL temp = head;
+    while (temp != null) {
+        nodes.add(temp);
+        temp = temp.next;
+    }
+    Collections.shuffle(nodes);
+    for (int i = 0; i < nodes.size() - 1; i++) {
+        nodes.get(i).next = nodes.get(i+1);
+    }
+    nodes.get(nodes.size()-1).next = null;
+    return nodes.get(0);
+}
+```
+
 ---
 
-## Finding the n-th Element
+## Positional Operations
+
+### Delete Middle Node  
+**_Method: `deleteMiddleNode`_**
+
+*Deletes the middle node of the linked list.*
+
+```java
+public static MySLL deleteMiddleNode(MySLL head) {
+    if(head == null || head.next == null){
+        return null;
+    }
+    MySLL nodeBeforeMiddle = null;
+    MySLL slow = head;
+    MySLL fast = head;
+    while(fast != null && fast.next != null){
+        nodeBeforeMiddle = slow;
+        slow = slow.next;
+        fast = fast.next.next;
+    }
+    nodeBeforeMiddle.next = slow.next;
+    slow.next = null;
+    return head;
+}
+```
+
+### Get Nth Element  
 **_Method: `nThElement`_**
 
 *Prints the value of the n-th node in the list.*
@@ -434,9 +378,7 @@ public static void nThElement(MySLL head, Scanner sc) {
 }
 ```
 
----
-
-## Finding All Occurrences
+### Find All Occurrences of a Value  
 **_Method: `allOccs`_**
 
 *Finds and prints all positions where a given value appears in the list.*
@@ -475,56 +417,29 @@ public static void allOccs(MySLL head, int val) {
 
 ---
 
-## Calculating Sum and Product
-**_Method: `sumPro`_**
+## Advanced
 
-*Calculates and prints the sum and product of all node values.*
+### Reverse List  
+**_Method: `reverseLinkedList`_**
+
+*Reverses the singly linked list and returns the new head.*
 
 ```java
-public static void sumPro(MySLL head) {
-    if(head == null){
-        System.out.println("Empty List!");
-        return;
-    }
+public static MySLL reverseLinkedList(MySLL head) {
+    MySLL previousNode = null;
+    MySLL afterNode = null;
     MySLL temp = head;
-    long sum = 0;
-    long prod = 1;
     while(temp != null){
-        sum += temp.data;
-        prod *= temp.data;
-        temp = temp.next;
+        afterNode = temp.next;
+        temp.next = previousNode;
+        previousNode = temp;
+        temp = afterNode;
     }
-    System.out.println("Sum " + sum + " | Product " + prod);
+    return previousNode;
 }
 ```
 
----
-
-## Finding Node Before Middle
-**_Method: `nodeBeforeMiddle`_**
-
-*Returns the node before the middle node in the list.*
-
-```java
-public static MySLL nodeBeforeMiddle(MySLL head) {
-    if(head == null || head.next == null){
-        return null;
-    }
-    MySLL nodeBeforeMiddle = null;
-    MySLL slow = head;
-    MySLL fast = head;
-    while(fast != null && fast.next != null){
-        nodeBeforeMiddle = slow;
-        slow = slow.next;
-        fast = fast.next.next;
-    }
-    return nodeBeforeMiddle;
-}
-```
-
----
-
-## Sorting the List
+### Sort List  
 **_Method: `sortList`_**
 
 *Sorts the linked list using merge sort and returns the new head.*
@@ -544,45 +459,7 @@ public static MySLL sortList(MySLL head) {
 }
 ```
 
----
-
-## Updating Value at Position
-**_Method: `updateValue`_**
-
-*Updates the value of a node at a given position.*
-
-```java
-public static void updateValue(MySLL head, Scanner sc) {
-    if(head == null){
-        System.out.println("List is Empty!");
-        return;
-    }
-    System.out.println("Enter the Position");
-    int updPos = sc.nextInt();
-    if(updPos > MySLL.listSize(head)){
-        System.out.println("Unable To Fetch the Position,MayBe Out of List Bounds!");
-    }
-    else{
-        System.out.println("Enter the New Value to be Updated");
-        int updVal = sc.nextInt();
-        MySLL temp = head;
-        int pos = 0;
-        while(temp != null){
-            pos++;
-            if(pos == updPos){
-                temp.data = updVal;
-                System.out.println("Value of Node at Position " + updPos + " Changed to " + updVal);
-                return;
-            }
-            temp = temp.next;
-        }
-    }
-}
-```
-
----
-
-## Rotating Clockwise
+### Rotate Right (Clockwise) by K  
 **_Method: `rotateClockwise`_**
 
 *Rotates the linked list clockwise by k positions.*
@@ -614,9 +491,7 @@ public static MySLL rotateClockwise(MySLL head, int k) {
 }
 ```
 
----
-
-## Rotating Anti-Clockwise
+### Rotate Left (Anti-Clockwise) by K  
 **_Method: `rotateAntiClockwise`_**
 
 *Rotates the linked list anti-clockwise by k positions.*
@@ -647,37 +522,37 @@ public static MySLL rotateAntiClockwise(MySLL head, int k) {
 }
 ```
 
----
+### Split at Value K  
+**_Method: `splitList`_**
 
-## Shuffling the List
-**_Method: `shuffleList`_**
-
-*Shuffles the list randomly using Fisher-Yates shuffle and returns the new head.*
+*Splits the list at a node with a specific value, and returns the chosen half.*
 
 ```java
-public static MySLL shuffleList(MySLL head) {
-    if (head == null || head.next == null){
-        return head;
+public static MySLL splitList(Scanner sc, MySLL head) {   
+    if (head == null) {
+        System.out.println("List is Empty");
+        return null;
     }
-    List<MySLL> nodes = new ArrayList<>();
+    System.out.println("Enter the Value to be Split at <<<");
+    int splitAtK = sc.nextInt();
     MySLL temp = head;
     while (temp != null) {
-        nodes.add(temp);
+        if (temp.data == splitAtK) {
+            MySLL newHead = assistSplitList(head, temp, sc);
+            return newHead;
+        }
         temp = temp.next;
     }
-    // Fisher Yates Shuffle
-    Collections.shuffle(nodes);
-    for (int i = 0; i < nodes.size() - 1; i++) {
-        nodes.get(i).next = nodes.get(i+1);
-    }
-    nodes.get(nodes.size()-1).next = null;
-    return nodes.get(0);
+    System.out.println("Value Of Partition not found!");
+    return head;
 }
 ```
 
 ---
 
-## Animated Forward Traversal
+## Animated Traversals (Preview)
+
+### Forward Traversal  
 **_Method: `animatedForwardTraversal`_**
 
 *Displays the linked list from head to tail in a special animated format.*
@@ -699,9 +574,7 @@ public static void animatedForwardTraversal(MySLL head) {
 }
 ```
 
----
-
-## Preview Splitting the List
+### Split Traversal (Preview)  
 **_Method: `previewSplit`_**
 
 *Preview splits the list at a given position and displays both parts without changing the list.*
@@ -739,35 +612,137 @@ public static void previewSplit(Scanner sc, MySLL head) {
 
 ---
 
-## Splitting the List by Value
-**_Method: `splitList`_**
+## Others
 
-*Splits the list at a node with a specific value, and returns the chosen half.*
+### Display List  
+**_Method: `printLinkedList`_**
+
+*Prints all elements of the linked list from head to tail, then a summary.*
 
 ```java
-public static MySLL splitList(Scanner sc, MySLL head) {   
-    if (head == null) {
-        System.out.println("List is Empty");
-        return null;
-    }
-    System.out.println("Enter the Value to be Split at <<<");
-    int splitAtK = sc.nextInt();
+public static void printLinkedList(MySLL head) {
     MySLL temp = head;
-    while (temp != null) {
-        if (temp.data == splitAtK) {
-            MySLL newHead = assistSplitList(head, temp, sc);
-            return newHead;
-        }
+    System.out.println("== Curernt List Structure ==");
+    while(temp != null){
+        System.out.print("[" + temp.data + "]" + " -> ");
         temp = temp.next;
     }
-    System.out.println("Value Of Partition not found!");
-    return head;
+    System.out.println("[NULL]");
+    System.out.println("== List Summary ==");
+    listSummary(head);
+}
+```
+
+### List Summary  
+**_Method: `listSummary`_**
+
+*Prints the number of nodes, the middle node, and whether the list is empty.*
+
+```java
+private static void listSummary(MySLL head) {
+    int length = listSize(head);
+    MySLL middleNode = middleNode(head);
+    System.out.print("Length: " + length);
+    if(middleNode != null){
+        System.out.print(" | Middle Node: " + middleNode.data);
+    }
+    else{
+        System.out.print(" | Middle Node: Not Found");
+    }
+    if(length == 0){
+        System.out.println(" | Empty: Yup");
+    }
+    else{
+        System.out.println(" | Empty: Nope");
+    }
 }
 ```
 
 ---
 
-## Merging Two Sorted Lists
+### Helper Methods
+
+#### Adding a Node to the End  
+**_Method: `createLinkedList` (private)_**
+
+*Adds a new node with the given value to the end of the list.*
+
+```java
+private static MySLL createLinkedList(MySLL node, int val) {
+    MySLL newNode = new MySLL(val);
+    if(node == null){
+        node = newNode;
+        return node;
+    }
+    MySLL temp = node;
+    while(temp.next != null){
+        temp = temp.next;
+    }
+    temp.next = newNode;
+    return node;
+}
+```
+
+#### Counting the Nodes  
+**_Method: `listSize` (protected)_**
+
+*Returns the number of nodes in the linked list.*
+
+```java
+protected static int listSize(MySLL head) {
+    MySLL temp = head;
+    int cnt = 0;
+    while(temp != null){
+        cnt++;
+        temp = temp.next;
+    }
+    return cnt;
+}
+```
+
+#### Locating the Middle Node  
+**_Method: `middleNode` (private)_**
+
+*Finds and returns the middle node of the linked list.*
+
+```java
+private static MySLL middleNode(MySLL head) {
+    if(head == null || head.next == null){
+        return head;
+    }
+    MySLL slow = head;
+    MySLL fast = head;
+    while(fast != null && fast.next != null){
+        slow = slow.next;
+        fast = fast.next.next;
+    }
+    return slow;
+}
+```
+
+#### Finding Node Before Middle  
+**_Method: `nodeBeforeMiddle`_**
+
+*Returns the node before the middle node in the list.*
+
+```java
+public static MySLL nodeBeforeMiddle(MySLL head) {
+    if(head == null || head.next == null){
+        return null;
+    }
+    MySLL nodeBeforeMiddle = null;
+    MySLL slow = head;
+    MySLL fast = head;
+    while(fast != null && fast.next != null){
+        nodeBeforeMiddle = slow;
+        slow = slow.next;
+        fast = fast.next.next;
+    }
+    return nodeBeforeMiddle;
+}
+```
+
+#### Merging Two Sorted Lists  
 **_Method: `mergeTwoLists` (private)_**
 
 *Merges two sorted linked lists into one sorted list.*
@@ -800,9 +775,7 @@ private static MySLL mergeTwoLists(MySLL list1, MySLL list2) {
 }
 ```
 
----
-
-## Splitting Helper for Preview
+#### Splitting Helper for Preview  
 **_Method: `assistPreviewSplit` (private)_**
 
 *Helper function to print the two halves of the list for previewSplit.*
@@ -825,9 +798,7 @@ private static void assistPreviewSplit(MySLL head, MySLL newHead) {
 }
 ```
 
----
-
-## Splitting Helper for splitList
+#### Splitting Helper for splitList  
 **_Method: `assistSplitList` (private)_**
 
 *Helper for splitList to handle user’s choice and break the list.*
