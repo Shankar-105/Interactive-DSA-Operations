@@ -1,108 +1,33 @@
-# MySLL.java Algorithms
+# MySLL.java — Algorithms (Menu Order)
 
 ---
 
-## Building the List
+## Creation
+
+### Creating a List  
 **_Method: `inputNodeValues`_**
 
-**Algorithm:**  
-1. Continuously read integer input from the user until `-1` is entered.  
-2. For each value, create a new node and add it to the linked list.  
-3. Return the head of the list.
+**Algorithm:**
+1. Start with an empty list (`head` is `null`).
+2. Continuously read integer values from the user.
+3. For each value:
+    - If the value is `-1`, stop input.
+    - Otherwise, add the value to the end of the linked list using `createLinkedList`.
+4. Return the head of the constructed list.
 
 **Time Complexity:** O(n)  
-**Space Complexity:** O(1) (excluding input list)
+**Space Complexity:** O(1) (excluding input)
 
 ---
 
-## Adding a Node to the End
-**_Method: `createLinkedList` (private)_**
+## Insertion
 
-**Algorithm:**  
-1. Create a new node with the given value.  
-2. If the head node is null, set the new node as the head.  
-3. Otherwise, traverse to the end of the list and add the new node.  
-4. Return the head of the list.
-
-**Time Complexity:** O(n)  
-**Space Complexity:** O(1)
-
----
-
-## Displaying the List
-**_Method: `printLinkedList`_**
-
-**Algorithm:**  
-1. Traverse the list from head to tail, printing each node's value.  
-2. At the end, print "[NULL]" to denote the end.  
-3. Call `listSummary` for a summary.
-
-**Time Complexity:** O(n)  
-**Space Complexity:** O(1)
-
----
-
-## Listing the Summary
-**_Method: `listSummary` (private)_**
-
-**Algorithm:**  
-1. Count the nodes in the list.  
-2. Find the middle node.  
-3. Print the length, middle node value, and whether the list is empty.
-
-**Time Complexity:** O(n)  
-**Space Complexity:** O(1)
-
----
-
-## Locating the Middle Node
-**_Method: `middleNode` (private)_**
-
-**Algorithm:**  
-1. Use two pointers, slow and fast.  
-2. Move slow by one and fast by two nodes each step.  
-3. When fast reaches the end, slow is at the middle.
-
-**Time Complexity:** O(n)  
-**Space Complexity:** O(1)
-
----
-
-## Counting the Nodes
-**_Method: `listSize` (protected)_**
-
-**Algorithm:**  
-1. Traverse the list from head, incrementing a counter for each node.  
-2. Return the count.
-
-**Time Complexity:** O(n)  
-**Space Complexity:** O(1)
-
----
-
-## Reversing the List
-**_Method: `reverseLinkedList`_**
-
-**Algorithm:**  
-1. Initialize previous node as null.  
-2. Traverse the list, for each node:  
-   - Save next node.  
-   - Reverse the next pointer.  
-   - Move previous to current.  
-   - Move to next node.  
-3. Return previous node as new head.
-
-**Time Complexity:** O(n)  
-**Space Complexity:** O(1)
-
----
-
-## Inserting at the Head
+### Insert at the Beginning  
 **_Method: `insertAtHead`_**
 
-**Algorithm:**  
-1. Create a new node with the given value.  
-2. Set its next pointer to the current head.  
+**Algorithm:**
+1. Create a new node with the given value.
+2. Set its next pointer to the current head.
 3. Return the new node as the new head.
 
 **Time Complexity:** O(1)  
@@ -110,54 +35,58 @@
 
 ---
 
-## Inserting at the Tail
+### Insert at the End  
 **_Method: `insertAtTail`_**
 
-**Algorithm:**  
-1. Create a new node.  
-2. If the list is empty, return new node as head.  
-3. Otherwise, traverse to the end and append new node.  
-4. Return the head.
+**Algorithm:**
+1. Create a new node with the given value.
+2. If the list is empty, return the new node as head.
+3. Otherwise, traverse to the last node.
+4. Set the last node's next pointer to the new node.
+5. Return the head.
 
 **Time Complexity:** O(n)  
 **Space Complexity:** O(1)
 
 ---
 
-## Inserting at a Given Position
+### Insert at the Kth Position  
 **_Method: `insertAtK`_**
 
-**Algorithm:**  
-1. If the list is empty and k=1, return a new node as head.  
-2. If k=1, insert node at head.  
-3. Otherwise, traverse to (k-1)th node and insert the new node after it.  
-4. Return the head.
+**Algorithm:**
+1. If `k` is 1 and the list is empty, create a new node and return as head.
+2. If `k` is 1, insert a new node at head.
+3. Otherwise, traverse to the (k-1)th node.
+4. Insert the new node after the (k-1)th node by updating pointers.
+5. Return the head.
 
 **Time Complexity:** O(n)  
 **Space Complexity:** O(1)
 
 ---
 
-## Deleting the Head Node
+## Deletion
+
+### Delete First Node  
 **_Method: `deleteHead`_**
 
-**Algorithm:**  
-1. If the list is empty or has one node, return null.  
-2. Otherwise, set head to head.next.  
-3. Return new head.
+**Algorithm:**
+1. If the list is empty or has a single node, return null.
+2. Move head to the next node.
+3. Return the new head.
 
 **Time Complexity:** O(1)  
 **Space Complexity:** O(1)
 
 ---
 
-## Deleting the Tail Node
+### Delete Last Node  
 **_Method: `deleteTail`_**
 
-**Algorithm:**  
-1. If the list is empty or has one node, return null.  
-2. Traverse to the second-last node.  
-3. Set its next pointer to null.  
+**Algorithm:**
+1. If the list is empty or has one node, return null.
+2. Traverse to the second-last node.
+3. Set its next pointer to null (removes last node).
 4. Return head.
 
 **Time Complexity:** O(n)  
@@ -165,222 +94,287 @@
 
 ---
 
-## Deleting at a Given Position
+### Delete at Kth Position  
 **_Method: `deleteAtK`_**
 
-**Algorithm:**  
-1. If the list is empty, return.  
-2. If k=1, call deleteHead.  
-3. Otherwise, traverse to (k-1)th node and unlink the kth node.  
-4. Return head.
+**Algorithm:**
+1. If list is empty, return.
+2. If `k` is 1, delete the head.
+3. Traverse to the (k-1)th node.
+4. Set its next pointer to skip the kth node.
+5. Return head.
 
 **Time Complexity:** O(n)  
 **Space Complexity:** O(1)
 
 ---
 
-## Deleting by Value
+### Delete by Value  
 **_Method: `deleteNodeK`_**
 
-**Algorithm:**  
-1. If the list is empty, return null.  
-2. If only one node and it matches value, return null.  
-3. Otherwise, traverse and remove all nodes with the given value.  
-4. Return head.
+**Algorithm:**
+1. If the list is empty, return null.
+2. If only one node and its value matches, return null.
+3. Traverse the list, for each node check if the next node's value matches the target:
+    - If yes, link current node's next to next's next (skipping the matched node).
+4. Continue traversal to remove all occurrences.
+5. Return head.
 
 **Time Complexity:** O(n)  
 **Space Complexity:** O(1)
 
 ---
 
-## Deleting the Middle Node
-**_Method: `deleteMiddleNode`_**
+## Friendly Operations
 
-**Algorithm:**  
-1. Use slow and fast pointers to find the middle node.  
-2. Keep track of the node before the middle.  
-3. Unlink the middle node.  
-4. Return head.
-
-**Time Complexity:** O(n)  
-**Space Complexity:** O(1)
-
----
-
-## Searching for a Value
+### Search for Value  
 **_Method: `searchList`_**
 
-**Algorithm:**  
-1. Traverse the list, incrementing position.  
-2. If a node's value matches, print its position.  
-3. If not found, print not found.
+**Algorithm:**
+1. Start from head, initialize position to 0.
+2. For each node:
+    - Increment position.
+    - If node's value matches, print position and return.
+3. If end reached with no match, print "Not Found".
 
 **Time Complexity:** O(n)  
 **Space Complexity:** O(1)
 
 ---
 
-## Finding Maximum and Minimum
+### Find Max/Min  
 **_Method: `lgInList`_**
 
-**Algorithm:**  
-1. Traverse the list, keeping track of min and max values.  
-2. Print min and max values.
+**Algorithm:**
+1. Initialize max to smallest integer, min to largest integer.
+2. Traverse the list:
+    - For each node, update max and min if necessary.
+3. Print max and min values.
 
 **Time Complexity:** O(n)  
 **Space Complexity:** O(1)
 
 ---
 
-## Finding the n-th Element
-**_Method: `nThElement`_**
-
-**Algorithm:**  
-1. Ask user for nth position.  
-2. Traverse to nth node.  
-3. Print its value.
-
-**Time Complexity:** O(n)  
-**Space Complexity:** O(1)
-
----
-
-## Finding All Occurrences
-**_Method: `allOccs`_**
-
-**Algorithm:**  
-1. Traverse the list, storing positions where node value matches.  
-2. Print all such positions.
-
-**Time Complexity:** O(n)  
-**Space Complexity:** O(1)
-
----
-
-## Calculating Sum and Product
+### Sum/Product  
 **_Method: `sumPro`_**
 
-**Algorithm:**  
-1. Traverse the list, summing and multiplying all values.  
-2. Print the sum and product.
+**Algorithm:**
+1. Initialize sum as 0, product as 1.
+2. Traverse the list:
+    - Add each value to sum, multiply into product.
+3. Print sum and product.
 
 **Time Complexity:** O(n)  
 **Space Complexity:** O(1)
 
 ---
 
-## Finding Node Before Middle
-**_Method: `nodeBeforeMiddle`_**
-
-**Algorithm:**  
-1. Use slow and fast pointers; keep track of node before slow.  
-2. When fast reaches the end, return node before middle.
-
-**Time Complexity:** O(n)  
-**Space Complexity:** O(1)
-
----
-
-## Sorting the List
-**_Method: `sortList`_**
-
-**Algorithm:**  
-1. If list is empty or has one node, return.  
-2. Find node before middle to split list.  
-3. Recursively sort both halves.  
-4. Merge the two sorted lists.
-
-**Time Complexity:** O(n log n)  
-**Space Complexity:** O(log n) (stack)
-
----
-
-## Updating Value at Position
+### Update Value at Index  
 **_Method: `updateValue`_**
 
-**Algorithm:**  
-1. Ask user for position and new value.  
-2. Traverse to desired node and update its value.
+**Algorithm:**
+1. Ask user for the position to update.
+2. Traverse to that position.
+3. Ask for the new value.
+4. Update the node's value.
 
 **Time Complexity:** O(n)  
 **Space Complexity:** O(1)
 
 ---
 
-## Rotating Clockwise
-**_Method: `rotateClockwise`_**
-
-**Algorithm:**  
-1. If empty or k=0, return head.  
-2. Find new tail at (size-k)th position.  
-3. Break the list at new tail; link the end to the original head.  
-4. Return new head.
-
-**Time Complexity:** O(n)  
-**Space Complexity:** O(1)
-
----
-
-## Rotating Anti-Clockwise
-**_Method: `rotateAntiClockwise`_**
-
-**Algorithm:**  
-1. If empty or k=0, return head.  
-2. Find new tail at kth position.  
-3. Break list, link end to original head.  
-4. Return new head.
-
-**Time Complexity:** O(n)  
-**Space Complexity:** O(1)
-
----
-
-## Shuffling the List
+### Shuffle List  
 **_Method: `shuffleList`_**
 
-**Algorithm:**  
-1. Store all nodes in a list.  
-2. Shuffle the list randomly.  
-3. Re-link nodes in new order.  
-4. Return new head.
+**Algorithm (detailed for clarity):**
+1. If the list is empty or has one node, return as is.
+2. Traverse the list and store all nodes in an array/list.
+3. Shuffle the array/list randomly (Fisher-Yates Shuffle).
+4. Re-link the nodes by setting each node's `next` to the next in shuffled order.
+5. Set the last node's `next` to null.
+6. Return the new head (first node in shuffled list).
 
 **Time Complexity:** O(n)  
 **Space Complexity:** O(n)
 
 ---
 
-## Animated Forward Traversal
-**_Method: `animatedForwardTraversal`_**
+## Positional Operations
 
-**Algorithm:**  
-1. Traverse from head, printing each node in a special format.
+### Delete Middle Node  
+**_Method: `deleteMiddleNode`_**
 
-**Time Complexity:** O(n)  
-**Space Complexity:** O(1)
-
----
-
-## Preview Splitting the List
-**_Method: `previewSplit`_**
-
-**Algorithm:**  
-1. Ask user for split position.  
-2. Traverse to split point.  
-3. Print first and second half separately, but do not modify list.
+**Algorithm (detailed):**
+1. If list is empty or has one node, return null.
+2. Use two pointers: slow (moves one step), fast (moves two steps).
+3. Track a pointer to the node before slow.
+4. When fast pointer reaches end, slow is at middle.
+5. Unlink the middle node by setting previous node's next to slow's next.
+6. Return head.
 
 **Time Complexity:** O(n)  
 **Space Complexity:** O(1)
 
 ---
 
-## Splitting the List by Value
+### Get Nth Element  
+**_Method: `nThElement`_**
+
+**Algorithm:**
+1. Ask user for n.
+2. Traverse list, counting nodes.
+3. When at nth node, print its value.
+4. If n is out of bounds, print error.
+
+**Time Complexity:** O(n)  
+**Space Complexity:** O(1)
+
+---
+
+### Find All Occurrences of a Value  
+**_Method: `allOccs`_**
+
+**Algorithm:**
+1. Traverse list, maintaining a position counter.
+2. For each node, if value matches, record the position.
+3. After traversal, print all positions found, or print "Not Found".
+
+**Time Complexity:** O(n)  
+**Space Complexity:** O(1) (O(n) if storing all positions)
+
+---
+
+## Advanced
+
+### Reverse List  
+**_Method: `reverseLinkedList`_**
+
+**Algorithm (detailed):**
+1. Initialize previous node as null, current node as head.
+2. While current node is not null:
+    - Save next node.
+    - Point current's next to previous.
+    - Move previous to current.
+    - Move current to next node.
+3. After loop, previous points to new head. Return it.
+
+**Time Complexity:** O(n)  
+**Space Complexity:** O(1)
+
+---
+
+### Sort List  
+**_Method: `sortList`_**
+
+**Algorithm (detailed merge sort):**
+1. If list is empty or has one node, return head.
+2. Use `nodeBeforeMiddle` to find middle and split list in two halves.
+3. Recursively sort both halves.
+4. Merge two sorted halves using `mergeTwoLists`.
+5. Return merged head.
+
+**Time Complexity:** O(n log n)  
+**Space Complexity:** O(log n) (due to recursion stack)
+
+---
+
+### Rotate Right (Clockwise) by K  
+**_Method: `rotateClockwise`_**
+
+**Algorithm (detailed):**
+1. If list is empty, one node, or k=0, return head.
+2. Get the length of the list.
+3. Compute k modulo length.
+4. Find new tail at (length-k)th node.
+5. Set new head as the next node of new tail.
+6. Break the list at new tail.
+7. Traverse to end of new list and link it to old head.
+8. Return new head.
+
+**Time Complexity:** O(n)  
+**Space Complexity:** O(1)
+
+---
+
+### Rotate Left (Anti-Clockwise) by K  
+**_Method: `rotateAntiClockwise`_**
+
+**Algorithm (detailed):**
+1. If list is empty, one node, or k=0, return head.
+2. Get the length of the list.
+3. Compute k modulo length.
+4. Find new tail at kth node.
+5. Set new head as next node of new tail.
+6. Break the list at new tail.
+7. Traverse to end and link to old head.
+8. Return new head.
+
+**Time Complexity:** O(n)  
+**Space Complexity:** O(1)
+
+---
+
+### Split at Value K  
 **_Method: `splitList`_**
 
-**Algorithm:**  
-1. Ask user for value to split at.  
-2. Traverse to node with that value.  
-3. Offer choice to keep first or second half.  
-4. Break and return chosen half.
+**Algorithm (detailed):**
+1. Ask user for value k.
+2. Traverse list to find node with value k.
+3. If not found, return head.
+4. Print both halves for user to preview.
+5. Ask user to choose which half to return (first, second, or random).
+6. If first half, break list at k and return head.
+7. If second half, break at k and return node after k.
+8. If random, randomly choose between first and second half.
+
+**Time Complexity:** O(n)  
+**Space Complexity:** O(1)
+
+---
+
+## Animated Traversals (Preview)
+
+### Forward Traversal  
+**_Method: `animatedForwardTraversal`_**
+
+**Algorithm:**
+1. Traverse from head, print each node in "[data] <->" format.
+2. At the end, print "[NULL]".
+
+**Time Complexity:** O(n)  
+**Space Complexity:** O(1)
+
+---
+
+### Split Traversal (Preview)  
+**_Method: `previewSplit`_**
+
+**Algorithm:**
+1. Ask user for split position.
+2. Traverse to that position.
+3. Print all nodes up to split position as first half.
+4. Print remaining nodes as second half.
+5. List remains unchanged.
+
+**Time Complexity:** O(n)  
+**Space Complexity:** O(1)
+
+---
+
+## Others
+
+### Display List  
+**_Methods: `printLinkedList`, `listSummary`_**
+
+**Algorithm for `printLinkedList`:**
+1. Traverse from head, print each node.
+2. At end, print "[NULL]".
+3. Print list summary.
+
+**Algorithm for `listSummary`:**
+1. Count nodes and find middle node.
+2. Print length, middle node value, and if list is empty.
 
 **Time Complexity:** O(n)  
 **Space Complexity:** O(1)
