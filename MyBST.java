@@ -348,4 +348,48 @@ public static List<List<Integer>> zigZagLevelOrder(MyBST root) {
             System.out.println("Indorder Predecessor doesnt exist");
         }
     }
+    private static void produceSortedData(MyBST root,List<Integer> nodes){
+        if(root==null){
+            return;
+         }
+         produceSortedData(root.left,nodes);
+         nodes.add(root.data);
+         produceSortedData(root.right,nodes);
+    }
+   public static void kThSmallest(MyBST root,int k,int length){
+    // return back if k is out of bounds
+    if(k<0 || k>length){
+        System.out.println("K out of bounds");
+        return;
+    }
+    // do a inorder traversal on the bst to
+    // align the nodes in sorted manner ascending
+    List<Integer> sortedData=new LinkedList<>();
+    produceSortedData(root,sortedData);
+    for(int i=0;i<length;i++){
+        if(i==(k-1)){
+            System.out.println("The Kth Smallest is "+sortedData.get(i));
+            return;
+        }
+    }
+   }
+public static void kThLargest(MyBST root,int k,int length){
+    // return back if k is out of bounds
+    if(k<0 || k>length){
+        System.out.println("K out of bounds");
+        return;
+    }
+    // do a inorder traversal on the bst to
+    // align the nodes in sorted manner ascending
+    List<Integer> sortedData=new LinkedList<>();
+    produceSortedData(root,sortedData);
+    // Kth Largest means (length-k+1) Smallest
+    int kThLargest=length-k+1;
+    for(int i=0;i<length;i++){
+        if(i==(kThLargest-1)){
+            System.out.println("The Kth Largest is "+sortedData.get(i));
+            return;
+        }
+    }
+   }
 }

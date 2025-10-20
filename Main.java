@@ -1000,6 +1000,8 @@ public class Main{
                 case 3:
                 System.out.println("1.  Min and Max Values in the BST");
                 System.out.println("2.  Indorder Successor and Predecessor of a Value in the BST");
+                System.out.println("3.  Kth Smallest and Largest");
+                System.out.println("4.  Back to BST Menu");
                 System.out.println("Choose an option from the Orde Based Menu in the BST ");
                 int obOp=sc.nextInt();
                 switch(obOp){
@@ -1013,6 +1015,14 @@ public class Main{
                 MyBST.inorderSuccessor(root,inOf);
                 MyBST.inorderPredecessor(root,inOf);
                 break;
+                case 3:
+                System.out.println("Enter a value k for the Kth Smallest and Largest");
+                int kTh=sc.nextInt();
+                MyBST.kThSmallest(root,kTh,nodes.size());
+                MyBST.kThLargest(root,kTh,nodes.size());
+                break;
+                case 4:
+                return;
                 }
                 break;
                 case 4:
@@ -1188,7 +1198,7 @@ public class Main{
             System.out.println("5. Heaps");
             System.out.println("6. Graphs(Coming soon)");
             System.out.println("7. Exit");
-            System.out.print("Choose an Option From the Menu  ");
+            System.out.print("Choose an Option From the Menu ");
             int choice=sc.nextInt();
             switch(choice){
                 case 1:
