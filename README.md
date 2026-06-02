@@ -38,7 +38,7 @@ Wanna add a new operation ,or change any current algorithm which you feel ineffi
 ## 📖 More Info About the Project
 
 - **Menu Overviews & Detailed List of Features:**  
-  See [`MENU.md`](https://github.com/Shankar-105/Interactive-DSA-Operations/blob/main/ABOUT.md) for a full breakdown of all menus, features, and simulator operations.
+  See [`MENU.md`](https://github.com/Shankar-105/Interactive-DSA-Operations/blob/main/MENU.md) for a full breakdown of all menus, features, and simulator operations.
 
 - **In-Depth Documentation:**  
   Check the [`docs`](https://github.com/Shankar-105/Interactive-DSA-Operations/tree/main/docs) folder (if available) for algorithm explanations, code walk-throughs.
