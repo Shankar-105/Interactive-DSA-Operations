@@ -50,12 +50,12 @@ Wanna add a new operation ,or change any current algorithm which you feel ineffi
 
 2. **Compile All Files:**
    ```bash
-   javac *.java
+   javac simulator/*.java
    ```
 
 3. **Run the Main Simulator:**
    ```bash
-   java Main
+   java -cp simulator Main
    ```
 
 4. **Follow the Menus:**  
