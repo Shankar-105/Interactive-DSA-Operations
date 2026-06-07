@@ -2,9 +2,6 @@
 
 A menu-driven, console-based mini Java project designed to help you **learn, understand, visualize, and practice core Data Structures and Algorithms** through hands-on interaction and rich documentation for each operation.
 
----
-**Documentations Cmg Soon!!!**
-
 ## 🌟 Why This Project?
 
 - **Not just code**: Along with source code, you get detailed, beginner-friendly documentation on each data structure covering not only *how* to use them but *why* and *how* they work.
