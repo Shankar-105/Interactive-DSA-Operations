@@ -1,7 +1,7 @@
 public class MyStack{
 static int size;
 static Node top;
-MyStack(){
+public MyStack(){
     MyStack.size=0;
     MyStack.top=null;
 }
