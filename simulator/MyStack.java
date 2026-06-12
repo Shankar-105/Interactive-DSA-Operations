@@ -36,7 +36,7 @@ public static void reset(){
     size=0;
 }
 public static boolean isEmpty(){
-    if(size==0){
+    if(size<=0){
         return true;
     }
     return false;
