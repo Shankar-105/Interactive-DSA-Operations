@@ -31,6 +31,10 @@ return top;
 public static int sizeof(){
     return size;
 }
+public static void reset(){
+    top=null;
+    size=0;
+}
 public static boolean isEmpty(){
     if(size==0){
         return true;
