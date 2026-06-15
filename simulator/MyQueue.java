@@ -2,7 +2,7 @@ public class MyQueue {
    static int length;
    static Node front;
    static Node back;
-    MyQueue(){
+    public MyQueue(){
         MyQueue.length=0;
         MyQueue.back=null;
         MyQueue.front=null;
