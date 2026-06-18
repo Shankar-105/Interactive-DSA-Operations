@@ -44,6 +44,11 @@ public class MyQueue {
     public static int sizeofQ(){
         return length;
     }
+    public static void reset(){
+        length=0;
+        front=null;
+        back=null;
+    }
     public static int peekOfQ(){
         if(isQEmpty()){
             return 0;
