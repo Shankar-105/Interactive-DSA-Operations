@@ -36,7 +36,7 @@ public class MyQueue {
     return front;
     }
     public static boolean isQEmpty(){
-        if(length==0){
+        if(length<=0){
             return true;
         }
         return false;
