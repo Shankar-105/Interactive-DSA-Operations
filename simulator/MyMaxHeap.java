@@ -43,13 +43,13 @@ public class MyMaxHeap {
             System.out.println("Heap is Empty Insert Some Nodes!");
             return;
         }
-        int min = maxHeap.get(0);
+        int max = maxHeap.get(0);
         int last = maxHeap.remove(maxHeap.size() - 1);
         if (!maxHeap.isEmpty()) {
             maxHeap.set(0, last);
             heapifyDown(maxHeap,0);
         }
-        System.out.println("Deleted the Top Elem "+min);
+        System.out.println("Deleted the Top Elem "+max);
     }
     // Heapify down
     private static void heapifyDown(List<Integer> maxHeap,int i) {
