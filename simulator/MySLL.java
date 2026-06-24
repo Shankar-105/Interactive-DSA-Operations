@@ -261,8 +261,9 @@ public class MySLL {
         }
         System.out.println("Enter the Nth Position");
         int nThPos=sc.nextInt();
-       if(nThPos>MySLL.listSize(head)){
+       if(nThPos<=0 || nThPos>MySLL.listSize(head)){
        System.out.println("Unable To Fetch the Position,Out of List Bounds");
+       return;
       }
         int cnt=0;
         MySLL temp=head;
