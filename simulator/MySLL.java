@@ -376,8 +376,9 @@ public class MySLL {
         }
         System.out.println("Enter the Position");
         int updPos=sc.nextInt();
-        if(updPos>MySLL.listSize(head)){
+        if(updPos<=0 || updPos>MySLL.listSize(head)){
         System.out.println("Unable To Fetch the Position,MayBe Out of List Bounds!");
+         return;
          }
         else{
         System.out.println("Enter the New Value to be Updated");
