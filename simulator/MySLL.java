@@ -402,6 +402,7 @@ public class MySLL {
         }
         int size=listSize(head);
         k = k % size;
+        if (k < 0) k += size;
         if (k == 0){
          return head;
         }
