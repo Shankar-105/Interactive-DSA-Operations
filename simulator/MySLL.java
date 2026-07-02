@@ -167,7 +167,7 @@ public class MySLL {
     return head;
    }
    public static MySLL deleteAtK(MySLL head,int k){
-    if(head==null){
+    if(head==null || k<=0 || k>listSize(head)){
      System.out.println("Oh Man there's no element after this operation the list is Empty");
      return head;
     }
