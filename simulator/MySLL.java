@@ -190,18 +190,14 @@ public class MySLL {
     return head;
    }
    public static MySLL deleteNodeK(MySLL head,int val){
-    if (head == null){
-       return null; 
+    while(head!=null && head.data==val){
+        head=head.next;
     }
-    else if(head.next==null && head.data==val){
-        return null;
-    }
-    else{
-        MySLL temp=head;
-        while(temp!=null && temp.next!=null){
-            if(temp.next.data==val){
-                temp.next=temp.next.next;
-            }
+    MySLL temp=head;
+    while(temp!=null && temp.next!=null){
+        if(temp.next.data==val){
+            temp.next=temp.next.next;
+        } else {
             temp=temp.next;
         }
     }
