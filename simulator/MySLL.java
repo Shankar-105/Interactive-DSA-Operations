@@ -121,6 +121,9 @@ public class MySLL {
    return head;
    }
    public static MySLL insertAtK(MySLL head,int k,int newele){
+    if(k<=0){
+        return head;
+    }
     if(head==null){
         if(k==1){
          MySLL newNode=new MySLL(newele);
