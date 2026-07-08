@@ -225,6 +225,7 @@ public class MySLL {
     public static void searchList(MySLL head,int val){
         if(head==null){
             System.out.println("Empty List!");
+            return;
         }
         int pos=0;
         MySLL temp=head;
