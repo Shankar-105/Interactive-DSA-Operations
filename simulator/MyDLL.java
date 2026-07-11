@@ -298,8 +298,9 @@ public static MyDLL inputNodes(Scanner sc,MyDLL head){
         }
         System.out.println("Enter the Nth Position");
         int nThPos=sc.nextInt();
-       if(nThPos>MyDLL.listSize(head)){
+       if(nThPos<=0 || nThPos>MyDLL.listSize(head)){
        System.out.println("Unable To Fetch the Position,Out of List Bounds");
+       return;
       }
         int cnt=0;
         MyDLL temp=head;
