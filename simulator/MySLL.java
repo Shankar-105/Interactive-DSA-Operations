@@ -279,6 +279,7 @@ public class MySLL {
     public static void allOccs(MySLL head,int val){
         if(head==null){
             System.out.println("Empty List!");
+            return;
         }
         List<Integer> allOcc=new LinkedList<>();
         int pos=0;
