@@ -220,28 +220,29 @@ public static MyDLL inputNodes(Scanner sc,MyDLL head){
     return head;
    }
    public static MyDLL deleteNodeK(MyDLL head,int val){
-    if (head == null){
-       return null; 
-    }
-    else if(head.next==null && head.data==val){
-        return null;
-    }
-    else{
-        MyDLL temp=head;
-        while(temp!=null){
-        if(temp.data==val) {
-            break;
+    while(head!=null && head.data==val){
+        MyDLL next=head.next;
+        head.next=null;
+        if(next!=null){
+            next.prev=null;
         }
-        temp=temp.next;
+        head=next;
     }
-    MyDLL prevNode=temp.prev;
-    MyDLL nextNode=temp.next;
-    prevNode.next=nextNode;
-    if(nextNode!=null){
-        nextNode.prev=prevNode;
-    }
-    temp.prev=null;
-    temp.next=null;
+    MyDLL temp=head;
+    while(temp!=null){
+        if(temp.data==val){
+            MyDLL prevNode=temp.prev;
+            MyDLL nextNode=temp.next;
+            prevNode.next=nextNode;
+            if(nextNode!=null){
+                nextNode.prev=prevNode;
+            }
+            temp.prev=null;
+            temp.next=null;
+            temp=nextNode;
+        } else {
+            temp=temp.next;
+        }
     }
     return head;
    }
