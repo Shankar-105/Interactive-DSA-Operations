@@ -188,7 +188,7 @@ public static MyDLL inputNodes(Scanner sc,MyDLL head){
     return head;
    }
    public static MyDLL deleteAtK(MyDLL head,int k){
-    if(head==null){
+    if(head==null || k<=0 || k>listSize(head)){
         return null;
     }
     int cnt=0;
