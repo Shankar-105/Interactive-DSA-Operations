@@ -134,6 +134,9 @@ public static MyDLL inputNodes(Scanner sc,MyDLL head){
    return head;
    }
    public static MyDLL insertAtK(MyDLL head,int k,int newele){
+    if(k<=0){
+        return head;
+    }
     if(head==null){
         if(k==1){
          MyDLL newNode=new MyDLL(newele);
