@@ -253,6 +253,11 @@ public static MyDLL inputNodes(Scanner sc,MyDLL head){
         if(head == null || head.next==null){
             return null;
         }
+       if(head.next.next==null){
+           head.next.prev=null;
+           head.next=null;
+           return head;
+       }
         MyDLL slow=head;
         MyDLL fast=head;
         while(fast!=null && fast.next!=null){
