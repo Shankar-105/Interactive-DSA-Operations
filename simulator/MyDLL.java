@@ -96,20 +96,19 @@ public static MyDLL inputNodes(Scanner sc,MyDLL head){
         return cnt;
     }
     public static MyDLL reverseLinkedList(MyDLL head){
-        MyDLL temp=head;
         if(head==null||head.next==null){
             return head;
         }
-        MyDLL prevNode=null;
-        MyDLL afterNode=null;
+        MyDLL temp=head;
+        MyDLL newHead=null;
         while(temp!=null){
-            prevNode=temp.prev;
-            afterNode=temp.next;
-            temp.prev=afterNode;
-            temp.next=prevNode;
-            temp=afterNode;
+            MyDLL next=temp.next;
+            temp.next=temp.prev;
+            temp.prev=next;
+            newHead=temp;
+            temp=next;
         }
-        return prevNode.prev;
+        return newHead;
     }
     // Insertions Over DLL
     public static MyDLL insertAtHead(MyDLL head,int newele){
