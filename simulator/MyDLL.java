@@ -325,6 +325,7 @@ public static MyDLL inputNodes(Scanner sc,MyDLL head){
     public static void allOccs(MyDLL head,int val){
         if(head==null){
             System.out.println("Empty List!");
+            return;
         }
         List<Integer> allOcc=new java.util.LinkedList<>();
         int pos=0;
