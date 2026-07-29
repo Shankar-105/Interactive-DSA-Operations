@@ -177,7 +177,7 @@ public class MyBST {
 }
 public static List<List<Integer>> bfsTraversal(MyBST root) {
         List<List<Integer>> result = new ArrayList<>();
-        if (root == null) return null;
+        if (root == null) return result;
         Queue<MyBST> q = new LinkedList<>();
         q.offer(root);
         while (!q.isEmpty()) {
