@@ -375,7 +375,7 @@ public static List<List<Integer>> zigZagLevelOrder(MyBST root) {
    }
 public static void kThLargest(MyBST root,int k,int length){
     // return back if k is out of bounds
-    if(k<0 || k>length){
+    if(k<=0 || k>length){
         System.out.println("K out of bounds");
         return;
     }
