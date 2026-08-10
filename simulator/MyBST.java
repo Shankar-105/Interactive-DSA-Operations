@@ -335,7 +335,7 @@ public static List<List<Integer>> zigZagLevelOrder(MyBST root) {
         }
     }
     public static void inorderPredecessor(MyBST root,int target){
-        int predecessor=0;
+        int predecessor=Integer.MAX_VALUE;
         MyBST temp=root;
         while(temp!=null){
             if(temp.data<target){
@@ -346,7 +346,7 @@ public static List<List<Integer>> zigZagLevelOrder(MyBST root) {
                 temp=temp.left;
             }
         }
-        if(predecessor!=0){
+        if(predecessor!=Integer.MAX_VALUE){
             System.out.println("The Inorder Predecessor of "+target+" is "+predecessor);
         }
         else{
