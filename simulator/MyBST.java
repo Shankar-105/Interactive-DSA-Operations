@@ -316,7 +316,7 @@ public static List<List<Integer>> zigZagLevelOrder(MyBST root) {
         }
     }
     public static void inorderSuccessor(MyBST root,int target){
-        int successor=0;
+        int successor=Integer.MIN_VALUE;
         MyBST temp=root;
         while(temp!=null){
             if(target<temp.data){
@@ -327,7 +327,7 @@ public static List<List<Integer>> zigZagLevelOrder(MyBST root) {
                 temp=temp.right;
             }
         }
-        if(successor!=0){
+        if(successor!=Integer.MIN_VALUE){
             System.out.println("The Inorder Successor of "+target+" is "+successor);
         }
         else{
