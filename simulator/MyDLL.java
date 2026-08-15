@@ -272,6 +272,10 @@ public static MyDLL inputNodes(Scanner sc,MyDLL head){
         return head;
     }
     public static void searchList(MyDLL head,int val){
+        if(head==null){
+            System.out.println("Empty List!");
+            return;
+        }
         int pos=0;
         MyDLL temp=head;
         while(temp!=null){
