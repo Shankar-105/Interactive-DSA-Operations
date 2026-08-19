@@ -426,8 +426,9 @@ public static MyDLL inputNodes(Scanner sc,MyDLL head){
         }
         System.out.println("Enter the Position");
         int updPos=sc.nextInt();
-        if(updPos>MyDLL.listSize(head)){
+        if(updPos<=0 || updPos>MyDLL.listSize(head)){
         System.out.println("Unable To Fetch the Position,MayBe Out of List Bounds!");
+        return;
          }
         else{
         System.out.println("Enter the New Value to be Updated");
