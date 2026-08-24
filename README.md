@@ -58,4 +58,11 @@ Wanna add a new operation ,or change any current algorithm which you feel ineffi
 4. **Follow the Menus:**  
 ---
 
+## Run the Smoke Test
+
+```bash
+javac -d out simulator/*.java
+java -cp out TestSimulator
+```
+
 **Happy Learning and Contributing! 🚀**
