@@ -1001,7 +1001,8 @@ public class Main{
                 System.out.println("1.  Min and Max Values in the BST");
                 System.out.println("2.  Indorder Successor and Predecessor of a Value in the BST");
                 System.out.println("3.  Kth Smallest and Largest");
-                System.out.println("4.  Back to BST Menu");
+                System.out.println("4.  Find Values Within a Range");
+                System.out.println("5.  Back to BST Menu");
                 System.out.println("Choose an option from the Orde Based Menu in the BST ");
                 int obOp=sc.nextInt();
                 switch(obOp){
@@ -1022,6 +1023,14 @@ public class Main{
                 MyBST.kThLargest(root,kTh,nodes.size());
                 break;
                 case 4:
+                System.out.println("Enter the lower bound");
+                int lowerBound=sc.nextInt();
+                System.out.println("Enter the upper bound");
+                int upperBound=sc.nextInt();
+                List<Integer> rangeValues=MyBST.valuesInRange(root,lowerBound,upperBound);
+                System.out.println("Values in range: "+rangeValues);
+                break;
+                case 5:
                 return;
                 }
                 break;

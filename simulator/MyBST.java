@@ -177,7 +177,7 @@ public class MyBST {
 }
 public static List<List<Integer>> bfsTraversal(MyBST root) {
         List<List<Integer>> result = new ArrayList<>();
-        if (root == null) return null;
+        if (root == null) return result;
         Queue<MyBST> q = new LinkedList<>();
         q.offer(root);
         while (!q.isEmpty()) {
@@ -194,7 +194,7 @@ public static List<List<Integer>> bfsTraversal(MyBST root) {
         return result;
     }
     public static void printLevelOrderTraversals(List<List<Integer>> result){
-    if(result == null){
+    if(result == null || result.isEmpty()){
         System.out.println("BST is Empty Insert few Nodes!");
         return;
         }
@@ -236,6 +236,28 @@ public static List<List<Integer>> zigZagLevelOrder(MyBST root) {
             leftToRight = !leftToRight; // Toggle direction
         }
         return result;
+    }
+    public static List<Integer> valuesInRange(MyBST root,int low,int high){
+        List<Integer> values=new ArrayList<>();
+        if(low>high){
+            return values;
+        }
+        collectValuesInRange(root,low,high,values);
+        return values;
+    }
+    private static void collectValuesInRange(MyBST root,int low,int high,List<Integer> values){
+        if(root==null){
+            return;
+        }
+        if(root.data>low){
+            collectValuesInRange(root.left,low,high,values);
+        }
+        if(root.data>=low && root.data<=high){
+            values.add(root.data);
+        }
+        if(root.data<high){
+            collectValuesInRange(root.right,low,high,values);
+        }
     }
     public static int bstMaxDepth(MyBST root){
     if(root==null){
